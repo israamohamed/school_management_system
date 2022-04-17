@@ -112,7 +112,8 @@ class ClassRoomController extends Controller
             'name' => [
                 'en' => $request->name_en,
                 'ar' => $request->name_ar
-            ]
+            ], 
+            'last_class_room' => $request->last_class_room ? true : false
         ]);
 
         $class_room = ClassRoom::findOrFail($id);

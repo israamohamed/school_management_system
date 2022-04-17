@@ -21,8 +21,14 @@
     <link href="{{asset('dashboard/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet')}}" type="text/css" />
 
     <!-- Responsive datatable examples -->
-    <link href="{{asset('dashboard/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet"
-        type="text/css" />
+    <link href="{{asset('dashboard/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" type="text/css" />
+
+    <!-- Sweet Alert-->
+    <link href="{{asset('dashboard/assets/libs/sweetalert2/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- toastr -->
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('dashboard/assets/libs/toastr/build/toastr.min.css')}}"> --}}
+    {{-- select2 --}}
+    <link href="{{asset('dashboard/assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css">
 
     
  
@@ -54,6 +60,7 @@
 
     <!-- ========== Header ========== -->
    @include('dashboard.includes.header')
+   
 
    
     <div class="vertical-menu">
@@ -77,6 +84,10 @@
                         </div>
                     </div>
                 </div>
+
+                 <!-- Alerts -->
+                @include('dashboard.includes.alerts')
+                
                 @yield('content')
             </div>
         </div>
@@ -117,13 +128,43 @@
 
 <script src="{{asset('dashboard/assets/js/pages/dashboard.init.js')}}"></script>
 
-<!-- App js -->
-{{-- <script src="{{asset('dashboard/assets/js/app.js')}}"></script> --}}
-
-@stack('scripts')
 @jquery
 @toastr_js
 @toastr_render
+
+<!-- Sweet Alerts js -->
+<script src="{{asset('dashboard/assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+<!-- toastr plugin -->
+{{-- <script src="{{asset('dashboard/assets/libs/toastr/build/toastr.min.js')}}"></script> --}}
+{{-- select2 --}}
+<script src="{{asset('dashboard/assets/libs/select2/js/select2.min.js')}}"></script>
+
+<!-- App js -->
+{{-- <script src="{{asset('dashboard/assets/js/app.js')}}"></script> --}}
+
+
+<script>
+    $("#check_all").click(function(){
+        var checked = $(this).is(':checked');
+
+        $(".select_row").prop('checked', checked).change();
+    })  
+
+    $(".select_row").change(function(){
+        var selected_rows = [];
+        var i = 0;
+
+        $('.select_row:checked').each(function () {
+                selected_rows[i++] = $(this).val();
+        });
+
+        $("input[name='selected_rows']").val(selected_rows);
+    });
+</script>
+
+
+@stack('scripts')
+
 
 </body>
 

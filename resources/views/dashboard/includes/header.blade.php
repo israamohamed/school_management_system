@@ -3,7 +3,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index.html" class="logo logo-dark">
+                <a href="{{route('dashboard.home')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{asset('dashboard/assets/images/logo-sm-dark.png')}}" alt="logo-sm-dark" height="26">
                     </span>
@@ -12,7 +12,7 @@
                     </span>
                 </a>
 
-                <a href="index.html" class="logo logo-light">
+                <a href="{{route('dashboard.home')}}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{asset('dashboard/assets/images/logo-sm-light.png')}}" alt="logo-sm-light" height="26">
                     </span>
@@ -69,18 +69,6 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
-                    {{-- <div class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
-                              
-                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-                            <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                            </a>
-                            
-                        @endforeach
-
-                    </div> --}}
-
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <!-- item-->
                         <a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" hreflang="{{ $localeCode }}" class="dropdown-item notify-item">
@@ -103,19 +91,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/github.png" alt="Github">
+                                    <img src="{{asset('dashboard/assets/images/brands/github.png')}}" alt="Github">
                                     <span>GitHub</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                    <img src="{{asset('dashboard/assets/images/brands/bitbucket.png')}}" alt="bitbucket">
                                     <span>Bitbucket</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                    <img src="{{asset('dashboard/assets/images/brands/dribbble.png')}}" alt="dribbble">
                                     <span>Dribbble</span>
                                 </a>
                             </div>
@@ -124,19 +112,19 @@
                         <div class="row g-0">
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                    <img src="{{asset('dashboard/assets/images/brands/dropbox.png')}}" alt="dropbox">
                                     <span>Dropbox</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                    <img src="{{asset('dashboard/assets/images/brands/mail_chimp.png')}}" alt="mail_chimp">
                                     <span>Mail Chimp</span>
                                 </a>
                             </div>
                             <div class="col">
                                 <a class="dropdown-icon-item" href="#">
-                                    <img src="assets/images/brands/slack.png" alt="slack">
+                                    <img src="{{asset('dashboard/assets/images/brands/slack.png')}}" alt="slack">
                                     <span>Slack</span>
                                 </a>
                             </div>
@@ -201,7 +189,7 @@
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-2.jpg"
+                    <img class="rounded-circle header-profile-user" src="{{asset('dashboard/assets/images/users/avatar-2.jpg')}}"
                         alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ms-1">Adam</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
