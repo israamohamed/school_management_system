@@ -26,9 +26,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::get('/home' , 'HomeController@index')->name('home');
         //Educatinal stages
         Route::resource('educational_stage' , 'EducationalStageController');
+        Route::get('get_class_rooms' , 'EducationalStageController@get_class_rooms')->name('get_class_rooms');
         //Class Rooms
         Route::resource('class_room' , 'ClassRoomController');
         Route::post('class_room/delete_selected', 'ClassRoomController@delete_selected')->name('class_room.delete_selected');
+        //Educational Class Rooms
+        Route::resource('educational_class_room' , 'EducationalClassRoomController');
     
     });
+    
 });

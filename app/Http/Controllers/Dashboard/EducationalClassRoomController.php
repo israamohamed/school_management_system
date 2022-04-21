@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\EducationalClassRoom;
+use App\Http\Requests\StoreEducationalClassRoomRequest;
+use App\Http\Requests\UpdateEducationalClassRoomRequest;
 use App\Models\EducationalStage;
-use App\Models\ClassRoom;
-use App\Http\Requests\StoreEducationalStageRequest;
-use App\Http\Requests\UpdateEducationalStageRequest;
 
-class EducationalStageController extends Controller
+class EducationalClassRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,9 @@ class EducationalStageController extends Controller
      */
     public function index()
     {
-        $educational_stages = EducationalStage::paginate(10);
-        return view('dashboard.educational_stages.index' , compact('educational_stages'));
+        $educational_class_rooms = EducationalClassRoom::paginate(10);
+        $educational_stages = EducationalStage::get();
+        return view('dashboard.educational_class_rooms.index' , compact('educational_class_rooms' , 'educational_stages'));
     }
 
     /**
@@ -38,20 +39,19 @@ class EducationalStageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEducationalStageRequest $request)
+    public function store(StoreEducationalClassRoomRequest $request)
     {
-        $request->validated();
-
         $request->merge([
             'name' => [
                 'en' => $request->name_en,
                 'ar' => $request->name_ar
-            ]
+            ],
+            'active' => $request->active ? true : false
         ]);
 
-        $educational_stage = EducationalStage::create($request->all());
+        $educational_class_room = EducationalClassRoom::create($request->all());
         toastr()->success(__('messages.added_successfully'));
-        return redirect()->route('dashboard.educational_stage.index');
+        return redirect()->route('dashboard.educational_class_room.index');
     }
 
     /**
@@ -83,7 +83,7 @@ class EducationalStageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEducationalStageRequest $request, $id)
+    public function update(UpdateEducationalClassRoomRequest $request, $id)
     {
         $request->validated();
 
@@ -91,14 +91,15 @@ class EducationalStageController extends Controller
             'name' => [
                 'en' => $request->name_en,
                 'ar' => $request->name_ar
-            ]
+            ],
+            'active' => $request->active ? true : false
         ]);
 
-        $educational_stage = EducationalStage::findOrFail($id);
+        $educational_class_room = EducationalClassRoom::findOrFail($id);
 
-        $educational_stage->update($request->all());
+        $educational_class_room->update($request->all());
         toastr()->success(__('messages.updated_successfully'));
-        return redirect()->route('dashboard.educational_stage.index');
+        return redirect()->route('dashboard.educational_class_room.index');
     }
 
     /**
@@ -109,31 +110,11 @@ class EducationalStageController extends Controller
      */
     public function destroy($id)
     {
-        $educational_stage = EducationalStage::findOrFail($id);
-        //check if educational stage has class rooms
-        if($educational_stage->class_rooms()->count() > 0)
-        {
-            toastr()->error(__('messages.educational_stage_has_class_rooms_warning'));
-            return redirect()->route('dashboard.educational_stage.index');
-        }
-        else 
-        {
-            $educational_stage->delete();
-            toastr()->success(__('messages.deleted_successfully'));
-            return redirect()->route('dashboard.educational_stage.index');
-        }
-    }
-
-    public function get_class_rooms(Request $request )
-    {
-        $class_rooms = ClassRoom::where(function($query) use($request) {
-
-            if($request->filled('educational_stage_id'))
-            {
-                $query->where('educational_stage_id', $request->educational_stage_id);
-            }
-        })->get();
-
-        return response()->json($class_rooms);
+        $educational_class_room = EducationalClassRoom::findOrFail($id);
+        
+        $educational_class_room->delete();
+        toastr()->success(__('messages.deleted_successfully'));
+        return redirect()->route('dashboard.educational_class_room.index');
+        
     }
 }

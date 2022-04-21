@@ -10,6 +10,8 @@
 
         'educational_stage_has_class_rooms_warning' => 'The educational stage cannot be deleted. The class rooms associated with it must be deleted first',
 
+        'educational_class_room_has_class_rooms_warning' => 'The educational class room cannot be deleted. The class rooms associated with it must be deleted first',
+
         'no_rows_selected' => 'There are no rows selected',
 
         'deleted_rows_warning' => ':number rows will be deleted permanently',

@@ -13,6 +13,8 @@ return [
     'name_en' => 'Name in English',
     'name_ar' => 'Name in Arabic',
     'last_class_room' => 'Last classroom',
+    'number_of_students' => 'Number of students',
+    'active' => 'Active',
     
 
     'educational_stages' => [
@@ -28,5 +30,14 @@ return [
         'create' => 'Add class room',
         'edit' => 'Edit class room',
         'delete' => 'Delete class room', 
+        'one' => 'Class room',
+    ],
+
+    'educational_class_rooms' => [
+        'title' => 'Educational Class rooms',
+        'create' => 'Add education class room',
+        'edit' => 'Edit educational class room',
+        'delete' => 'Delete education class room', 
+        'one' => 'Educational Class Room',
     ],
 ];

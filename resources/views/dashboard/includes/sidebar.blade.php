@@ -24,6 +24,13 @@
             </a>
         </li>
 
+        <li class = "{{request()->routeIs('dashboard.educational_class_room.*') ? 'mm-active' : ''}}">
+            <a href="{{route('dashboard.educational_class_room.index')}}" class=" waves-effect">
+                <i class="ri-chat-1-line"></i>
+                <span>{{__('sidebar.educational_class_rooms')}}</span>
+            </a>
+        </li>
+
         {{--
         <li class="menu-title">Pages</li>
 
