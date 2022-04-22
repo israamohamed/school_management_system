@@ -3223,7 +3223,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr > td.dtr-control:before {
   cursor: not-allowed;
   background-color: #05c6db;
 }
-.twitter-bs-wizard .twitter-bs-wizard-pager-link li.next {
+.twitter-bs-wizard .twitter-bs-wizard-pager-link li.next , .twitter-bs-wizard .twitter-bs-wizard-pager-link li.next_style {
   float: left;
 }
 

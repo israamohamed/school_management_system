@@ -47,6 +47,9 @@
        <!-- Icons Css -->
        <link href="{{asset('dashboard/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
        @toastr_css
+
+       @livewireStyles
+
        @stack('styles')
     
 </head>
@@ -169,6 +172,9 @@
    
 </script> --}}
 
+
+@livewireScripts
+{{-- <script src="{{asset('/livewire/livewire.js')}}"></script> --}}
 
 @stack('scripts')
 

@@ -12,4 +12,6 @@ class Relision extends Model
 
     protected $table = 'relisions';
     protected $fillable = ['name' , 'active'];
+
+    public $translatable = ['name'];
 }

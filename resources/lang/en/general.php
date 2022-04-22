@@ -15,6 +15,8 @@ return [
     'last_class_room' => 'Last classroom',
     'number_of_students' => 'Number of students',
     'active' => 'Active',
+    'next' => 'Next',
+    'previous' => 'Previous',
     
 
     'educational_stages' => [

@@ -18,9 +18,13 @@ class RelisionSeeder extends Seeder
         DB::table('relisions')->delete();
 
         $data = [
-            'name' => ['en' => 'Muslim' , 'ar' => 'مسلم'],
-            'name' => ['en' => 'Christian' , 'ar' => 'مسيحي'],
-            'name' => ['en' => 'Other' , 'ar' => 'غير ذلك'],
+            ['en' => 'Muslim' , 'ar' => 'مسلم'],
+            ['en' => 'Christian' , 'ar' => 'مسيحي'],
+            ['en' => 'Other' , 'ar' => 'غير ذلك'],
         ];
+
+        foreach ($data as $n) {
+            Relision::create(['name' => $n]);
+        }
     }
 }
