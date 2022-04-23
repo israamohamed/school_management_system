@@ -18,6 +18,24 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-12 dropzone">
+
+            <label class="form-label" for="attachments">{{__('general.add_attachments')}}</label>
+
+            <div class="fallback">
+                <input wire:model="attachments" id = "attachments" type="file" multiple="multiple">
+            </div>
+            <div class="dz-message needsclick">
+                <div class="mb-3">
+                    <i class="display-4 text-muted ri-upload-cloud-2-line"></i>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-lg-6">
             <div class="text-center">

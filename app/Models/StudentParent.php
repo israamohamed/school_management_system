@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use App\Traits\Attachments\HasAttachments;
 
 class StudentParent extends Model
 {
-    use HasFactory , HasTranslations;
+    use HasFactory , HasTranslations , HasAttachments;
 
     protected $fillable = ['email' , 'password' , 'father_name' , 'father_national_id' , 
                             'father_passport_number' , 'father_phone_number' , 'father_job' , 

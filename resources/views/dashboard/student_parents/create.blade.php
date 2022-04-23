@@ -5,6 +5,8 @@
 @push('styles')
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="{{asset('dashboard/assets/libs/twitter-bootstrap-wizard/prettify.css')}}">
+    <!-- Plugins css -->
+    <link href="{{asset('dashboard/assets/libs/dropzone/min/dropzone.min.css')}}" rel="stylesheet" type="text/css" />
 @endpush
 @section('breadcrumb')
     <h4 class="mb-sm-0">{{__('student_parents.create')}}</h4>
@@ -60,6 +62,10 @@
     <script src="{{asset('dashboard/assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js')}}"></script>
     <script src="{{asset('dashboard/assets/libs/twitter-bootstrap-wizard/prettify.js')}}"></script>
     <script src="{{asset('dashboard/assets/js/pages/form-wizard.init.js')}}"></script>
+    <!-- Plugins js -->
+    <script src="{{asset('dashboard/assets/libs/metismenu/metisMenu.min.js')}}"></script>
+    <script src="{{asset('dashboard/assets/libs/dropzone/min/dropzone.min.js')}}"></script>
+    
 
     <script>
         $(".select2").select2();

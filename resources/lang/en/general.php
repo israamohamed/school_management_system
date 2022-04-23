@@ -16,7 +16,8 @@ return [
     'number_of_students' => 'Number of students',
     'active' => 'Active',
     'next' => 'Next',
-    'previous' => 'Previous',
+    'previous' => 'Previous', 
+    'add_attachments' => 'Upload Attachments',
     
 
     'educational_stages' => [

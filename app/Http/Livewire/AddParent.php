@@ -7,9 +7,14 @@ use App\Models\BloodType;
 use App\Models\Nationality;
 use App\Models\Relision;
 use App\Models\StudentParent;
+use Livewire\WithFileUploads;
 
 class AddParent extends Component
 {
+    use WithFileUploads;
+
+    public $attachments = [];
+
     public $email ,$password ,$father_name_en, $father_name_ar ,$father_national_id , $father_passport_number ,$father_phone_number ,$father_job , 
            $father_blood_type_id ,$father_nationality_id ,$father_relision_id ,$father_address,$mother_name_en, $mother_name_ar ,$mother_national_id , 
            $mother_passport_number ,$mother_phone_number ,$mother_job , $mother_blood_type_id ,$mother_nationality_id ,$mother_relision_id ,
@@ -103,6 +108,8 @@ class AddParent extends Component
        
             //2 - store data in db
             $parent = StudentParent::create($data);
+            //3 - upload attachments
+            $parent->uploadAttachments($this->attachments , 'student_parents/' . $this->father_national_id);
             //3 - success message
             $this->success_message = __('student_parents.added_successfully');
             //4 - clear form
@@ -171,6 +178,7 @@ class AddParent extends Component
         $this->mother_nationality_id = '';
         $this->mother_relision_id = '';
         $this->mother_address = '';
+        $this->attachments = [];
         $this->error_message = '';
 
     }
