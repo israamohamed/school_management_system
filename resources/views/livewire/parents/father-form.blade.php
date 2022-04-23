@@ -3,7 +3,7 @@
         {{--father_name_en--}}
         <div class="col-lg-6">
             <div class="mb-3">
-                <label class="form-label" for="father_name_en">{{__('student_parents.father_name_en')}}</label>
+                <label class="form-label" for="father_name_en">{{__('student_parents.father_name_en')}} <span class = "text-danger">*</span></label>
                 <input type="text" class="form-control" id="father_name_en" wire:model = "father_name_en" placeholder="{{__('student_parents.father_name_en')}}">
                 @error('father_name_en') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
             </div>

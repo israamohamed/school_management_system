@@ -35,6 +35,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //Parents
         Route::resource('student_parent' , 'StudentParentController');
+        Route::post('student_parent/delete_selected', 'StudentParentController@delete_selected')->name('student_parent.delete_selected');
     
     
     });

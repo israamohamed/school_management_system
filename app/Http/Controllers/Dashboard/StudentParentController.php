@@ -18,7 +18,8 @@ class StudentParentController extends Controller
      */
     public function index()
     {
-        //
+        $student_parents = StudentParent::paginate(25);
+        return view('dashboard.student_parents.index' , compact('student_parents'));
     }
 
     /**
@@ -61,7 +62,8 @@ class StudentParentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student_parent = StudentParent::findOrFail($id);
+        return view('dashboard.student_parents.edit', compact('student_parent'));
     }
 
     /**
@@ -84,6 +86,31 @@ class StudentParentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student_parent = StudentParent::findOrFail($id);
+        
+        $student_parent->deleteAttachments();
+        $student_parent->delete();
+        toastr()->success(__('messages.deleted_successfully'));
+        return redirect()->route('dashboard.student_parent.index');
     }
+
+    public function delete_selected(Request $request)
+    {
+        $selected_rows = $request->selected_rows;
+        if($selected_rows)
+        {
+            $selected_rows_ids = explode("," , $selected_rows);
+            $student_parents = StudentParent::whereIn('id' , $selected_rows_ids)->delete();
+            toastr()->success(__('messages.deleted_successfully'));
+            return redirect()->route('dashboard.student_parent.index');
+        }
+        else 
+        {
+            toastr()->error(__('messages.error_occured'));
+            return redirect()->route('dashboard.class_room.index');
+        }
+        
+    }
+
+    
 }

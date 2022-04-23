@@ -37,7 +37,7 @@
                 <span>{{__('sidebar.parents')}}</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
-                <li><a href="#">{{__('sidebar.parents_list')}}</a></li>
+                <li><a href="{{route('dashboard.student_parent.index')}}">{{__('sidebar.parents_list')}}</a></li>
                 <li><a href="{{route('dashboard.student_parent.create')}}">{{__('sidebar.add_parent')}}</a></li>
             </ul>
         </li>
