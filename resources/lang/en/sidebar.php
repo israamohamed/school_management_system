@@ -6,5 +6,8 @@ return [
     'parents'                 => 'Parents',
     'parents_list'            => 'Parents list',
     'add_parent'              => 'Add parent',
+    'students'                => 'Students',
+    'students_list'           => 'Students list',
+    'add_student'             => 'Add student',
     
 ];

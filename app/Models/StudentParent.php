@@ -55,4 +55,9 @@ class StudentParent extends Model
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student');
+    }
 }

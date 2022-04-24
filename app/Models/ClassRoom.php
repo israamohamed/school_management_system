@@ -25,4 +25,9 @@ class ClassRoom extends Model
     {
         return $this->hasMany('App\Models\EducationalClassRoom');
     }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student');
+    }
 }

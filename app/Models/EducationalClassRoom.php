@@ -20,4 +20,9 @@ class EducationalClassRoom extends Model
     {
         return $this->belongsTo('App\Models\ClassRoom');
     }
+
+    public function students()
+    {
+        return $this->hasMany('App\Models\Student');
+    }
 }

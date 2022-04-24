@@ -51,4 +51,48 @@ trait HasAttachments
 
         $this->attachments()->delete();
     }
+
+    public function uploadProfilePicture( $file , $folder_name = '')
+    {
+        $folder_name = $folder_name ?? 'other' ;
+
+        if($file)
+        {
+            $image = $file->store($folder_name);
+
+            $this->attachments()->create(['path' => $image , 'type' => 'profile_picture' ]);
+
+            /*$file = $file->storeAs($folder_name, $file->getClientOriginalName());
+
+            $this->attachments()->create(['path' => $file , 'type' => 'profile_picture' ]);*/
+            
+        }
+    }
+
+    public function updateProfilePicture( $file , $folder_name = '')
+    {
+        $folder_name = $folder_name ?? 'other' ;
+
+        if($file)
+        {
+            //Delete Old Image
+
+            $old_image = $this->attachments()->where('type' , 'profile_picture')->first();
+
+            if($old_image)
+            {
+                Storage::delete($old_image->path);
+                $this->attachments()->where('type' , 'profile_picture')->delete();
+            }
+
+
+            $image = $file->store($folder_name);
+
+            $this->attachments()->create([
+                'path' => $image ,
+                'type' => 'profile_picture'
+            ]);
+            
+        }
+    }
 }

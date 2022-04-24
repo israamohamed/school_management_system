@@ -9,6 +9,8 @@ return [
     'one' => 'parent',
     'email' => 'Email',
     'password' => 'Password',
+    'one' => 'Parent',
+    'select' => 'select parent',
 
 
     'select_nationality' => 'select nationality',

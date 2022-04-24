@@ -18,6 +18,10 @@ return [
     'next' => 'Next',
     'previous' => 'Previous', 
     'add_attachments' => 'Upload Attachments',
+    'gender' => 'Gender',
+    'select_gender' => 'Select gender',
+    'male' => 'male',
+    'female' => 'female',
     
 
     'educational_stages' => [
@@ -42,5 +46,23 @@ return [
         'edit' => 'Edit educational class room',
         'delete' => 'Delete education class room', 
         'one' => 'Educational Class Room',
+    ],
+
+    'blood_types' => [
+        'title' => 'Blood types',
+        'one' => 'Blood Type',
+        'select' => 'select blood type',
+    ],
+
+    'nationalities' => [
+        'title' => 'nationalities',
+        'one' => 'nationality',
+        'select' => 'select nationality',
+    ],
+
+    'relisions' => [
+        'title' => 'Relisions',
+        'one' => 'Relision',
+        'select' => 'select relision',
     ],
 ];

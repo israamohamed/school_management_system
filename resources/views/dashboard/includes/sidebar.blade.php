@@ -42,6 +42,18 @@
             </ul>
         </li>
 
+        {{--students --}}
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-account-circle-line"></i>
+                <span>{{__('sidebar.students')}}</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{route('dashboard.student.index')}}">{{__('sidebar.students_list')}}</a></li>
+                <li><a href="{{route('dashboard.student.create')}}">{{__('sidebar.add_student')}}</a></li>
+            </ul>
+        </li>
+
         {{--
         <li class="menu-title">Pages</li>
 
