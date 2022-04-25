@@ -22,6 +22,7 @@ return [
     'select_gender' => 'Select gender',
     'male' => 'male',
     'female' => 'female',
+    'image' => 'Image',
     
 
     'educational_stages' => [
@@ -30,6 +31,7 @@ return [
         'edit' => 'Edit educational stage',
         'delete' => 'Delete educational stage', 
         'one' => 'Eduational stage',
+        'select' => 'select educational stage',
     ],
 
     'class_rooms' => [
@@ -38,6 +40,7 @@ return [
         'edit' => 'Edit class room',
         'delete' => 'Delete class room', 
         'one' => 'Class room',
+        'select' => 'select class room',
     ],
 
     'educational_class_rooms' => [
@@ -46,6 +49,7 @@ return [
         'edit' => 'Edit educational class room',
         'delete' => 'Delete education class room', 
         'one' => 'Educational Class Room',
+        'select' => 'select educational class room',
     ],
 
     'blood_types' => [

@@ -30,6 +30,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         //Class Rooms
         Route::resource('class_room' , 'ClassRoomController');
         Route::post('class_room/delete_selected', 'ClassRoomController@delete_selected')->name('class_room.delete_selected');
+        Route::get('get_educational_class_rooms' , 'ClassRoomController@get_educational_class_rooms')->name('get_educational_class_rooms');
         //Educational Class Rooms
         Route::resource('educational_class_room' , 'EducationalClassRoomController');
 

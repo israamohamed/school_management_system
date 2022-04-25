@@ -2,6 +2,12 @@
 
 @section('title' , __('students.title'))
 
+@push('styles')
+    <!-- Lightbox css -->
+    <link href="{{asset('dashboard/assets/libs/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css" />
+
+@endpush
+
 @section('breadcrumb')
     <h4 class="mb-sm-0">{{__('students.title')}}</h4>
 
@@ -34,6 +40,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>{{__('general.image')}}</th>
                                     <th>{{__('general.name')}}</th>
                                     <th>{{__('general.educational_stages.one')}}</th>
                                     <th>{{__('general.class_rooms.one')}}</th>
@@ -45,13 +52,19 @@
                             <tbody>
                                 @foreach($students as $student)
                                 <tr>
+                                    
                                     <td class="text-bold-500">{{$loop->iteration}}</td>
+                                    <td>
+                                        <a class="image-popup-no-margins" href="{{$student->profile_picture}}">
+                                            <img style = "width: 100px;" src="{{$student->profile_picture}}" alt="">
+                                        </a>
+                                    </td>
                                     <td>{{$student->name}}</td>
-                                    <td>{{$student->educational_stage ? $student->educational_stage->name : '--'}}</td>
+                                    <td>{{$student->educational_stage() ? $student->educational_stage()->name : '--'}}</td>
                                     <td>{{$student->class_room ? $student->class_room->name : '--'}}</td>
                                     {{-- <td>{{$student->class_room && $student->class_room->educational_stage ? $student->class_room->educational_stage->name : '--' }}</td> --}}
                                     <td>{{$student->educational_class_room ? $student->educational_class_room->name : '--' }}</td>
-                                    <td>{{$student->number_of_students}}</td>
+                                
                                     <td>{!! $student->active ? '<button class = "btn btn-success"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger"><i class="far fa-window-close"></i></button>' !!}</td>
 
                                     <td>
@@ -78,14 +91,11 @@
 @include('dashboard.scripts.change_educatioanl_data')
 
 @push('scripts')
-<script>
 
-$(".select2-modal").each(function(){
-    var parent = $(this).closest(".modal")
-    $(this).select2({
-        dropdownParent: parent
-    });
+<!-- Magnific Popup-->
+<script src="{{asset('dashboard/assets/libs/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 
-});
-</script>
+<!-- lightbox init js-->
+<script src="{{asset('dashboard/assets/js/pages/lightbox.init.js')}}"></script>
+
 @endpush

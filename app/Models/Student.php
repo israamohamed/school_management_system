@@ -13,6 +13,7 @@ class Student extends Model
 
     protected $guarded = ['id'];
     public $translatable = ['name' , 'birth_place'];
+    protected $appends = ['profile_picture'];
 
     public function scopeSearch($query)
     {
@@ -69,7 +70,7 @@ class Student extends Model
 
     public function educational_stage()
     {
-        return $this->hasOneThrough('App\Models\EducationalStage' , 'App\Models\ClassRoom');
+        return $this->class_room->educational_stage;
     }
 
     public function class_room()
@@ -85,6 +86,11 @@ class Student extends Model
     public function created_by()
     {
         return $this->belongsTo('App\Models\User' , 'user_id');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 
 }

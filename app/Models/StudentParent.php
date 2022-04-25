@@ -51,13 +51,13 @@ class StudentParent extends Model
         return $this->belongsTo('App\Models\Relision' , 'mother_relision_id');
     }
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
-
     public function students()
     {
         return $this->hasMany('App\Models\Student');
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

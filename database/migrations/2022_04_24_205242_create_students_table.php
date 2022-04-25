@@ -35,7 +35,7 @@ class CreateStudentsTable extends Migration
             $table->text('transferred_from_school')->nullable();
             $table->date('joining_date')->nullable();
             $table->unsignedBigInteger('student_parent_id')->nullable();
-            $table->text('notes');
+            $table->text('notes')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->boolean('active')->default(1);
 

@@ -26,4 +26,6 @@ return [
     'transferred_from_school' => "Transfered from school",
     "joining_date" => 'Joining Date',
     'notes' => 'Notes',
+    'profile_picture' => 'Profile Picture',
+    'attachments' => 'Attachments',
 ];

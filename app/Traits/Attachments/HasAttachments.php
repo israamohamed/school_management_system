@@ -95,4 +95,11 @@ trait HasAttachments
             
         }
     }
+
+    public function getProfilePictureAttribute()
+    {
+        $image = $this->attachments()->where('type' , 'profile_picture')->first();
+
+        return $image ? asset('uploads/' . $image->path) : asset('images/default_user.png');
+    }
 }

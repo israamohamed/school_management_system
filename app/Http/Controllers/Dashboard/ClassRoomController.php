@@ -8,6 +8,7 @@ use App\Models\ClassRoom;
 use App\Http\Requests\StoreClassRoomRequest;
 use App\Http\Requests\UpdateClassRoomRequest;
 use App\Models\EducationalStage;
+use App\Models\EducationalClassRoom;
 
 class ClassRoomController extends Controller
 {
@@ -153,5 +154,18 @@ class ClassRoomController extends Controller
             return redirect()->route('dashboard.class_room.index');
         }
         
+    }
+
+    public function get_educational_class_rooms(Request $request )
+    {
+        $educational_class_rooms = EducationalClassRoom::where(function($query) use($request) {
+
+            if($request->filled('class_room_id'))
+            {
+                $query->where('class_room_id', $request->class_room_id);
+            }
+        })->get();
+
+        return response()->json($educational_class_rooms);
     }
 }

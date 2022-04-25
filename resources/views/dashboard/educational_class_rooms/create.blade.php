@@ -22,7 +22,7 @@
                      <input type="text" name = "name_en" class = "form-control" value = "{{old('name_en')}}">
                  </div>
                  {{-- educational stage --}}
-                 <div class="form-group">
+                 <div class="form-group educational_stage_selected_parent">
                     <label for="educational_stage_id">{{__('general.educational_stages.one')}}</label>
                     <select name="educational_stage_id" class = "form-control educational_stage_selected select2 select2-modal" style = "width: 100%;">
                         <option value="">{{__('general.educational_stages.one')}}</option>

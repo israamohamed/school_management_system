@@ -23,10 +23,10 @@ class StudentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        return [ 
             'name_en'        => 'required|max:300',
             'name_ar'        => 'required|max:300',
-            'email'          => 'required|max:255|email|unique:students,email,' , $this->id,
+            'email'          => 'required|max:255|email|unique:students,email,' . $this->id,
             'password'       => 'required|max:255|min:6',
             'class_room_id'  => 'required|exists:class_rooms,id',
             'educational_class_room_id' => 'nullable|exists:educational_class_rooms,id',
