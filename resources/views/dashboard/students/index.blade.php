@@ -56,20 +56,21 @@
                                     <td class="text-bold-500">{{$loop->iteration}}</td>
                                     <td>
                                         <a class="image-popup-no-margins" href="{{$student->profile_picture}}">
-                                            <img style = "width: 100px;" src="{{$student->profile_picture}}" alt="">
+                                            <img style = "height: 100px;" src="{{$student->profile_picture}}" alt="">
                                         </a>
                                     </td>
                                     <td>{{$student->name}}</td>
                                     <td>{{$student->educational_stage() ? $student->educational_stage()->name : '--'}}</td>
                                     <td>{{$student->class_room ? $student->class_room->name : '--'}}</td>
-                                    {{-- <td>{{$student->class_room && $student->class_room->educational_stage ? $student->class_room->educational_stage->name : '--' }}</td> --}}
                                     <td>{{$student->educational_class_room ? $student->educational_class_room->name : '--' }}</td>
                                 
-                                    <td>{!! $student->active ? '<button class = "btn btn-success"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger"><i class="far fa-window-close"></i></button>' !!}</td>
+                                    <td>{!! $student->active ? '<button class = "btn btn-success  btn-sm"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger  btn-sm"><i class="far fa-window-close"></i></button>' !!}</td>
 
                                     <td>
-                                        <a href = "{{route('dashboard.student.edit' , $student->id)}}" class = "btn btn-info">{{__('general.edit')}}</a>
-                                        <button class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}">{{__('general.delete')}}</button>
+                                        <button class = "btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye"></i></button>
+                                        @include('dashboard.students.show_modal')
+                                        <a href = "{{route('dashboard.student.edit' , $student->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.students.delete')
                                     </td>
                                 </tr>               
