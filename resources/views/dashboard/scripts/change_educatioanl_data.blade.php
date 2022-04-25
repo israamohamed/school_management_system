@@ -49,6 +49,13 @@
                     class_form_selected.append(option);
 
                  });
+
+                if(selected_value) 
+                {
+                    change_educational_class_rooms(class_form_selected , class_form_selected.data("educational_class_room_id"));
+                }
+
+                
             }
         });
     }

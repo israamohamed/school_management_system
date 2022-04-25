@@ -121,9 +121,11 @@ class StudentController extends Controller
             'active' => $request->active ? true : false,
         ]);
 
+        $updated_data = $request->password ? $request->all() : $request->except(['password']);
+
         try {
             //update student in db
-            $student->update($request->all());
+            $student->update($updated_data);
             //update attachments
             $student->updateAttachments($request->attachments , 'students');
             //update profile_picture

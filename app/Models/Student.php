@@ -70,7 +70,7 @@ class Student extends Model
 
     public function educational_stage()
     {
-        return $this->class_room->educational_stage;
+        return $this->class_room ? $this->class_room->educational_stage : null;
     }
 
     public function class_room()

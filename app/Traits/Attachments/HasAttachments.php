@@ -102,4 +102,10 @@ trait HasAttachments
 
         return $image ? asset('uploads/' . $image->path) : asset('images/default_user.png');
     }
+
+    public function getMainAttachmentsAttribute()
+    {
+        return $this->attachments()->whereNull('type')->get();
+    }
+
 }
