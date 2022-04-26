@@ -23,7 +23,8 @@ return [
     'male' => 'male',
     'female' => 'female',
     'image' => 'Image',
-    
+    'more_details' => 'More Details',
+    'attachment' => 'attachment',
 
     'educational_stages' => [
         'title' => 'Educational Stages',

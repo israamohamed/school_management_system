@@ -5,6 +5,7 @@ return [
     'title' => 'Parents',
     'create' => 'Add parent',
     'edit' => 'Edit parent',
+    'show' => 'parent data',
     'delete' => 'Delete parent', 
     'one' => 'parent',
     'email' => 'Email',

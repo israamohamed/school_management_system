@@ -76,7 +76,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::with(['blood_type' , 'nationality' , 'relision' , 'student_parent' , 'class_room' , 'educational_class_room' , 'created_by'])->findOrFail($id);
+        $student = Student::with(['blood_type' , 'nationality' , 'relision' , 'student_parent' , 'class_room' , 'educational_class_room' , 'created_by' , 'attachments'])->findOrFail($id);
         return view('dashboard.students.show' , compact('student'));
     }
 

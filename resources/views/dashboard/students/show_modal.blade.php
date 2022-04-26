@@ -60,7 +60,7 @@
 
               <div class="row m-2  border border-primary">
                   <div class="col-md-6">
-                      <table class = "table table-sm ">
+                      <table class = "table table-sm">
                         <tbody>
                             <tr>
                                 <th>{{__('students.email')}}</th>  
@@ -137,6 +137,7 @@
              
             </div>
             <div class="modal-footer">
+                <a class = "btn btn-warning" href="{{route('dashboard.student.show' , $student->id)}}">{{__('general.more_details')}}</a>
                 <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">{{__('general.close')}}</button>
             </div>
          

@@ -4,6 +4,7 @@ return [
     'create' => 'Add student',
     'edit' => 'Edit student',
     'delete' => 'Delete student', 
+    'show' => 'Student data',
     'one' => 'student',
     'email' => 'Email',
     'password' => 'Password',
