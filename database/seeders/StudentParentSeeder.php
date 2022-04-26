@@ -17,32 +17,6 @@ class StudentParentSeeder extends Seeder
      */
     public function run()
     {
-        /*$parent = StudentParent::create([
-            'father_name_en'         => '',
-            'father_name_ar'         => '',
-            'father_national_id'     => '',
-            'father_passport_number' => '',
-            'father_phone_number'    => '',
-            'father_job'             => '',
-            'father_blood_type_id'   => '',
-            'father_nationality_id'  => '',
-            'father_relision_id'     => '',
-            'father_address'         => '',
-
-            'mother_name_en'         => '',
-            'mother_name_ar'         => '',
-            'mother_national_id'     => '',
-            'mother_passport_number' => '',
-            'mother_phone_number'    => '',
-            'mother_job'             => '',
-            'mother_blood_type_id'   => '',
-            'mother_nationality_id'  => '',
-            'mother_relision_id'     => '',
-            'mother_address'         => '',  
-
-            'email'                  => '',
-            'password'               => '',
-        ]);*/
         $parent = StudentParent::create([
             'father_name'            => ['en' => 'Ahmed Mohamed' , 'ar' => 'أحمد محمد'],
             'father_national_id'     => '545151415120',

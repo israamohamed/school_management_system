@@ -21,6 +21,36 @@
 
 @section('content')
 
+{{-- Filters --}}
+<div style = "margin: 10px 0;">
+    <form method = "GET">
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" name = "search" class = "form-control" value = "{{request()->search}}" onchange="this.form.submit()" placeholder="{{__('general.search')}}">
+            </div>
+
+            <div class="col-md-3 educational_stage_selected_parent">
+                <select name="educational_stage_id" class = "form-control select2 educational_stage_selected"  onchange="this.form.submit()" placeholder="{{__('general.educational_stages.one')}}">
+                    <option value="">{{__('general.all')}}</option>
+                        @foreach($educational_stages as $educational_stage)
+                            <option value="{{$educational_stage->id}}" {{$educational_stage->id == request()->educational_stage_id ? 'selected' : ''}} >{{$educational_stage->name}}</option>
+                        @endforeach
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <select name="class_room_id" class = "form-control select2 class_room_selected"  onchange="this.form.submit()" placeholder="{{__('general.class_rooms.one')}}">
+                    <option value="">{{__('general.all')}}</option>
+                        @foreach($class_rooms as $class_room)
+                            <option value="{{$class_room->id}}" {{$class_room->id == request()->class_room_id ? 'selected' : ''}} >{{$class_room->name}}</option>
+                        @endforeach
+                </select>
+            </div>
+
+        </div>
+    </form>
+</div>
+
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -98,5 +128,18 @@
 
 <!-- lightbox init js-->
 <script src="{{asset('dashboard/assets/js/pages/lightbox.init.js')}}"></script>
+
+<script>
+    $(".select2").each(function(ele){
+        var placeholder = $(this).attr("placeholder");
+
+        $(this).select2({
+            placeholder:  placeholder,
+        });
+    });
+    /*$(".select2").select2({
+        placeholder:  $(this).attr("placeholder"),
+    });*/
+</script>
 
 @endpush

@@ -1,9 +1,9 @@
-<div class="tab-pane" id="student_date" role="tabpanel">
+<div class="tab-pane active" id="student_date" role="tabpanel">
     <p class="mb-0">
         <div class="row mb-3">
             <div class="col-md-2  border border-primary">
                 <a class="image-popup-no-margins" href="{{$student->profile_picture}}">
-                    <img src="{{$student->profile_picture}}" style = "width: 100%" alt="{{$student->name}}">
+                    <img  class = "img-fluid avatar-lg" src="{{$student->profile_picture}}" style = "width: 100%;height: 100%;" alt="{{$student->name}}">
                 </a>
             </div>
 

@@ -25,6 +25,7 @@ return [
     'image' => 'Image',
     'more_details' => 'More Details',
     'attachment' => 'attachment',
+    'search' => 'search',
 
     'educational_stages' => [
         'title' => 'Educational Stages',
@@ -69,5 +70,14 @@ return [
         'title' => 'Relisions',
         'one' => 'Relision',
         'select' => 'select relision',
+    ],
+
+    'attachments' => [
+        'title' => 'Attachments',
+        'create' => 'Add attachment',
+        'edit' => 'Edit attachment',
+        'delete' => 'Delete Attachment', 
+        'one' => 'attachment',
+        'select' => 'select attachment',
     ],
 ];

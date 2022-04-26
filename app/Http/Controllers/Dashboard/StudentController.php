@@ -10,7 +10,10 @@ use App\Models\Nationality;
 use App\Models\Relision;
 use App\Models\StudentParent;
 use App\Models\EducationalStage;
+use App\Models\ClassRoom;
 use App\Http\Requests\StudentRequest;
+use App\Models\Attachment;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -18,7 +21,9 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::search()->paginate(20);
-        return view('dashboard.students.index' , compact('students'));
+        $educational_stages = EducationalStage::get();
+        $class_rooms = ClassRoom::where('educational_stage_id' , request()->educational_stage_id)->get();
+        return view('dashboard.students.index' , compact('students' , 'educational_stages' ,'class_rooms'));
     }
 
    
@@ -145,8 +150,47 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::findOrFail($id);
+        $student->deleteAttachments();
         $student->delete();
         toastr()->success(__('messages.deleted_successfully'));
         return redirect()->route('dashboard.student.index');
+    }
+
+    public function store_attachments(Request $request , $id)
+    {
+        $request->validate([
+            'attachments' => 'required|array',
+            'attachments.*' => 'file',
+        ]);
+        $student = Student::findOrFail($id);
+        $student->uploadAttachments($request->attachments , 'students');
+        //success message
+        toastr()->success(__('messages.added_successfully'));
+        return redirect()->back();
+
+    }
+
+    public function delete_attachment($id)
+    {      
+        $attachment = Attachment::findOrFail($id);
+        Storage::delete($attachment->path);
+        $attachment->delete();
+        toastr()->success(__('messages.deleted_successfully'));
+        return redirect()->back();
+    }
+
+    public function download_attachment($id)
+    {
+        try{
+
+            $attachment = Attachment::findOrFail($id);
+
+            return Storage::download($attachment->path);
+        }
+        catch(\Exception $e) {
+            toastr()->error($e->getMessage());
+            return back()->with('error' , $e->getMessage());
+        }
+       
     }
 }

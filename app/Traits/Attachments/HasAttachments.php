@@ -47,9 +47,11 @@ trait HasAttachments
             {
                 Storage::delete($attachment->path);
             }
+
+            $this->attachments()->delete();
         }
 
-        $this->attachments()->delete();
+        
     }
 
     public function uploadProfilePicture( $file , $folder_name = '')
