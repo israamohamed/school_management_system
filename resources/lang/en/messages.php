@@ -15,10 +15,12 @@
         'no_rows_selected' => 'There are no rows selected',
 
         'deleted_rows_warning' => ':number rows will be deleted permanently',
+        'upgrade_rows_warning' => ':number will be return upgrade',
         'error_occured' => 'Error Occured',
         'no_students_selected' => 'There are no students selected',
         'students_upgraded_successfully' => 'Students are upgraded successfully',
         'student_upgrade_returned_successfully' => 'students as upgraded successfully',
 
         'student_upgrade_return_waring' => 'student:  :student will be returned to :educational_stage',
+        
     ];

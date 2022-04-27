@@ -29,6 +29,7 @@ return [
     'save' => 'save',
     'return_upgrade' => 'return upgrade',
     'confirm' => 'confirm',
+    'return_upgrade_selected' => 'return upgrade selected',
 
     'academic_year' => 'academic year',
 

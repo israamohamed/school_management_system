@@ -110,16 +110,21 @@
                                 @endforeach            
                             </tbody>
                         </table>
+
+                      
+
                     </div>
-                {{$student_upgrades->links()}}
-                <div>
-                    {{-- <form action="{{route('dashboard.class_room.delete_selected')}}" id = "delete_selected_form" method = "post">
+
+                    <form action="{{route('dashboard.student_upgrade.return_multiple_students')}}" id = "return_multiple_students_form" method = "post">
                         @csrf
                         <input type="hidden" name = "selected_rows">
 
-                        <button type = "button" class = "btn btn-danger btn-sm" id = "delete_selected">{{__('general.delete_all')}}</button>
+                        <button type = "button" class = "btn btn-danger btn-sm" id = "return_multiple_students_selected">{{__('general.return_upgrade_selected')}}</button>
 
-                    </form>                     --}}
+                    </form>   
+                {{$student_upgrades->links()}}
+                <div>
+                  
                 </div>
                 @else 
                     <p class="text-danger" style = "font-size:1.5em;"> {{__('messages.no_data')}}</p>
@@ -133,11 +138,11 @@
 
 @push('scripts')
 <script>
-   $("#delete_selected").click(function(){
+   $("#return_multiple_students_selected").click(function(){
 
     if($(".select_row:checked").length > 0) {
 
-        var warning = "{{__('messages.deleted_rows_warning' , ['number' => ':number' ])}}";
+        var warning = "{{__('messages.upgrade_rows_warning' , ['number' => ':number' ])}}";
         warning = warning.replace(":number" , $(".select_row:checked").length);
       
         Swal.fire({
@@ -147,15 +152,15 @@
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: "{{__('general.delete')}}"
+            confirmButtonText: "{{__('general.confirm')}}"
         }).then((result) => {
                 if (result.isConfirmed) {
-                   $("#delete_selected_form").submit();
+                   $("#return_multiple_students_form").submit();
                 }
          })
     }
     else {
-        toastr.error("{{__('messages.no_rows_selected')}}")
+        toastr.error("{{__('messages.no_students_selected')}}")
     }
 
    });

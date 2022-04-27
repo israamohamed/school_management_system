@@ -19,11 +19,11 @@ class CreateStudentUpgradesTable extends Migration
             $table->unsignedBigInteger('student_id');
 
             $table->unsignedBigInteger('previous_class_room_id');
-            $table->unsignedBigInteger('previous_educational_class_room_id')->nullalbe();
+            $table->unsignedBigInteger('previous_educational_class_room_id')->nullable();
             $table->string('previous_academic_year');
 
             $table->unsignedBigInteger('next_class_room_id');
-            $table->unsignedBigInteger('next_educational_class_room_id')->nullalbe();
+            $table->unsignedBigInteger('next_educational_class_room_id')->nullable();
             $table->string('next_academic_year');
 
             $table->foreign('student_id')->references('id')

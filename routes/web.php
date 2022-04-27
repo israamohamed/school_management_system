@@ -47,6 +47,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //student upgrades
         Route::resource('student_upgrade' , 'StudentUpgradeController');
+        Route::post('student_upgrade/return_multiple_students' , 'StudentUpgradeController@return_multiple_students')->name('student_upgrade.return_multiple_students');
     
     
     });
