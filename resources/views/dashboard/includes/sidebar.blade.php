@@ -51,6 +51,8 @@
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{route('dashboard.student.index')}}">{{__('sidebar.students_list')}}</a></li>
                 <li><a href="{{route('dashboard.student.create')}}">{{__('sidebar.add_student')}}</a></li>
+
+                <li><a href="{{route('dashboard.student_upgrade.index')}}">{{__('sidebar.student_upgrades')}}</a></li>
             </ul>
         </li>
 

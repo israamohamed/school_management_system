@@ -26,6 +26,11 @@ return [
     'more_details' => 'More Details',
     'attachment' => 'attachment',
     'search' => 'search',
+    'save' => 'save',
+    'return_upgrade' => 'return upgrade',
+    'confirm' => 'confirm',
+
+    'academic_year' => 'academic year',
 
     'educational_stages' => [
         'title' => 'Educational Stages',

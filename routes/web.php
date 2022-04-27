@@ -44,6 +44,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::delete('student/delete_attachment/{id}' , 'StudentController@delete_attachment')->name('student.delete_attachment');
         Route::get('student/download_attachment/{id}' , 'StudentController@download_attachment')->name('student.download_attachment');
         Route::post('student/store_attachments/{id}' , 'StudentController@store_attachments')->name('student.store_attachments');
+
+        //student upgrades
+        Route::resource('student_upgrade' , 'StudentUpgradeController');
     
     
     });

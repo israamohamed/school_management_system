@@ -5,6 +5,7 @@ return [
     'edit' => 'Edit student',
     'delete' => 'Delete student', 
     'show' => 'Student data',
+    'list' => 'List of students',
     'one' => 'student',
     'email' => 'Email',
     'password' => 'Password',
@@ -29,4 +30,21 @@ return [
     'notes' => 'Notes',
     'profile_picture' => 'Profile Picture',
     'attachments' => 'Attachments',
+
+
+
+    'student_upgrades' => [
+        'title' => 'student upgrades',
+        'create' => 'add upgrade',
+        'upgrade' => 'upgrade',
+        'previous_educational_stage' => 'previous educational stage',
+        'previous_class_room' => 'previous class room',
+        'previous_educational_class_room' => 'previous educational class room',
+        'previous_academic_year' => 'previous academic year',
+
+        'next_educational_stage' => 'next educational stage',
+        'next_class_room' => 'next class room',
+        'next_educational_class_room' => 'next educational class room',
+        'next_academic_year' => 'next academic year',
+    ],
 ];

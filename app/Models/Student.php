@@ -88,6 +88,11 @@ class Student extends Model
         return $this->belongsTo('App\Models\User' , 'user_id');
     }
 
+    public function student_upgrades()
+    {
+        return $this->hasMany('App\Models\StudentUpgrade');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
