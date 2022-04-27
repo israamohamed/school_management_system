@@ -48,6 +48,16 @@ class Student extends Model
         });
     }
 
+    public function scopeEnrolled($query)
+    {
+        return $query->where('status' , 'enrolled');
+    }
+
+    public function scopeGarduated($query)
+    {
+        return $query->where('status' , 'graduated');
+    }
+
     public function blood_type()
     {
         return $this->belongsTo('App\Models\BloodType');
@@ -91,6 +101,11 @@ class Student extends Model
     public function student_upgrades()
     {
         return $this->hasMany('App\Models\StudentUpgrade');
+    }
+
+    public function graduated_students()
+    {
+        return $this->hasMany('App\Models\GraduatedStudent');
     }
 
     public function setPasswordAttribute($value)

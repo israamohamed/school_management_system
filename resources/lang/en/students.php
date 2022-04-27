@@ -47,4 +47,16 @@ return [
         'next_educational_class_room' => 'next educational class room',
         'next_academic_year' => 'next academic year',
     ],
+
+
+    'graduated_students' => [
+        'title' => 'graduated students',
+        'create' => 'add graduation',
+        'graduate' => 'graduate',
+        'previous_educational_stage' => 'previous educational stage',
+        'previous_class_room' => 'previous class room',
+        'previous_educational_class_room' => 'previous educational class room',
+        'previous_academic_year' => 'previous academic year',
+
+    ],
 ];

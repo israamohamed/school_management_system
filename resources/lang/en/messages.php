@@ -22,5 +22,12 @@
         'student_upgrade_returned_successfully' => 'students as upgraded successfully',
 
         'student_upgrade_return_waring' => 'student:  :student will be returned to :educational_stage',
+
+        'students_graduated_successfully' => 'Students are graduated successfully',
+        'graduated_student_returned_successfully' => 'Graduation process is back !',
+
+        'graduated_student_return_waring' => 'graduation process for :student will be returned to :educational_stage !',
+
+        'graduate_rows_warning' => ':number will be in ungraduated state.',
         
     ];

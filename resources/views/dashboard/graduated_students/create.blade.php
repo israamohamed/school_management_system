@@ -1,15 +1,15 @@
 @extends('dashboard.master')
 
-@section('title' , __('students.student_upgrades.create'))
+@section('title' , __('students.graduated_students.create'))
 
 @section('breadcrumb')
-    <h4 class="mb-sm-0">{{__('students.student_upgrades.create')}}</h4>
+    <h4 class="mb-sm-0">{{__('students.graduated_students.create')}}</h4>
 
     <div class="page-title-right">
         <ol class="breadcrumb m-0">
             <li class="breadcrumb-item"><a href="{{route('dashboard.home')}}">{{__('general.home')}}</a></li>
-            <li class="breadcrumb-item"><a href="{{route('dashboard.student_upgrade.index')}}">{{__('students.student_upgrades.title')}}</a></li>
-            <li class="breadcrumb-item active">{{__('students.student_upgrades.create')}}</li>
+            <li class="breadcrumb-item"><a href="{{route('dashboard.graduated_student.index')}}">{{__('students.graduated_students.title')}}</a></li>
+            <li class="breadcrumb-item active">{{__('students.graduated_students.create')}}</li>
         </ol>
     </div>
 @endsection
@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="card-title mb-3">
-                    <h4 class = "float-start">{{__('students.student_upgrades.create')}}</h4>
+                    <h4 class = "float-start">{{__('students.graduated_students.create')}}</h4>
                     
                     <div class="clearfix"></div>
                 </div>
@@ -34,7 +34,7 @@
                             <div class="col-md-3 educational_stage_selected_parent">
                                 {{-- educational stage --}}
                                <div class="form-group"> 
-                                   <label for="previous_educational_stage_id">{{__('students.student_upgrades.previous_educational_stage')}}</label>
+                                   <label for="previous_educational_stage_id">{{__('students.graduated_students.previous_educational_stage')}}</label>
                                    <select name="previous_educational_stage_id" class = "form-control educational_stage_selected select2  @error('previous_educational_stage_id') is-invalid @enderror" style = "width: 100%;">
                                        <option value="">{{__('general.educational_stages.select')}}</option>
                                            @foreach($educational_stages as $educational_stage)
@@ -48,7 +48,7 @@
                            <div class="col-md-3 class_room_selected_parent">
                                {{-- class room  --}}
                                <div class="form-group">
-                                   <label for="previous_class_room_id">{{__('students.student_upgrades.previous_class_room')}}</label>
+                                   <label for="previous_class_room_id">{{__('students.graduated_students.previous_class_room')}}</label>
                                    <select name="previous_class_room_id"  data-educational_class_room_id = "{{request()->previous_educational_class_room_id}}" class = "form-control class_room_selected select2  @error('class_room_id') is-invalid @enderror">
                                        
                                    </select>
@@ -59,7 +59,7 @@
                            <div class="col-md-3">
                                {{-- educational class room  --}}
                                <div class="form-group">
-                                   <label for="previous_educational_class_room_id">{{__('students.student_upgrades.previous_educational_class_room')}}</label>
+                                   <label for="previous_educational_class_room_id">{{__('students.graduated_students.previous_educational_class_room')}}</label>
                                    <select name="previous_educational_class_room_id" class = "form-control educational_class_room_selected select2 @error('previous_educational_class_room_id') is-invalid @enderror">
                                        
                                    </select>
@@ -70,7 +70,7 @@
                            <div class="col-md-3">
                                 {{-- previous academic year  --}}
                                 <div class="form-group">
-                                    <label for="previous_academic_year">{{__('students.student_upgrades.previous_academic_year')}}</label>
+                                    <label for="previous_academic_year">{{__('students.graduated_students.previous_academic_year')}}</label>
                                     <select name="previous_academic_year" class = "form-control select2 @error('previous_academic_year') is-invalid @enderror">
                                         @php
                                             $current_year = date("Y");
@@ -137,18 +137,8 @@
                         </table>
                     </div>
                 
-                    {{-- <form action="{{route('dashboard.class_room.delete_selected')}}" id = "delete_selected_form" method = "post">
-                        @csrf
-                        <input type="hidden" name = "selected_rows">
 
-                        <button type = "button" class = "btn btn-danger btn-sm" id = "delete_selected">{{__('general.delete_all')}}</button>
-
-                    </form>                     --}}
-
-
-
-                    {{-- next stage data --}}
-                    @include('dashboard.student_upgrades.next_data_form')
+                    @include('dashboard.graduated_students.next_data_form')
                 
                 @else 
                     <p class="text-danger" style = "font-size:1.5em;"> {{__('messages.no_data')}}</p>

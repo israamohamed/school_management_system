@@ -30,6 +30,7 @@ return [
     'return_upgrade' => 'return upgrade',
     'confirm' => 'confirm',
     'return_upgrade_selected' => 'return upgrade selected',
+    'created_at' => 'Date',
 
     'academic_year' => 'academic year',
 

@@ -10,5 +10,6 @@ return [
     'students_list'           => 'Students list',
     'add_student'             => 'Add student',
     'student_upgrades'        => 'student upgrades',
+    'graduated_students'      => 'graduated students',
     
 ];

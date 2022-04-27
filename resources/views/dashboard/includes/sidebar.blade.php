@@ -53,6 +53,8 @@
                 <li><a href="{{route('dashboard.student.create')}}">{{__('sidebar.add_student')}}</a></li>
 
                 <li><a href="{{route('dashboard.student_upgrade.index')}}">{{__('sidebar.student_upgrades')}}</a></li>
+
+                <li><a href="{{route('dashboard.graduated_student.index')}}">{{__('sidebar.graduated_students')}}</a></li>
             </ul>
         </li>
 

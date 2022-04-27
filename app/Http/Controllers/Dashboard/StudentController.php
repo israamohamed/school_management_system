@@ -20,7 +20,7 @@ class StudentController extends Controller
   
     public function index()
     {
-        $students = Student::search()->paginate(20);
+        $students = Student::enrolled()->search()->paginate(20);
         $educational_stages = EducationalStage::get();
         $class_rooms = ClassRoom::where('educational_stage_id' , request()->educational_stage_id)->get();
         return view('dashboard.students.index' , compact('students' , 'educational_stages' ,'class_rooms'));
