@@ -11,5 +11,8 @@ return [
     'add_student'             => 'Add student',
     'student_upgrades'        => 'student upgrades',
     'graduated_students'      => 'graduated students',
+    'student_accounts_management' => 'accounts management',
+    'study_fee_items' => 'study fee items',
+    'study_fees' => 'study fees',
     
-];
+]; 

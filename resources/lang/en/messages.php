@@ -29,5 +29,9 @@
         'graduated_student_return_waring' => 'graduation process for :student will be returned to :educational_stage !',
 
         'graduate_rows_warning' => ':number will be in ungraduated state.',
+
+        'study_fee_item_has_study_fees_warning' => 'The study fee item cannot be deleted. The study fees associated with it must be deleted first',
+
+        'study_fees_exists_before' => 'study fees exists before with the same data',
         
     ];

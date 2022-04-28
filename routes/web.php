@@ -52,6 +52,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         //graduated students
         Route::resource('graduated_student' , 'GraduatedStudentController');
         Route::post('graduated_student/return_multiple_students' , 'GraduatedStudentController@return_multiple_students')->name('graduated_student.return_multiple_students');
+
+
+        //study fee items
+        Route::resource('study_fee_item' , 'StudyFeeItemController');
+        Route::get('get_study_fees' , 'StudyFeeItemController@get_study_fees')->name('get_study_fees');
+
+        //study fees
+        Route::resource('study_fee' , 'StudyFeeController');
     
     
     });

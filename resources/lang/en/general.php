@@ -31,6 +31,17 @@ return [
     'confirm' => 'confirm',
     'return_upgrade_selected' => 'return upgrade selected',
     'created_at' => 'Date',
+    'type' => 'type',
+
+    'title' => 'Title',
+    'title_en' => 'Title in English',
+    'title_ar' => 'Title in Arabic',
+
+    'description' => 'Description',
+    'description_en' => 'Description in English',
+    'description_ar' => 'Description in Arabic',
+
+    'amount' => 'Amount',
 
     'academic_year' => 'academic year',
 
