@@ -42,8 +42,12 @@ return [
     'description_ar' => 'Description in Arabic',
 
     'amount' => 'Amount',
+    'options' => 'options',
+    'show' => 'show',
+    'add_invoice' => 'add invoice',
 
     'academic_year' => 'academic year',
+    'notes' => 'Notes',
 
     'educational_stages' => [
         'title' => 'Educational Stages',

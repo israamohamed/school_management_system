@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RelisionSeeder::class,
             EducationalClassRoomSeeder::class,
             StudentParentSeeder::class,
+            StudyFeesSeeder::class,
         ]);
     }
 }

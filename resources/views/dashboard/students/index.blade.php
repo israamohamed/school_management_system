@@ -97,11 +97,28 @@
                                     <td>{!! $student->active ? '<button class = "btn btn-success  btn-sm"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger  btn-sm"><i class="far fa-window-close"></i></button>' !!}</td>
 
                                     <td>
-                                        <button class = "btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye"></i></button>
+                                        <div class="btn-group me-1 mt-2">
+                                            <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                {{__('general.options')}} <i class="mdi mdi-chevron-down"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye  text-warning"></i> {{__('general.show')}}</button>
+
+
+                                                <a class="dropdown-item" href="{{route('dashboard.student.edit' , $student->id)}}"><i class = "fas fa-edit text-primary"></i> {{__('general.edit')}}</a>
+                                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash text-danger"></i> {{__('general.delete')}}</button>
+                                                
+                                                <a class="dropdown-item" href="{{route('dashboard.student_invoice.create' , ['student_id' => $student->id])}}"><i class = "fas fa-file-invoice-dollar text-success"></i> {{__('general.add_invoice')}}</a>
+                                            </div>
+
+                                            @include('dashboard.students.show_modal')
+                                            @include('dashboard.students.delete')
+                                        </div>
+                                        {{-- <button class = "btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye"></i></button>
                                         @include('dashboard.students.show_modal')
                                         <a href = "{{route('dashboard.student.edit' , $student->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
                                         <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash"></i></button>
-                                        @include('dashboard.students.delete')
+                                        @include('dashboard.students.delete') --}}
                                     </td>
                                 </tr>               
                                 @endforeach            
