@@ -102,16 +102,24 @@
                                                 {{__('general.options')}} <i class="mdi mdi-chevron-down"></i>
                                             </button>
                                             <div class="dropdown-menu">
+                                                {{--show--}}
                                                 <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye  text-warning"></i> {{__('general.show')}}</button>
-
-
+                                                {{--edit--}}
                                                 <a class="dropdown-item" href="{{route('dashboard.student.edit' , $student->id)}}"><i class = "fas fa-edit text-primary"></i> {{__('general.edit')}}</a>
+                                                {{--add invoice--}}
+                                                <a class="dropdown-item" href="{{route('dashboard.student_invoice.create' , ['student_id' => $student->id])}}"><i class = "fas fa-file-invoice-dollar text-success"></i> {{__('general.add_invoice')}}</a>
+
+                                                {{--add financial bond--}}
+                                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#financial_modal_{{$student->id}}"><i class = "fas fa-money-bill-alt  text-dark"></i> {{__('general.add_financial_bond')}}</button>
+
+                                                {{--delete--}}
                                                 <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash text-danger"></i> {{__('general.delete')}}</button>
                                                 
-                                                <a class="dropdown-item" href="{{route('dashboard.student_invoice.create' , ['student_id' => $student->id])}}"><i class = "fas fa-file-invoice-dollar text-success"></i> {{__('general.add_invoice')}}</a>
+                                                
                                             </div>
 
                                             @include('dashboard.students.show_modal')
+                                            @include('dashboard.students.financial_modal')
                                             @include('dashboard.students.delete')
                                         </div>
                                         {{-- <button class = "btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye"></i></button>
@@ -154,9 +162,20 @@
             placeholder:  placeholder,
         });
     });
+
     /*$(".select2").select2({
         placeholder:  $(this).attr("placeholder"),
     });*/
+</script>
+<script>
+    $(".select2-modal").each(function(){
+        var parent = $(this).closest(".modal")
+        $(this).select2({
+            dropdownParent: parent
+        });
+
+    });
+
 </script>
 
 @endpush

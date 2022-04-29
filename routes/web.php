@@ -63,6 +63,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         
         //student invoices
         Route::resource('student_invoice' , 'StudentInvoiceController');
+
+        //financial bonds
+        Route::resource('financial_bond' , 'FinancialBondController');
     
     
     });

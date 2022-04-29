@@ -108,6 +108,21 @@ class Student extends Model
         return $this->hasMany('App\Models\GraduatedStudent');
     }
 
+    public function student_invoices()
+    {
+        return $this->hasMany('App\Models\StudentInvoice');
+    }
+
+    public function financial_bonds()
+    {
+        return $this->hasMany('App\Models\FinancialBond');
+    }
+
+    public function student_transactions()
+    {
+        return $this->hasMany('App\Models\StudentTransaction');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

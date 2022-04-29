@@ -12,6 +12,8 @@ return [
     'add_invoice_to' => 'Adding invoice to student: :name',
     'invoice_date' => 'Invoice Date',
     'add_another_invoice' => 'Add another invoice',
+    'catch'   => 'catch',
+    'expense' => 'expense',
 
     'study_fee_items' => [
         'title' => 'study fee items',
@@ -36,6 +38,16 @@ return [
         'create' => 'add student invoice',
         'edit' => 'edit student invoice',
         'delete' => 'delete student invoice',
+    ],
+
+    'financial_bonds' => [
+        'title' => 'financial bonds',
+        'create' => 'add financial bond',
+        'edit' => 'edit financial bond',
+        'delete' => 'delete financial bond',
+        'type' => 'financial bond type',
+        'one' => 'financial bond',
+        'select' => 'select financial bond'
     ],
 
 

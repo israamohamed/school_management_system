@@ -32,6 +32,7 @@ return [
     'return_upgrade_selected' => 'return upgrade selected',
     'created_at' => 'Date',
     'type' => 'type',
+    'date' => 'Date',
 
     'title' => 'Title',
     'title_en' => 'Title in English',
@@ -45,6 +46,7 @@ return [
     'options' => 'options',
     'show' => 'show',
     'add_invoice' => 'add invoice',
+    'add_financial_bond' => 'add financial bond',
 
     'academic_year' => 'academic year',
     'notes' => 'Notes',
