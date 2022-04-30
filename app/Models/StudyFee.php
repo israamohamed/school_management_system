@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use App\Models\Student;
 
 class StudyFee extends Model
 {
@@ -40,6 +41,40 @@ class StudyFee extends Model
             {
                 $q->where('study_fee_item_id' , request()->study_fee_item_id);
             }
+        });
+    }
+
+    public function scopeFilterStudent($query , $student_id)
+    {
+        $student = Student::find($student_id);
+
+        return $query->where(function($q) use($student){
+
+            if($student)
+            {
+                if($student->educational_stage())
+                {
+                    $q->where(function($q2) use($student){
+    
+                        $q2->where('educational_stage_id' , $student->educational_stage()->id)
+                            ->orWhereNull('educational_stage_id');
+    
+                    });
+                }
+    
+                if($student->class_room)
+                {
+                    $q->where(function($q2) use($student){
+    
+                        $q2->where('class_room_id' , $student->class_room_id)
+                            ->orWhereNull('class_room_id');
+    
+                    });
+                    
+                }
+            }
+
+
         });
     }
 

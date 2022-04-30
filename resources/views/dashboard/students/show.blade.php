@@ -94,6 +94,7 @@
 @endsection
 
 
+@include('dashboard.scripts.changing_study_fee_amount')
 @push('scripts')
 
     <!-- Plugins js -->
@@ -124,9 +125,22 @@
             });
 
             $(".select2").select2();
+
+            $(".select2-modal").each(function(){
+                var parent = $(this).closest(".modal")
+                $(this).select2({
+                    dropdownParent: parent
+                });
+
+            });
+
     });
 
         
     </script>
 
+
 @endpush
+
+
+{{-- @include('dashboard.scripts.select2-modal') --}}

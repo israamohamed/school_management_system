@@ -13,6 +13,8 @@ use App\Models\EducationalStage;
 use App\Models\ClassRoom;
 use App\Http\Requests\StudentRequest;
 use App\Models\Attachment;
+use App\Models\StudyFee;
+
 use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
@@ -82,7 +84,9 @@ class StudentController extends Controller
     public function show($id)
     {
         $student = Student::with(['blood_type' , 'nationality' , 'relision' , 'student_parent' , 'class_room' , 'educational_class_room' , 'created_by' , 'attachments' , 'student_invoices' , 'student_transactions' , 'financial_bonds'])->findOrFail($id);
-        return view('dashboard.students.show' , compact('student'));
+
+        $study_fees = StudyFee::filterStudent($student->id)->get();
+        return view('dashboard.students.show' , compact('student' , 'study_fees'));
     }
 
     /**

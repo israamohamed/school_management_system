@@ -23,24 +23,27 @@
                     
                 </thead>
                 <tbody>
-                    @foreach($student->student_invoices as $invoice)
+                    @foreach($student->student_invoices as $student_invoice)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$invoice->invoice_date}}</td>
-                        <td>{{$invoice->study_fee ? $invoice->study_fee->title : '--'}}</td>
-                        <td><span style = "font-size: 1.3em;">{{$invoice->final_total}}</span></td>
+                        <td>{{$student_invoice->invoice_date}}</td>
+                        <td>{{$student_invoice->study_fee ? $student_invoice->study_fee->title : '--'}}</td>
+                        <td><span style = "font-size: 1.3em;">{{$student_invoice->final_total}}</span></td>
                         <td>
-                            @if($invoice->discount)
-                                <span class = "badge bg-success rounded-pill" style = "font-size: 1.1em;">{{$invoice->discount}}   {{$invoice->discount_type == 'percentage' ? '%' : ''}} </span>
+                            @if($student_invoice->discount)
+                                <span class = "badge bg-success rounded-pill" style = "font-size: 1.1em;">{{$student_invoice->discount}}   {{$student_invoice->discount_type == 'percentage' ? '%' : ''}} </span>
                             @else 
                             @endif
                         </td>
-                        <td>{{Str::limit($invoice->notes , 50)}}</td>
+                        <td>{{Str::limit($student_invoice->notes , 50)}}</td>
                         
                         <td>
             
-                            {{-- <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_attachment_modal_{{$attachment->id}}"><i class = "fas fa-trash"></i></button>
-                            @include('dashboard.students.attachments.delete') --}}
+                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-edit"></i></button>
+                            @include('dashboard.student_invoices.edit')
+
+                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-trash"></i></button>
+                            @include('dashboard.student_invoices.delete')
             
                         </td>
                     </tr>

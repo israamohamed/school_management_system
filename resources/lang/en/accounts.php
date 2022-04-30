@@ -20,7 +20,7 @@ return [
     'credit' => 'Credit',
     'debit' => 'Debit',
 
-    'student_accounts' => 'student_accounts',
+    'student_accounts' => 'student accounts',
 
     'study_fee_items' => [
         'title' => 'study fee items',
