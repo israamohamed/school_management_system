@@ -42,20 +42,24 @@ class FinancialBondController extends Controller
             $financial_bond->uploadAttachments($request->attachments , 'financial_bonds');
             //step 3 => make student transaction
             $student->student_transactions()->create([
-                'type'               => 'catch',
+                'type'               => $request->type,
                 'student_invoice_id' => $request->student_invoice_id,
                 'financial_bond_id'  => $financial_bond->id,
-                'credit'             => $request->type == 'catch' ? $request->amount : 0,
+                'credit'             => $request->type != 'expense' ? $request->amount : 0,
                 'debit'              => $request->type == 'expense' ? $request->amount : 0,
                 'transaction_date'   => $financial_bond->date,
             ]);
             //step 4 => create in student fund
-            SchoolFund::create([
-                'financial_bond_id' => $financial_bond->id,
-                'date'              => $financial_bond->date,
-                'debit'             => $request->type == 'catch' ? $financial_bond->amount : 0,
-                'credit'            => $request->type == 'expense' ? $financial_bond->amount : 0,
-            ]);
+            if($request->type == 'catch' || $request->type == 'expense')
+            {
+                SchoolFund::create([
+                    'financial_bond_id' => $financial_bond->id,
+                    'date'              => $financial_bond->date,
+                    'debit'             => $request->type == 'catch' ? $financial_bond->amount : 0,
+                    'credit'            => $request->type == 'expense' ? $financial_bond->amount : 0,
+                ]);
+            }
+            
 
 
             DB::commit();

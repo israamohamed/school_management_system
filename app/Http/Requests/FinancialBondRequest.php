@@ -26,7 +26,7 @@ class FinancialBondRequest extends FormRequest
         return [
             'student_id'         => 'required|exists:students,id',
             'student_invoice_id' => 'nullable|exists:student,id',
-            'type'               => 'required|in:catch,expense',
+            'type'               => 'required|in:catch,expense,processing',
             'amount'             => 'required|numeric',
             'date'               => 'nullable|date',
             'notes'              => '',

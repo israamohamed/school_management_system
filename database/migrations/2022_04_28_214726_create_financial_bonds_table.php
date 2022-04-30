@@ -18,7 +18,7 @@ class CreateFinancialBondsTable extends Migration
 
             $table->unsignedBigInteger('student_id');
             $table->date('date');
-            $table->enum('type' , ['catch' , 'expense']);
+            $table->string('type');
 
             $table->decimal('amount', 22, 4);
             $table->text('notes')->nullable();

@@ -43,24 +43,33 @@
 
                  <!-- Nav tabs -->
                  <ul class="nav nav-pills nav-justified" role="tablist">
-                    <li class="nav-item waves-effect waves-light">
+                    <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
                         <a class="nav-link active" data-bs-toggle="tab" href="#student_date" role="tab">
                             <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                             <span class="d-none d-sm-block">{{__('students.show')}}</span> 
                         </a>
                     </li>
-                    <li class="nav-item waves-effect waves-light">
+                    <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
                         <a class="nav-link" data-bs-toggle="tab" href="#student_parent_date" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                             <span class="d-none d-sm-block">{{__('student_parents.show')}}</span> 
                         </a>
                     </li>
-                    <li class="nav-item waves-effect waves-light">
+                    <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
                         <a class="nav-link" data-bs-toggle="tab" href="#attachments" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                             <span class="d-none d-sm-block">{{__('students.attachments')}}</span>   
-                        </a>
+                        </a> 
                     </li>       
+
+                    {{-- student_accounts --}}
+                    <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
+                        <a class="nav-link" data-bs-toggle="tab" href="#student_accounts" role="tab">
+                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block">{{__('accounts.student_accounts')}}</span>   
+                        </a> 
+                    </li> 
+
                 </ul>
 
 
@@ -69,12 +78,11 @@
                       @include('dashboard.students.tabs.student_tab')
                       @include('dashboard.students.tabs.student_parent_tab')
                       @include('dashboard.students.tabs.attachments_tab')
+                      @include('dashboard.students.tabs.student_accounts_tab')
+
+
                   </div>
                    
-                   
-
-
-                    
             </div>
              
 

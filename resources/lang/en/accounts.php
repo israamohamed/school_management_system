@@ -11,9 +11,16 @@ return [
     'percentage' => 'percentage',
     'add_invoice_to' => 'Adding invoice to student: :name',
     'invoice_date' => 'Invoice Date',
+    'transaction_date' => 'Transaction Date',
     'add_another_invoice' => 'Add another invoice',
     'catch'   => 'catch',
     'expense' => 'expense',
+    'processing' => 'processing fee',
+    'invoice' => 'Invoice',
+    'credit' => 'Credit',
+    'debit' => 'Debit',
+
+    'student_accounts' => 'student_accounts',
 
     'study_fee_items' => [
         'title' => 'study fee items',
@@ -35,6 +42,7 @@ return [
 
     'student_invoices' => [
         'title' => 'student invoices',
+        'title2' => 'Invoices',
         'create' => 'add student invoice',
         'edit' => 'edit student invoice',
         'delete' => 'delete student invoice',
@@ -48,6 +56,11 @@ return [
         'type' => 'financial bond type',
         'one' => 'financial bond',
         'select' => 'select financial bond'
+    ],
+
+    'student_tranactions' => [
+        'title' => 'student transactions',
+        'title2' => 'Transactions',
     ],
 
 

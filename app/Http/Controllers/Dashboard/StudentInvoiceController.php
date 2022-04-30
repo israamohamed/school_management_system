@@ -102,7 +102,11 @@ class StudentInvoiceController extends Controller
                     'notes'            => $request->notes ?? __('messages.new_invoice_added_to_student' , ['name' => $study_fee->title]) ,
                 ]);
     
-                $student_invoice->uploadAttachments($invoice->attachments , 'invoices');
+                if(!empty($invoice->attachments))
+                {
+                    $student_invoice->uploadAttachments($invoice->attachments , 'invoices');
+                }
+                
     
             }
 

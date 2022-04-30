@@ -19,7 +19,8 @@
 
                      <select name="type" class = "form-select mb-1 select2-modal">
                         <option value="catch" {{old('type') == 'catch' ? 'selected' : ''}} >{{__('accounts.catch')}}</option>
-                        <option value="expense" {{old('type') == 'expense' ? 'selected' : ''}} >{{__('accounts.expense')}}</option>   
+                        <option value="expense" {{old('type') == 'expense' ? 'selected' : ''}} >{{__('accounts.expense')}}</option>  
+                        <option value="processing" {{old('type') == 'processing' ? 'selected' : ''}} >{{__('accounts.processing')}}</option>    
                     </select>
                  </div>
 

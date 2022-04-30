@@ -13,7 +13,7 @@ class Student extends Model
 
     protected $guarded = ['id'];
     public $translatable = ['name' , 'birth_place'];
-    protected $appends = ['profile_picture'];
+    protected $appends = ['profile_picture' , 'balance'];
 
     public function scopeSearch($query)
     {
@@ -126,6 +126,11 @@ class Student extends Model
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getBalanceAttribute()
+    {
+        return $this->student_transactions()->sum('debit') - $this->student_transactions()->sum('credit');
     }
 
 }

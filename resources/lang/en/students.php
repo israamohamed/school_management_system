@@ -10,6 +10,7 @@ return [
     'email' => 'Email',
     'password' => 'Password',
     'one' => 'student',
+    'student_balance' => 'Student Balance',
 
 
     'name' => 'Name',
