@@ -20,7 +20,7 @@ class CreateFinancialBondsTable extends Migration
             $table->date('date');
             $table->string('type');
 
-            $table->decimal('amount', 22, 4);
+            $table->decimal('amount', 22, 2);
             $table->text('notes')->nullable();
 
             $table->foreign('student_id')->references('id')

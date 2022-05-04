@@ -25,26 +25,39 @@ class StudentInvoiceController extends Controller
   
     public function create(Request $request)
     {
-        $student = $request->filled('student_id') ? Student::findOrFail($request->student_id) : null ;
+        $student = null;
+        $students = null;
 
-        $study_fees = StudyFee::where(function($query) use($student){
-            if($student)
+        if($request->filled('students'))
+        {
+            $students = Student::enrolled()->get();
+        }
+        else if($request->filled('student_id'))
+        {
+            $student = Student::findOrFail($request->student_id) ;
+        }
+     
+
+        $study_fees = StudyFee::where(function($query) use($request){
+            $main_student = Student::findOrFail($request->student_id);
+
+            if($main_student)
             {
-                if($student->educational_stage())
+                if($main_student->educational_stage())
                 {
-                    $query->where(function($q) use($student){
+                    $query->where(function($q) use($main_student){
 
-                        $q->where('educational_stage_id' , $student->educational_stage()->id)
+                        $q->where('educational_stage_id' , $main_student->educational_stage()->id)
                             ->orWhereNull('educational_stage_id');
 
                     });
                 }
 
-                if($student->class_room)
+                if($main_student->class_room)
                 {
-                    $query->where(function($q) use($student){
+                    $query->where(function($q) use($main_student){
 
-                        $q->where('class_room_id' , $student->class_room_id)
+                        $q->where('class_room_id' , $main_student->class_room_id)
                             ->orWhereNull('class_room_id');
 
                     });
@@ -54,7 +67,7 @@ class StudentInvoiceController extends Controller
         })->get();
     
        
-        return view('dashboard.student_invoices.create' , compact('student' , 'study_fees'));
+        return view('dashboard.student_invoices.create' , compact('student' , 'study_fees' , 'students'));
     }
 
     

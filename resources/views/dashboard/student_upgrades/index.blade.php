@@ -73,11 +73,9 @@
                                         @if($student)
                                             <button class = "btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"> {{$student_upgrade->student ? $student_upgrade->student->name : ''}}</button>
                                             @include('dashboard.students.show_modal')
-                                        @endif
-                                        
+                                        @endif           
                                     </td>
                                    
-
                                     <td class = "text-center table-success">
                                         {{$student_upgrade->previous_academic_year}}
                                         <br>

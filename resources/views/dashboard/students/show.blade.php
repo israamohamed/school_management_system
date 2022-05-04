@@ -1,6 +1,6 @@
 @extends('dashboard.master')
 
-@section('title' , __('students.create'))
+@section('title' , $student->name )
 
 @push('styles')
 

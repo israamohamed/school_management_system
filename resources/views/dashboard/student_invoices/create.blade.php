@@ -38,7 +38,19 @@
                         @if(isset($student))
                             <p class = "bg-info bg-gradient p-2 text-center fw-bold text-white rounded" style = "font-size:1.5em;">{{__('accounts.add_invoice_to' , ['name' => $student->name])}}</p>
                             <input type="hidden" name = "student_id" value = "{{$student->id}}">
+                        
+                        @elseif(isset($students))
+                            
+                            <select name="student_id" class = "select2 form-control selected_student">
+                                <option value="">{{__('students.one')}}</option>
+                                @foreach($students as $student)
+                                    <option value="{{$student->id}}" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->name}}</option>
+                                @endforeach
+                            </select>
+                            <br>
+                            <div class = "clearfix"></div>
                         @endif
+
 
 
                         <button type = "button"  data-repeater-create class="btn btn-success rounded waves-effect waves-light">{{__('accounts.add_another_invoice')}}</button>
@@ -56,12 +68,21 @@
                                         {{-- study fee --}}
                                         <div class="form-group">
                                             <label for="study_fee_id">{{__('accounts.study_fees.one')}}</label>
-                                            <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
-                                                <option value="">{{__('accounts.study_fees.select')}}</option>
-                                                @foreach($study_fees as $study_fee)
-                                                    <option value="{{$study_fee->id}}" data-amount = "{{$study_fee->amount}}" {{ $invoice['study_fee_id'] == $study_fee->id ? 'selected' : ''}} >{{$study_fee->title}}</option>
-                                                @endforeach       
-                                            </select>
+                                            @if(isset($student))
+                                                <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
+                                                    <option value="">{{__('accounts.study_fees.select')}}</option>
+                                                    @foreach($study_fees as $study_fee)
+                                                        <option value="{{$study_fee->id}}" data-amount = "{{$study_fee->amount}}" {{ $invoice['study_fee_id'] == $study_fee->id ? 'selected' : ''}} >{{$study_fee->title}}</option>
+                                                    @endforeach       
+                                                </select>
+                                            @elseif(isset($students))
+                                                <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
+                                                    <option value="">{{__('accounts.study_fees.select')}}</option>
+                                                    {{-- @foreach($study_fees as $study_fee)
+                                                        <option value="{{$study_fee->id}}" data-amount = "{{$study_fee->amount}}" {{ $invoice['study_fee_id'] == $study_fee->id ? 'selected' : ''}} >{{$study_fee->title}}</option>
+                                                    @endforeach        --}}
+                                                </select>
+                                            @endif
                                             @error('study_fee_id')
                                             <div class="invalid-feedback d-block">
                                                 {{$message}}
@@ -271,6 +292,8 @@
 
 @endsection
 
+@include('dashboard.scripts.change_study_fees')
+
 @push('scripts')
 
 <script src="{{asset('dashboard/assets/js/jquery.repeater.js')}}"></script>
@@ -304,6 +327,7 @@
             $('.select2-container').remove();
             $(".select2").select2();
             $('.select2-container').css('width','100%');
+            change_study_fees( $(".selected_student") );
             $(this).slideDown();
             
         },

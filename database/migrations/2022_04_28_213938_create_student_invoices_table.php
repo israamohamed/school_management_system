@@ -20,9 +20,9 @@ class CreateStudentInvoicesTable extends Migration
             $table->unsignedBigInteger('study_fee_id');
             $table->date('invoice_date');
 
-            $table->decimal('final_total', 22, 4);
-            $table->decimal('total', 22, 4);
-            $table->decimal('discount', 22, 4)->nullable();
+            $table->decimal('final_total', 22, 2);
+            $table->decimal('total', 22, 2);
+            $table->decimal('discount', 22, 2)->nullable();
             $table->enum('discount_type' , ['fixed' , 'percentage'])->nullable();
 
             $table->text('notes')->nullable();

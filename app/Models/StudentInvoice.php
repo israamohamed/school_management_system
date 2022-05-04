@@ -12,9 +12,9 @@ class StudentInvoice extends Model
 
     protected $guarded = ['id' , 'status'];
 
-    public function scopeSearh($query)
+    public function scopeSearch($query)
     {
-        $query->whereHas(function($q){
+        $query->where(function($q){
 
             if(request()->filled('student_id'))
             {

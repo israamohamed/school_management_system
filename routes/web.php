@@ -60,6 +60,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //study fees
         Route::resource('study_fee' , 'StudyFeeController');
+        Route::get('get_student_study_fees' , 'StudyFeeController@get_student_study_fees')->name('get_student_study_fees');
         
         //student invoices
         Route::resource('student_invoice' , 'StudentInvoiceController');

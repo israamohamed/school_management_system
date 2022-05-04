@@ -10,6 +10,7 @@ use App\Models\ClassRoom;
 use App\Http\Requests\StudyFeeRequest;
 use App\Models\StudyFeeItem;
 use App\Models\StudyFee;
+use App\Models\Student;
 
 class StudyFeeController extends Controller
 {
@@ -152,5 +153,38 @@ class StudyFeeController extends Controller
         $study_fee->delete();
         toastr()->success(__('messages.deleted_successfully'));
         return redirect()->route('dashboard.study_fee.index');
+    }
+
+    public function get_student_study_fees(Request $request)
+    {
+        $student = Student::findOrFail($request->student_id);
+
+        $study_fees = StudyFee::where(function($query) use($student){
+            if($student)
+            {
+                if($student->educational_stage())
+                {
+                    $query->where(function($q) use($student){
+
+                        $q->where('educational_stage_id' , $student->educational_stage()->id)
+                            ->orWhereNull('educational_stage_id');
+
+                    });
+                }
+
+                if($student->class_room)
+                {
+                    $query->where(function($q) use($student){
+
+                        $q->where('class_room_id' , $student->class_room_id)
+                            ->orWhereNull('class_room_id');
+
+                    });
+                    
+                }
+            }
+        })->get();
+
+        return response()->json($study_fees , 200);
     }
 }

@@ -18,8 +18,8 @@ class CreateSchoolFundsTable extends Migration
             $table->unsignedBigInteger('financial_bond_id')->nullable();
             $table->date('date');
 
-            $table->decimal('debit', 22, 4)->default(0)->nullable();
-            $table->decimal('credit', 22, 4)->default(0)->nullable();
+            $table->decimal('debit', 22, 2)->default(0)->nullable();
+            $table->decimal('credit', 22, 2)->default(0)->nullable();
 
             $table->foreign('financial_bond_id')->references('id')
                     ->on('financial_bonds')->onDelete('cascade');
