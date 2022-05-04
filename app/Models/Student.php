@@ -123,6 +123,11 @@ class Student extends Model
         return $this->hasMany('App\Models\StudentTransaction');
     }
 
+    public function attendances()
+    {
+        return $this->hasMany('App\Models\StudentAttendance');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

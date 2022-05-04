@@ -35,5 +35,8 @@
         'study_fees_exists_before' => 'study fees exists before with the same data',
 
         'new_invoice_added_to_student' => 'New Invoice added to student ( :name )',
+
+
+        'student_attendance_saved' => 'Attendance and absence are saved successfully',
         
     ];

@@ -104,4 +104,13 @@ return [
         'one' => 'attachment',
         'select' => 'select attachment',
     ],
+
+    'absence_reasons' => [
+        'title' => 'Absence Reasons',
+        'create' => 'Add absence reason',
+        'edit' => 'Edit absence reason',
+        'delete' => 'Delete absence reason', 
+        'one' => 'absence reason',
+        'select' => 'select absence reason',
+    ],
 ];

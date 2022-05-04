@@ -58,6 +58,16 @@ return [
         'previous_class_room' => 'previous class room',
         'previous_educational_class_room' => 'previous educational class room',
         'previous_academic_year' => 'previous academic year',
+    ],
 
+    'student_attendances' => [
+        'title'             => 'Student Attendance',
+        'create'            => 'add Attendance',
+        'attendance_status' => 'Attendance Status',
+        'attendant'  => 'attendant',
+        'absent'     => 'absent',
+        'attendance_date' => 'Attendance Date',
+        'attendant_number' => 'Attendant Number',
+        'absence_number'   => 'Absence Number',
     ],
 ];

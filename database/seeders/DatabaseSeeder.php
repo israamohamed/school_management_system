@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             EducationalClassRoomSeeder::class,
             StudentParentSeeder::class,
             StudyFeesSeeder::class,
+            AbsenceReasonsSeeder::class,
         ]);
     }
 }

@@ -15,5 +15,8 @@ return [
     'study_fee_items' => 'study fee items',
     'study_fees' => 'study fees',
     'student_invoices' => 'student invoices',
+    'attendance_and_absence' => 'Attendance & Absence',
+    'absence_reasons' => 'Absence Reasons',
+    'student_attendances' => 'Student Attenddance',
     
 ]; 

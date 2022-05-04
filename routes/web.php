@@ -67,6 +67,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //financial bonds
         Route::resource('financial_bond' , 'FinancialBondController');
+
+        //absence reasons
+        Route::resource('absence_reason' , 'AbsenceReasonController');
+        //Student Attendance
+        Route::resource('student_attendance' , 'StudentAttendanceController');
+    
     
     
     });
