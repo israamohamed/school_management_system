@@ -193,7 +193,7 @@ class StudentInvoiceController extends Controller
 
             ]);
 
-            $student_transaction = $student_invoice->student_transaction;
+            $student_transaction = $student_invoice->student_transactions()->where('student_transactions.type' , 'invoice')->first();
             if($student_transaction)
             {
                 //update to student transactions
@@ -207,7 +207,6 @@ class StudentInvoiceController extends Controller
             }
        
             
-
             if(!empty($request->attachments))
             {
                 $student_invoice->uploadAttachments($request->attachments , 'invoices');
@@ -233,11 +232,9 @@ class StudentInvoiceController extends Controller
 
             DB::beginTransaction();
             $student_invoice = StudentInvoice::findOrFail($id);
-            if($student_invoice->student_transaction)
-            {
-                //student transaction should be deleted automatically because of foreign key
-                $student_invoice->student_transaction->delete();
-            }
+            //student transaction should be deleted automatically because of foreign key
+            $student_invoice->student_transactions()->delete();
+          
             $student_invoice->deleteAttachments();
             $student_invoice->delete();
             

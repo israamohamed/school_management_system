@@ -37,4 +37,14 @@ class FinancialBond extends Model
     {
         return $this->belongsTo('App\Models\Student');
     }
+
+    public function student_transaction()
+    {
+        return $this->hasOne('App\Models\StudentTransaction');
+    }
+
+    public function school_fund()
+    {
+        return $this->hasOne('App\Models\SchoolFund');
+    }
 }

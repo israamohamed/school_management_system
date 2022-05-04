@@ -7,7 +7,7 @@
             <div class="">
 
                 <div class="card-title bg-danger bg-gradient rounded text-center p-2 mb-1">
-                    <h2 class = "text-white">{{__('student_balance')}} : {{$student->balance}} </h2>
+                    <h2 class = "text-white">{{__('students.student_balance')}} : {{$student->balance}} </h2>
                 </div>
 
         

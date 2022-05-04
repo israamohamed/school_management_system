@@ -43,8 +43,8 @@ class StudentInvoice extends Model
         return $this->belongsTo('App\Models\StudyFee');
     }
 
-    public function student_transaction()
+    public function student_transactions()
     {
-        return $this->hasOne('App\Models\StudentTransaction');
+        return $this->hasMany('App\Models\StudentTransaction');
     }
 }

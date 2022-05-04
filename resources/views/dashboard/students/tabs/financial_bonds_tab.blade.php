@@ -35,8 +35,11 @@
                         
                         <td>
             
-                            {{-- <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_attachment_modal_{{$attachment->id}}"><i class = "fas fa-trash"></i></button>
-                            @include('dashboard.students.attachments.delete') --}}
+                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_financial_bond_modal_{{$financial_bond->id}}"><i class = "fas fa-edit"></i></button>
+                            @include('dashboard.financial_bonds.edit')
+
+                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_financial_bond_modal_{{$financial_bond->id}}"><i class = "fas fa-trash"></i></button>
+                            @include('dashboard.financial_bonds.delete')
             
                         </td>
                     </tr>

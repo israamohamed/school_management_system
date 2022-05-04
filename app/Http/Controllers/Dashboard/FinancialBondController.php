@@ -106,7 +106,56 @@ class FinancialBondController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+
+            DB::beginTransaction();
+
+            $financial_bond = FinancialBond::findOrFail($id);
+
+            $student = Student::findOrFail($financial_bond->student_id);
+           
+            //step 1 => update the financial bond 
+            $financial_bond->update($request->only(['amount' , 'notes']));
+            //step 2 => upload attachments
+            $financial_bond->updateAttachments($request->attachments , 'financial_bonds');
+            //step 3 => edit student transaction
+            $student_transaction = $financial_bond->student_transaction;
+            if($student_transaction)
+            {
+                $student_transaction->update([           
+                    'student_invoice_id' => $request->student_invoice_id,
+                    'credit'             => $request->type != 'expense' ? $request->amount : 0,
+                    'debit'              => $request->type == 'expense' ? $request->amount : 0,
+                ]);
+            }
+           
+            //step 4 => create in student fund
+            if($financial_bond->type == 'catch' || $financial_bond->type == 'expense')
+            {
+                $school_fund = $financial_bond->school_fund;
+                if($school_fund)
+                {
+                    $school_fund->update([
+                        'debit'             => $financial_bond->type == 'catch' ? $financial_bond->amount : 0,
+                        'credit'            => $financial_bond->type == 'expense' ? $financial_bond->amount : 0,
+                    ]);
+                }
+                
+            }
+            
+
+
+            DB::commit();
+            
+            toastr()->success(__('messages.updated_successfully'));
+            return redirect()->back();
+
+        }
+
+        catch(\Exception $e) {
+            toastr()->error($e->getMessage());
+            return back()->with('error' , $e->getMessage());
+        }
     }
 
     /**
@@ -117,6 +166,38 @@ class FinancialBondController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+
+            DB::beginTransaction();
+
+            $financial_bond = FinancialBond::findOrFail($id);
+            //delete corresponding transaction
+            $student_transaction = $financial_bond->student_transaction;
+            if($student_transaction)
+            {
+                $student_transaction->delete();
+            }
+
+            //delete corresponding school fund
+            $school_fund = $financial_bond->school_fund;
+            if($school_fund)
+            {
+                $school_fund->delete();
+            }
+
+            $financial_bond->deleteAttachments();
+            $financial_bond->delete();
+
+            DB::commit();
+            
+            toastr()->success(__('messages.deleted_successfully'));
+            return redirect()->back();
+
+        }
+
+        catch(\Exception $e) {
+            toastr()->error($e->getMessage());
+            return back()->with('error' , $e->getMessage());
+        }
     }
 }
