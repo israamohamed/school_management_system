@@ -85,6 +85,26 @@
             </ul>
         </li>
 
+        {{-- subjects --}}
+        <li class = "{{request()->routeIs('dashboard.subject.*') ? 'mm-active' : ''}}">
+            <a href="{{route('dashboard.subject.index')}}" class=" waves-effect">
+                <i class="ri-calendar-2-line"></i>
+                <span>{{__('sidebar.subjects')}}</span>
+            </a>
+        </li>
+
+        {{-- Faculty --}}
+        {{-- <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-account-circle-line"></i>
+                <span>{{__('sidebar.faculty')}}</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{route('dashboard.absence_reason.index')}}">{{__('sidebar.absence_reasons')}}</a></li>
+                <li><a href="{{route('dashboard.student_attendance.index')}}">{{__('sidebar.student_attendances')}}</a></li>
+            </ul>
+        </li> --}}
+
         {{--
         <li class="menu-title">Pages</li>
 

@@ -113,4 +113,22 @@ return [
         'one' => 'absence reason',
         'select' => 'select absence reason',
     ],
+
+    'subjects' => [
+        'title' => 'Subjects',
+        'create' => 'Add Subject',
+        'edit' => 'Edit Subject',
+        'delete' => 'Delete Subject', 
+        'one' => 'Subject',
+        'select' => 'select subject',
+        'upper_grade' => 'Upper Grade',
+        'lower_grade' => 'Lower Grade',
+        'main_subject' => 'Main Subject',
+        'success_required' => 'Success Is Required',
+        'shared_between_terms' => 'Shared Between Terms',
+        'term' => 'Term',
+        'first_term' => 'First Term',
+        'seccond_term' => 'Second Term',
+        'attributes' => 'Subject Attributes',
+    ],
 ];

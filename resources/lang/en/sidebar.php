@@ -18,5 +18,6 @@ return [
     'attendance_and_absence' => 'Attendance & Absence',
     'absence_reasons' => 'Absence Reasons',
     'student_attendances' => 'Student Attenddance',
+    'subjects' => 'Subjects',
     
 ]; 

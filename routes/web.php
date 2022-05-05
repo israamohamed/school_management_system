@@ -72,6 +72,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::resource('absence_reason' , 'AbsenceReasonController');
         //Student Attendance
         Route::resource('student_attendance' , 'StudentAttendanceController');
+        //subjects
+        Route::resource('subject' , 'SubjectController');
+        Route::post('subject/delete_selected', 'SubjectController@delete_selected')->name('subject.delete_selected');
     
     
     
