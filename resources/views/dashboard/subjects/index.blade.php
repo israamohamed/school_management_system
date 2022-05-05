@@ -27,6 +27,16 @@
                 <input type="text" name = "search" class = "form-control" value = "{{request()->search}}" onchange="this.form.submit()" placeholder="{{__('general.search')}}">
             </div>
 
+            <div class="col-md-3">
+                
+                <select name="class_room_id" class = "form-control select2 text-light" onchange="this.form.submit()">
+                    <option value="">{{__('general.all')}}</option>
+                        @foreach($class_rooms as $class_room)
+                            <option value="{{$class_room->id}}" {{$class_room->id == request()->class_room_id ? 'selected' : ''}} >{{$class_room->name . ' ' . ($class_room->educational_stage ? $class_room->educational_stage->name : '') }}</option>
+                        @endforeach
+                </select>
+            </div>
+
             {{-- <div class="col-md-3 educational_stage_selected_parent">
                 <select name="educational_stage_id" class = "form-control select2 educational_stage_selected"  onchange="this.form.submit()" placeholder="{{__('general.educational_stages.one')}}">
                     <option value="">{{__('general.all')}}</option>

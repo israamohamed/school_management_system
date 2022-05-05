@@ -7,15 +7,16 @@ use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Http\Requests\SubjectRequest;
 use App\Models\EducationalStage;
+use App\Models\ClassRoom;
 
 class SubjectController extends Controller
 {
   
     public function index()
     {
-        $subjects = Subject::paginate(30);
-        $educational_stages = EducationalStage::get();
-        return view('dashboard.subjects.index' , compact('subjects' , 'educational_stages'));
+        $subjects = Subject::search()->paginate(30);
+        $class_rooms = ClassRoom::get();
+        return view('dashboard.subjects.index' , compact('subjects' , 'class_rooms'));
     }
 
    

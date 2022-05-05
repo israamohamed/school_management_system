@@ -14,6 +14,23 @@ class Subject extends Model
 
     protected $translatable = ['name'];
 
+    public function scopeSearch($query)
+    {
+        return $query->where(function($q){
+            if(request()->filled('search'))
+            {
+                $q->where('name->en' , 'like' , '%' . request()->search . '%')
+                    ->orWhere('name->ar' , 'like' , '%' . request()->search . '%');
+            }
+
+            if(request()->filled('class_room_id'))
+            {
+                $q->where('class_room_id' , request()->class_room_id);
+            }
+
+        });
+    }
+
     public function class_room()
     {
         return $this->belongsTo('App\Models\ClassRoom');
