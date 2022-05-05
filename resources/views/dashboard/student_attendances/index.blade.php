@@ -2,6 +2,12 @@
 
 @section('title' , __('students.student_attendances.title'))
 
+@push('styles')
+<style>
+   
+</style>
+@endpush
+
 @section('breadcrumb')
     <h4 class="mb-sm-0">{{__('students.student_attendances.title')}}</h4>
 
@@ -15,21 +21,34 @@
 
 @section('content')
 {{-- Filters --}}
-{{-- <div style = "margin: 10px 0;">
+<div style = "margin: 10px 0;">
     <form method = "GET">
         <div class="row">
             <div class="col-md-3">
-                <label for="educational_stage_id">{{__('general.educational_stages.one')}}</label>
-                <select name="educational_stage_id" class = "form-control select2" onchange="this.form.submit()">
+                <label for="educational_stage_id" class = "text-primary">{{__('students.student_attendances.attendance_date')}}</label>
+                <input type="date" class = "form-control" name = "attendance_date" value = "{{request()->attendance_date ?? date('Y-m-d')}}" onchange="this.form.submit()">
+                {{-- <select name="educational_stage_id" class = "form-control select2" onchange="this.form.submit()">
                     <option value="">{{__('general.all')}}</option>
                         @foreach($educational_stages as $educational_stage)
                             <option value="{{$educational_stage->id}}" {{$educational_stage->id == request()->educational_stage_id ? 'selected' : ''}} >{{$educational_stage->name}}</option>
                         @endforeach
+                </select> --}}
+            </div>
+
+            <div class="col-md-3">
+                <label for="class_room_id" class = "text-primary">{{__('general.class_rooms.one')}}</label>
+                
+                <select name="class_room_id" class = "form-control select2 text-light" onchange="this.form.submit()">
+                    <option value="">{{__('general.all')}}</option>
+                        @foreach($class_rooms as $class_room)
+                            <option value="{{$class_room->id}}" {{$class_room->id == request()->class_room_id ? 'selected' : ''}} >{{$class_room->name . ' ' . ($class_room->educational_stage ? $class_room->educational_stage->name : '') }}</option>
+                        @endforeach
                 </select>
             </div>
+
         </div>
     </form>
-</div> --}}
+</div>
 
 <div class="row">
     <div class="col-lg-12">
@@ -56,7 +75,7 @@
                                     <th>{{__('students.student_attendances.attendant_number')}}</th>
                                     <th>{{__('students.student_attendances.absence_number')}}</th>
                                  
-                                    <th class = "text-center">{{__('general.actions')}}</th>
+                                    <th>{{__('general.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,7 +91,9 @@
                                    
 
                                     <td class="text-bold-500">
-                                       
+                                       {{--show--}}
+                                       <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$educational_class_room->id}}"><i class = " far fa-eye"></i> </button>
+                                       @include('dashboard.student_attendances.show_modal')
 
                                     </td>
                                 </tr>           
@@ -85,7 +106,7 @@
                     </div>
 
 
-                {{$educational_class_rooms->links()}}
+                {{$educational_class_rooms->appends($_GET)->links()}}
                 <div>
                   
                 </div>
@@ -101,7 +122,9 @@
 
 @push('scripts')
 <script>
- 
+ $(".select2").select2({
+    theme: "classic"
+ });
 </script>
 
 @endpush

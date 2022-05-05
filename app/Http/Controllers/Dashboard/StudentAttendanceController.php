@@ -38,13 +38,13 @@ class StudentAttendanceController extends Controller
                                                     return ['attendance' => $group->where('attendance_status' , 1)->sum('*')];
                                                 })
         ;*/
-        $educational_class_rooms = EducationalClassRoom::/*with(['attendances' => function($query){
+        $educational_class_rooms = EducationalClassRoom::search()->with(['attendances' => function($query){
 
             $query->where('attendance_date' , request()->attendance_date)
                     ->where('academic_year' , request()->academic_year);
 
         }])
-        ->*/withCount(['attendances as attendants_number' => function($q){
+        ->withCount(['attendances as attendants_number' => function($q){
             $q->where('attendance_status' , 1)
                 ->where('attendance_date' , request()->attendance_date)
                 ->where('academic_year' , request()->academic_year);
@@ -55,10 +55,12 @@ class StudentAttendanceController extends Controller
                 ->where('academic_year' , request()->academic_year);
         }
         ])
-        ->paginate(25);
+        ->paginate(15);
+
+        $class_rooms = ClassRoom::with('educational_stage')->get();
 
         //return $educational_class_rooms;
-        return view('dashboard.student_attendances.index' , compact('educational_class_rooms') );
+        return view('dashboard.student_attendances.index' , compact('educational_class_rooms' , 'class_rooms') );
     }
 
  
