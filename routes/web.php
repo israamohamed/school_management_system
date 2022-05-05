@@ -75,6 +75,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         //subjects
         Route::resource('subject' , 'SubjectController');
         Route::post('subject/delete_selected', 'SubjectController@delete_selected')->name('subject.delete_selected');
+
+        //teacher
+        Route::resource('teacher' , 'TeacherController');
     
     
     

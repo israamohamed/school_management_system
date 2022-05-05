@@ -14,6 +14,8 @@ class Subject extends Model
 
     protected $translatable = ['name'];
 
+    protected $appends = ['name_in_details'];
+
     public function scopeSearch($query)
     {
         return $query->where(function($q){
@@ -39,5 +41,26 @@ class Subject extends Model
     public function educational_stage()
     {
         return $this->class_room ? $this->class_room->educational_stage : null;
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany('App\Models\Teacher');
+    }
+
+    public function getNameInDetailsAttribute()
+    {
+        $name = $this->name ;
+        $name .= ' ';
+
+        if( $this->class_room )
+        {
+            $name .= $this->class_room ? $this->class_room->name : '';
+            $name .= ' ';
+            $name .= $this->class_room->educational_stage  ? $this->class_room->educational_stage->name : ''; 
+        }
+
+        return $name;
+        
     }
 }

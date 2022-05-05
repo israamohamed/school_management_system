@@ -19,5 +19,9 @@ return [
     'absence_reasons' => 'Absence Reasons',
     'student_attendances' => 'Student Attenddance',
     'subjects' => 'Subjects',
+
+    'faculty' => 'Faculty',
+    'teachers' => 'Teachers',
+    'add_teacher' => 'Add Teacher',
     
 ]; 

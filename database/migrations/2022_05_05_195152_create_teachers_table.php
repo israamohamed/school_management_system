@@ -15,6 +15,15 @@ class CreateTeachersTable extends Migration
     {
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->string('email');
+            $table->string('password');
+            $table->string('phone_number1')->nullable();
+            $table->string('phone_number2')->nullable();
+            $table->enum('gender' , ['male' , 'female']);
+            $table->date('hiring_date')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
