@@ -8,6 +8,7 @@ use App\Models\Teacher;
 use App\Http\Requests\TeacherRequest;
 use App\Models\Subject;
 use Illuminate\Support\Facades\DB;
+use App\Models\EducationalClassRoom;
 
 class TeacherController extends Controller
 {
@@ -24,7 +25,8 @@ class TeacherController extends Controller
     public function create()
     {
         $subjects = Subject::get();
-        return view('dashboard.teachers.create' , compact('subjects') );
+        $educational_class_rooms = EducationalClassRoom::get();
+        return view('dashboard.teachers.create' , compact('educational_class_rooms') );
     }
 
    
@@ -47,6 +49,11 @@ class TeacherController extends Controller
             {
                 $teacher->subjects()->attach($request->subjects);
             }
+             //add educational_class_rooms to teacher
+             if($request->filled('educational_class_rooms') &&  count($request->educational_class_rooms) > 0 )
+             {
+                 $teacher->educational_class_rooms()->attach($request->educational_class_rooms);
+             }
             //success message
             toastr()->success(__('messages.added_successfully'));
             return redirect()->route('dashboard.teacher.index');
@@ -70,8 +77,9 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::with('subjects:id,name')->findOrFail($id);
         $subjects = Subject::get();
+        $educational_class_rooms = EducationalClassRoom::get();
     
-        return view('dashboard.teachers.edit' , compact('teacher' , 'subjects') );
+        return view('dashboard.teachers.edit' , compact('teacher' , 'subjects' , 'educational_class_rooms') );
     }
 
 
@@ -97,6 +105,8 @@ class TeacherController extends Controller
             $teacher->updateProfilePicture($request->profile_picture , 'teachers');
             //update subjects to teacher
             $teacher->subjects()->sync($request->subjects);
+             //update educational_class_room to teacher
+             $teacher->educational_class_rooms()->sync($request->educational_class_rooms);
             DB::commit();
             //success message
             toastr()->success(__('messages.updated_successfully'));

@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Traits\Attachments\HasAttachments;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Teacher extends Model
+class Teacher extends Authenticatable
 {
     use HasFactory , HasTranslations , HasAttachments;
 
@@ -41,6 +42,16 @@ class Teacher extends Model
     public function subjects()
     {
         return $this->belongsToMany('App\Models\Subject');
+    }
+
+    public function educational_class_rooms()
+    {
+        return $this->belongsToMany('App\Models\EducationalClassRoom');
+    }
+
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz');
     }
 
     public function setPasswordAttribute($value)

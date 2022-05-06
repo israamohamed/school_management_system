@@ -23,5 +23,11 @@ return [
     'faculty' => 'Faculty',
     'teachers' => 'Teachers',
     'add_teacher' => 'Add Teacher',
+
+
+
+
+    //Teachers Sidebar
+    'quizzes' => 'Quizzes',
     
 ]; 

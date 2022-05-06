@@ -35,7 +35,9 @@ class TeacherRequest extends FormRequest
             'hiring_date'    => 'nullable|date',
             'profile_picture' => 'nullable|image',
             'subjects'       => 'nullable|array',
-            'subjects.*'     => 'exists:subjects,id'
+            'subjects.*'     => 'exists:subjects,id',
+            'educational_class_rooms'       => 'nullable|array',
+            'educational_class_rooms.*'     => 'exists:educational_class_rooms,id'
         ];
     }
 }

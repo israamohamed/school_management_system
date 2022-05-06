@@ -219,6 +219,26 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="educational_class_rooms">{{__('general.educational_class_rooms.title')}}</label>
+                                    <select name="educational_class_rooms[]" class = "form-control select2 @error('educational_class_rooms') is-invalid @enderror"  multiple="multiple" placeholder = "{{__('teachers.select_teacher_educational_class_rooms')}}">
+                                        <option value="" disabled>{{__('teachers.select_teacher_educational_class_rooms')}}</option>
+                                        @foreach($educational_class_rooms as $educational_class_room )
+                                            <option value="{{$educational_class_room->id}}" {{old('educational_class_rooms') &&  in_array($educational_class_room->id , old('educational_class_rooms')) ? 'selected' : '' }}  >{{$educational_class_room->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('educational_class_rooms')
+                                    <div class="invalid-feedback d-block">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
+                                </div>    
+                            </div>
+                        </div>
+
+
                     
                         {{-- active --}}
                         <div class="row mb-3">

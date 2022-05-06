@@ -128,6 +128,16 @@ class Student extends Model
         return $this->hasMany('App\Models\StudentAttendance');
     }
 
+    public function quizzes()
+    {
+        return $this->belongsToMany('App\Models\Quiz')->withPivot('score');
+    }
+
+    public function questions()
+    {
+        return $this->belongsToMany('App\Models\Question')->withPivot('quiz_id' , 'choice_id' , 'correct' , 'score');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
