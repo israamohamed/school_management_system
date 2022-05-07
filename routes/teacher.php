@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('teacher/'      , 'AuthController@login_view')->name('teacher.login_view');
 Route::post('teacher/login' , 'AuthController@login')->name('teacher.login');
+Route::post('teacher/logout' , 'AuthController@logout')->name('teacher.logout');
 
 
 
