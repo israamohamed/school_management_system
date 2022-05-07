@@ -15,6 +15,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::get('home' , 'HomeController@index')->name('home');
         //Quizzes
         Route::resource('quiz' , 'QuizController');
+        //Questions
+        Route::resource('question' , 'QuestionController');
     }); 
     
 });

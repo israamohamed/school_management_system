@@ -129,7 +129,7 @@
 <script src="{{asset('dashboard/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset('dashboard/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}"></script>
 
-<script src="{{asset('dashboard/assets/js/pages/teachers.init.js')}}"></script>
+<script src="{{asset('dashboard/assets/js/pages/dashboard.init.js')}}"></script>
 
 @jquery
 @toastr_js

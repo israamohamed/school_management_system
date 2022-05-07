@@ -81,6 +81,9 @@
                                     <td>{!! $quiz->active ? '<button class = "btn btn-success  btn-sm"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger  btn-sm"><i class="far fa-window-close"></i></button>' !!}</td>
                                     <td><span style = "font-size:1em;" class = "badge rounded-pill bg-{{$quiz->status_color}}">{{__('quizzes.' . $quiz->status)}}</span></td>
                                     <td>
+                                        <a href = "{{route('teacher.quiz.show' , $quiz->id)}}" class = "btn btn-warning btn-sm"><i class = "fas fa-eye"></i></a>
+
+
                                         <a href = "{{route('teacher.quiz.edit' , $quiz->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
                                         <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$quiz->id}}"><i class = "fas fa-trash"></i></button>
                                         @include('teachers.quizzes.delete')

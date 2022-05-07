@@ -16,6 +16,24 @@ return [
     'pending' => 'Will not start now',
     'started' => 'Available Now',
     'finished' => 'Finished',
+
+
+
+    'questions' => [
+        'title' => 'Questions',
+        'create' => 'Add New Question',
+        'edit' => 'Edit Question',
+        'delete' => 'Delete Question', 
+        'show' => 'Question data',
+        'list' => 'List of Questions',
+        'one' => 'Question',
+        'score' => 'Score',
+        'add_another' => 'Add Another Questions',
+        'correct_choice' => 'Correct Choice',
+        'wrong_choices' => 'Wrong Choices',
+        'choices' => 'Choices',
+    ],
+
   
   
 

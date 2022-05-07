@@ -63,7 +63,10 @@ class QuizController extends Controller
    
     public function show($id)
     {
-        //
+        $teacher = auth()->guard('teacher')->user();
+        $quiz    = Quiz::with('questions')->where('id' , $id)->where('teacher_id' , $teacher->id)->firstOrFail();
+
+        return view('teachers.quizzes.show' , compact('quiz'));
     }
 
    
