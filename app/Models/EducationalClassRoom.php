@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Builder;
 
 class EducationalClassRoom extends Model
 {
@@ -16,6 +17,21 @@ class EducationalClassRoom extends Model
 
     protected $translatable = ['name'];
 
+    protected static function booted()
+    {
+        static::addGlobalScope('teachers_educational_class_rooms', function (Builder $builder) {
+
+            if(auth()->guard('teacher')->check())
+            {
+                $builder->whereHas('teachers' ,function($query){
+                    $query->where('teachers.id', auth()->guard('teacher')->user()->id );
+
+                });
+            }
+           
+        });
+    }
+
     public function scopeSearch($query)
     {
         return $query->where(function($q){
@@ -24,6 +40,8 @@ class EducationalClassRoom extends Model
             {
                 $q->where('class_room_id' , request()->class_room_id);
             }
+
+            
         });
     }
 
@@ -40,5 +58,10 @@ class EducationalClassRoom extends Model
     public function attendances()
     {
         return $this->hasMany('App\Models\StudentAttendance');
+    }
+
+    public function teachers()
+    {
+        return $this->belongsToMany('App\Models\Teacher');
     }
 }

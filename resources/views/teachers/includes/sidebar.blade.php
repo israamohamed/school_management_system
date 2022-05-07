@@ -4,7 +4,7 @@
         <li class="menu-title">Menu</li>
 
      
-
+        {{-- Quizzes --}}
         <li class = "{{request()->routeIs('teacher.quiz.*') ? 'mm-active' : ''}}">
             <a href="{{route('teacher.quiz.index')}}" class=" waves-effect">
                 <i class="ri-calendar-2-line"></i>
@@ -12,17 +12,14 @@
             </a>
         </li>
 
-         {{-- Attendance and Absence --}}
-         <li>
-            <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="ri-account-circle-line"></i>
-                <span>{{__('sidebar.attendance_and_absence')}}</span>
+        {{-- Attendance and Absence --}}
+        <li class = "{{request()->routeIs('teacher.student_attendance.*') ? 'mm-active' : ''}}">
+            <a href="{{route('teacher.student_attendance.index')}}" class=" waves-effect">
+                <i class="ri-calendar-2-line"></i>
+                <span>{{__('sidebar.student_attendances')}}</span>
             </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li><a href="{{route('dashboard.absence_reason.index')}}">{{__('sidebar.absence_reasons')}}</a></li>
-                <li><a href="{{route('dashboard.student_attendance.index')}}">{{__('sidebar.student_attendances')}}</a></li>
-            </ul>
         </li>
+
 
     
     </ul>

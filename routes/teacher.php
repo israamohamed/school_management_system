@@ -17,6 +17,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::resource('quiz' , 'QuizController');
         //Questions
         Route::resource('question' , 'QuestionController');
+        //Student Attendance
+        Route::resource('student_attendance' , 'StudentAttendanceController');
     }); 
     
 });
