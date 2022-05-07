@@ -30,7 +30,7 @@ class StoreQuestionRequest extends FormRequest
             'questions.*.score'          => 'required|integer',
             'questions.*.correct_choice' => 'required',
             'questions.*.wrong_choices'  => 'required|array|size:3',
-            'questions.*.wrong_choices.*'  => 'required|distinct'
+            'questions.*.wrong_choices.*'  => 'required'
         ];
     }
 }

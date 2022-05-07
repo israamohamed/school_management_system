@@ -11,6 +11,7 @@ return [
     'password' => 'Password',
     'one' => 'teacher',
     'select_teacher_subjects' => 'Choose the subjects taught by the teacher',
+    'select_teacher_educational_class_rooms' => 'Choose the educational class rooms for the teacher',
 
 
     'name' => 'Name',

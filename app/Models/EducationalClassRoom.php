@@ -64,4 +64,9 @@ class EducationalClassRoom extends Model
     {
         return $this->belongsToMany('App\Models\Teacher');
     }
+
+    public function online_classes()
+    {
+        return $this->belongsToMany('App\Models\OnlineClass');
+    }
 }

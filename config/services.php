@@ -30,4 +30,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'zoom' => [
+        'api_key'    => env('ZOOM_CLIENT_KEY') ,
+        'api_secret' => env('ZOOM_CLIENT_SECRET'),
+        'base_uri'   => 'https://api.zoom.us',
+        'jwt_token'  => env('JWT_TOKEN'), 
+    ],
+
 ];

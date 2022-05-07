@@ -26,7 +26,7 @@ class TeacherController extends Controller
     {
         $subjects = Subject::get();
         $educational_class_rooms = EducationalClassRoom::get();
-        return view('dashboard.teachers.create' , compact('educational_class_rooms') );
+        return view('dashboard.teachers.create' , compact('subjects' , 'educational_class_rooms') );
     }
 
    

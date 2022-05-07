@@ -20,6 +20,14 @@
             </a>
         </li>
 
+        {{-- Online Classes --}}
+        <li class = "{{request()->routeIs('teacher.online_class.*') ? 'mm-active' : ''}}">
+            <a href="{{route('teacher.online_class.index')}}" class=" waves-effect">
+                <i class="ri-calendar-2-line"></i>
+                <span>{{__('sidebar.online_classs')}}</span>
+            </a>
+        </li>
+
 
     
     </ul>

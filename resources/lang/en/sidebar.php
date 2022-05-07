@@ -29,5 +29,6 @@ return [
 
     //Teachers Sidebar
     'quizzes' => 'Quizzes',
+    'online_classs' => 'Online Classes',
     
 ]; 

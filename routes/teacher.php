@@ -20,6 +20,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::resource('question' , 'QuestionController');
         //Student Attendance
         Route::resource('student_attendance' , 'StudentAttendanceController');
+        //Online Classes
+        Route::resource('online_class' , 'OnlineClassController');
     }); 
     
 });
