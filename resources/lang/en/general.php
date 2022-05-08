@@ -33,6 +33,7 @@ return [
     'created_at' => 'Date',
     'type' => 'type',
     'date' => 'Date',
+    'copy_to_clipboard' => 'Copy To Clipboard',
 
     'title' => 'Title',
     'title_en' => 'Title in English',

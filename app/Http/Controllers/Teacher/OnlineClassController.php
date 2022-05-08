@@ -97,9 +97,27 @@ class OnlineClassController extends Controller
     {
         $teacher                  = auth()->guard('teacher')->user();
         $online_class             = OnlineClass::where('id' , $id)->where('teacher_id' , $teacher->id)->firstOrFail();
-       
-        $online_class->delete();
-        toastr()->success(__('messages.deleted_successfully'));
-        return redirect()->back();
+
+        try {
+            DB::beginTransaction();      
+            //Delete Zoom Meeting
+            $zoom_service = new ZoomService();
+            $zoom_service->delete_meeting($online_class->meeting_id);
+
+            $online_class->educational_class_rooms()->detach();
+            $online_class->delete();
+            DB::commit();
+            toastr()->success(__('messages.deleted_successfully'));
+            return redirect()->back();
+        }
+
+        catch(\Exception $e) {
+            DB::rollBack();
+            $online_class->educational_class_rooms()->detach();
+            $online_class->delete();
+
+            toastr()->error($e->getMessage());
+            return back()->withInput()->with('error' , $e->getMessage());
+        }
     }
 }

@@ -45,9 +45,11 @@ class ZoomService
     {
         $teacher = auth()->guard('teacher')->user();
 
+        $start_time = $request->start_time . ':00Z';
+
         $data = [
             'topic'          => $request->topic,
-            'start_time'       => $request->start_time,
+            'start_time'     => $start_time,
             'duration'       => $request->duration,
             'user_id'        => $request->teacher_id,
             'contact_email'  => $teacher->email,
@@ -62,6 +64,7 @@ class ZoomService
 
     public function create_meeting($data)
     {
+        
         $method = "POST";
         $url    = "/v2/users/me/meetings";
       
@@ -69,6 +72,8 @@ class ZoomService
         $form_parameters = [
           'duration'   => $data['duration'],
           'start_time' => $data['start_time'],
+
+          //'start_time' => '2022-05-31T12:02:00Z', //2022-10-05T10:00:00Z
           'timezone'   => 'Africa/Cairo',
           'topic'      => $data['topic'],
           'type'       => 2,   //for schedule meeting
@@ -86,6 +91,21 @@ class ZoomService
 
         return $json;
 
+    }
+
+    public function delete_meeting($id)
+    {
+        $method = "DELETE";
+        $url    = "/v2/meetings/$id";
+      
+        $query_parameters = [];
+        $form_parameters = [];
+        $headers = [];
+        $is_json = true;
+
+        $json = $this->makeRequest($method , $url , $query_parameters , $form_parameters , $headers , $is_json);
+
+        return $json;
     }
 
     public function get_user()

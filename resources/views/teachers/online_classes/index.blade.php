@@ -65,7 +65,7 @@
                                     <th>{{__('online_classes.start_time')}}</th>
                                     <th>{{__('online_classes.duration')}}</th>
                                      
-                                    <th>{{__('online_classes.actions')}}</th>
+                                    <th>{{__('general.actions')}}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -79,10 +79,20 @@
                                     <td>{{$online_class->duration}}</td>
                                    
                                     <td>
-                                       
-                                        <a href = "{{route('teacher.online_class.edit' , $online_class->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
+
+                                        {{-- start --}}
+                                        <button class = "btn btn-info btn-sm" title="{{__('online_classes.start_class')}}" data-bs-toggle="modal" data-bs-target="#start_modal_{{$online_class->id}}"><i class = " fas fa-address-card"></i></button>
+                                        @include('teachers.online_classes.start')   
+
+                                        {{-- join --}}
+                                        <button class = "btn btn-success btn-sm" title="{{__('online_classes.join_class')}}" data-bs-toggle="modal" data-bs-target="#join_modal_{{$online_class->id}}"><i class = " fas fa-file-export"></i></button>
+                                        @include('teachers.online_classes.join')    
+                                          
+                                        {{-- delete --}}
                                         <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$online_class->id}}"><i class = "fas fa-trash"></i></button>
                                         @include('teachers.online_classes.delete')
+
+                                                                      
                                     </td>
                                 </tr>               
                                 @endforeach            
@@ -112,4 +122,36 @@
     });
 
 </script>
+
+
+<script>
+    function copy_join_url() {
+        /* Get the text field */
+        var join_url_text = $(".join_url");
+
+        /* Select the text field */
+        join_url_text.select();
+        //join_url_text.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(join_url_text.val());
+
+        toastr.success("{{__('general.copy_to_clipboard')}}")
+    }
+
+    function copy_start_url() {
+        /* Get the text field */
+        var start_url_text = $(".start_url");
+
+        /* Select the text field */
+        start_url_text.select();
+        //start_url_text.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(start_url_text.val());
+
+        toastr.success("{{__('general.copy_to_clipboard')}}")
+    }
+</script>
+
 @endpush

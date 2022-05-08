@@ -14,4 +14,7 @@ return [
     'meeting_id' => 'Meeting ID',
     'start_url' => 'Start Url',
     'join_url' => 'Join Url',
+
+    'join_class' => 'Join Class',
+    'start_class' => 'Start Class',
 ];
