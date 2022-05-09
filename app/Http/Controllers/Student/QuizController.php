@@ -31,8 +31,8 @@ class QuizController extends Controller
         $check_access = $this->check_student_has_access_to_quiz($id);
         if(!$check_access)
         {
-            toastr()->error(__('messages.error_occured'));
-            return resirect()->route('student.quiz.index')->with('error' , __('messages.error_occured') );
+            toastr()->error(__('quizzes.you_have_no_access_to_this_quiz'));
+            return redirect()->route('student.quiz.index')->with('error' , __('quizzes.you_have_no_access_to_this_quiz') );
         }
         $student  = auth()->guard('student')->user();   
         $quiz = Quiz::findOrFail($id);
@@ -74,7 +74,7 @@ class QuizController extends Controller
             if(!$check)
             {
                 toastr()->error(__('quizzes.you_have_no_access_to_this_quiz'));
-                return back()->with('error' , __('quizzes.you_have_no_access_to_this_quiz') );
+                return redirect()->route('student.quiz.index')->with('error' , __('quizzes.you_have_no_access_to_this_quiz') );
             }
 
             $student  = auth()->guard('student')->user();   
@@ -157,6 +157,16 @@ class QuizController extends Controller
         {
             return false;
         }
+
+        //4 check that if student started this quiz before
+        if($quiz_student->pivot->score)
+        {
+            return false;
+        }
+        /*if($quiz_student->pivot->started)
+        {
+            return false;
+        }*/
 
         return true;
     }

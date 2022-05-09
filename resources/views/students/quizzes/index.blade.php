@@ -98,6 +98,8 @@
                                             @include('students.quizzes.start_quiz')
 
                                         @elseif($quiz->status == 'finisned' && $quiz->pivot->joined)
+                                            <button class = "btn btn-warning" data-bs-toggle="modal" data-bs-target="#show_modal_{{$quiz->id}}">{{__('general.result')}}</button>
+                                            @include('students.quizzes.show_modal')
 
                                         @elseif($quiz->status == 'finisned' && !$quiz->pivot->joined)
 
