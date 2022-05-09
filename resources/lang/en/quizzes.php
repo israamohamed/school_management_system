@@ -24,7 +24,11 @@ return [
 
     'submit_answers' => 'Send Answers',
 
+    'you_have_no_access_to_this_quiz' => 'You have no access to this quiz',
 
+
+    'your_answer' => 'Your Answer',
+    'your_score' => 'Your Score',
 
     'questions' => [
         'title' => 'Questions',
@@ -39,6 +43,7 @@ return [
         'correct_choice' => 'Correct Choice',
         'wrong_choices' => 'Wrong Choices',
         'choices' => 'Choices',
+        'choice' => 'Choice',
     ],
 
   

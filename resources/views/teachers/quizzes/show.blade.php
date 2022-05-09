@@ -3,9 +3,9 @@
 @section('title' , $quiz->name )
 
 @push('styles')
-
-  
+    <link href="{{asset('dashboard/assets/libs/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css" />
 @endpush
+
 @section('breadcrumb')
     <h4 class="mb-sm-0">{{__('quizzes.show')}}</h4>
 
@@ -39,21 +39,21 @@
                             <span class="d-none d-sm-block">{{__('quizzes.questions.title')}}</span> 
                         </a>
                     </li>
-                    {{-- <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
-                        <a class="nav-link" data-bs-toggle="tab" href="#quiz_parent_date" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                            <span class="d-none d-sm-block">{{__('quiz_parents.show')}}</span> 
-                        </a>
-                    </li> --}}
-                   
 
+                    <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-2 rounded">
+                        <a class="nav-link" data-bs-toggle="tab" href="#students_tab" role="tab">
+                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block">{{__('students.title')}}</span> 
+                        </a>
+                    </li>
                 </ul>
 
 
                   <!-- Tab panes -->
                   <div class="tab-content p-3 text-muted">
                       @include('teachers.quizzes.tabs.questions_tab')
-                      {{-- @include('teacher.quizzes.tabs.quiz_parent_tab') --}}
+                      @include('teachers.quizzes.tabs.students_tab')
+ 
 
 
                   </div>
@@ -112,7 +112,11 @@
         
     </script>
 
+<!-- Magnific Popup-->
+<script src="{{asset('dashboard/assets/libs/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
 
+<!-- lightbox init js-->
+<script src="{{asset('dashboard/assets/js/pages/lightbox.init.js')}}"></script>
 @endpush
 
 

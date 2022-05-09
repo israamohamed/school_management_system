@@ -1,5 +1,9 @@
 @extends('students.master')
 
+@php 
+    \App\Http\Controllers\Student\QuizController::change_started_quiz_status($quiz->id);
+@endphp
+
 @section('title' , $quiz->name )
 
 @push('styles')

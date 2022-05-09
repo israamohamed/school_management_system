@@ -35,6 +35,7 @@ return [
     'date' => 'Date',
     'copy_to_clipboard' => 'Copy To Clipboard',
     'minutes' => 'minutes',
+    'result' => 'Results',
 
     'title' => 'Title',
     'title_en' => 'Title in English',

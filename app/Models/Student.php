@@ -131,7 +131,7 @@ class Student extends Authenticatable
 
     public function quizzes()
     {
-        return $this->belongsToMany('App\Models\Quiz')->withPivot('score' , 'joined');
+        return $this->belongsToMany('App\Models\Quiz')->withPivot('score' , 'joined' , 'started');
     }
 
     public function questions()

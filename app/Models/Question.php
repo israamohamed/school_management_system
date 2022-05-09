@@ -11,6 +11,8 @@ class Question extends Model
 
     protected $fillable = ['title' , 'score' , 'quiz_id'];
 
+    protected $appends = ['correct_choice'];
+
     public function quiz()
     {
         return $this->belongsTo('App\Models\Quiz');
@@ -19,5 +21,10 @@ class Question extends Model
     public function choices()
     {
         return $this->hasMany('App\Models\Choice');
+    }
+
+    public function getCorrectChoiceAttribute()
+    {
+        return $this->choices()->where('correct' , 1)->first();
     }
 }

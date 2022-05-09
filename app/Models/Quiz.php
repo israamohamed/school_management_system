@@ -11,7 +11,7 @@ class Quiz extends Model
 
     protected $fillable = ['name' , 'teacher_id' , 'educational_class_room_id' , 'subject_id' , 'time_in_minutes' , 'active' , 'status'];
 
-    protected $appends = ['status_color'];
+    protected $appends = ['status_color' , 'score'];
 
     public function scopeActive($query)
     {
@@ -62,7 +62,7 @@ class Quiz extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Student')->withPivot('score' , 'joined');
+        return $this->belongsToMany('App\Models\Student')->withPivot('score' , 'joined' , 'started');
     }
     
 
@@ -86,5 +86,10 @@ class Quiz extends Model
         {
             return 'secondary';
         }
+    }
+
+    public function getScoreAttribute()
+    {
+        return $this->questions()->sum('score');
     }
 }

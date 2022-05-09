@@ -88,6 +88,8 @@
                                     </td>
                                     <td>
                                         @if($quiz->status == 'started' && $quiz->pivot->joined ) {{-- student joined before--}}
+                                            <button class = "btn btn-warning" data-bs-toggle="modal" data-bs-target="#show_modal_{{$quiz->id}}">{{__('general.result')}}</button>
+                                            @include('students.quizzes.show_modal')
 
                                         {{-- start quiz --}}
                                         @elseif($quiz->status == 'started' && !$quiz->pivot->joined ){{-- student not joined before--}}
