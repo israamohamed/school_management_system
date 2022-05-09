@@ -13,6 +13,33 @@ class Quiz extends Model
 
     protected $appends = ['status_color'];
 
+    public function scopeActive($query)
+    {
+        return $query->where('active' , 1);
+    }
+
+    public function scopeSearch($query)
+    {
+        return $query->where(function($q){
+
+            if(request()->filled('search'))
+            {
+                $q->where('name' , 'like' , '%' . request()->search . '%');
+            }
+
+            if(request()->filled('subject_id'))
+            {
+                $q->where('subject_id' , request()->subject_id);              
+            }
+
+            if(request()->filled('status'))
+            {
+                $q->where('status' , request()->status);              
+            }
+
+        });
+    }
+
     public function teacher() {
 
         return $this->belongsTo('App\Models\Teacher');
@@ -35,7 +62,7 @@ class Quiz extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Student')->withPivot('score');
+        return $this->belongsToMany('App\Models\Student')->withPivot('score' , 'joined');
     }
     
 

@@ -17,6 +17,13 @@ return [
     'started' => 'Available Now',
     'finished' => 'Finished',
 
+    'joined_before' => 'Joined Before',
+
+
+    'start_quiz' => 'Start Quiz',
+
+    'submit_answers' => 'Send Answers',
+
 
 
     'questions' => [

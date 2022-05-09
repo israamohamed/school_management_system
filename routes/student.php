@@ -14,14 +14,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
     Route::name('student.')->prefix('student')->group(function(){
 
         Route::get('home' , 'HomeController@index')->name('home');
-        // //Quizzes
-        // Route::resource('quiz' , 'QuizController');
-        // //Questions
-        // Route::resource('question' , 'QuestionController');
-        // //Student Attendance
-        // Route::resource('student_attendance' , 'StudentAttendanceController');
-        // //Online Classes
-        // Route::resource('online_class' , 'OnlineClassController');
+        //Online Classes
+        Route::get('online_class' , 'OnlineClassController@index')->name('online_class.index');
+
+        //Quizzes
+        Route::get('quiz' , 'QuizController@index')->name('quiz.index');
+        Route::post('start_quiz/{id}' , 'QuizController@start_quiz')->name('quiz.start_quiz');
+        Route::get('get_questions/{id}' , 'QuizController@get_questions')->name('quiz.get_questions');
+        Route::post('solve_quiz/{id}' , 'QuizController@solve_quiz')->name('quiz.solve_quiz');
+     
     }); 
     
 });

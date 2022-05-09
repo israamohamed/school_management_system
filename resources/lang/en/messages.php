@@ -38,5 +38,12 @@
 
 
         'student_attendance_saved' => 'Attendance and absence are saved successfully',
+
+
+        'start_quiz_warning' => 'Quiz :name will be started once you click on Start Quiz, you have one chance to solve the quiz. Good Luck ',
+
+        'submit_answers_warning' => 'Answers will be sent.',
+
+        'answers_submitted_successfully' => 'Your answers are submitted successfully',
         
     ];

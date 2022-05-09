@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Builder;
 
 class Subject extends Model
 {
@@ -15,6 +16,18 @@ class Subject extends Model
     protected $translatable = ['name'];
 
     protected $appends = ['name_in_details'];
+
+    protected static function booted()
+    {
+        static::addGlobalScope('student_subjects', function (Builder $builder) {
+
+            if(auth()->guard('student')->check())
+            {
+                $builder->where('class_room_id' , auth()->guard('student')->user()->class_room_id   );
+            }
+           
+        });
+    }
 
     public function scopeSearch($query)
     {

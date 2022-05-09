@@ -131,12 +131,12 @@ class Student extends Authenticatable
 
     public function quizzes()
     {
-        return $this->belongsToMany('App\Models\Quiz')->withPivot('score');
+        return $this->belongsToMany('App\Models\Quiz')->withPivot('score' , 'joined');
     }
 
     public function questions()
     {
-        return $this->belongsToMany('App\Models\Question')->withPivot('quiz_id' , 'choice_id' , 'correct' , 'score');
+        return $this->belongsToMany('App\Models\Question')->withPivot('quiz_id' , 'choice_id' , 'correct' , 'score' , 'answer');
     }
 
     public function setPasswordAttribute($value)

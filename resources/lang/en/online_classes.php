@@ -17,4 +17,7 @@ return [
 
     'join_class' => 'Join Class',
     'start_class' => 'Start Class',
+
+    'upcoming_online_classes' => 'Upcoming Online Classes',
+    'previous_online_classes' => 'Previous Online Classes',
 ];
