@@ -22,6 +22,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::post('start_quiz/{id}' , 'QuizController@start_quiz')->name('quiz.start_quiz');
         Route::get('get_questions/{id}' , 'QuizController@get_questions')->name('quiz.get_questions');
         Route::post('solve_quiz/{id}' , 'QuizController@solve_quiz')->name('quiz.solve_quiz');
+
+        //subjects
+        Route::get('subject/{id}' , 'SubjectController@show')->name('subject.show');
      
     }); 
     

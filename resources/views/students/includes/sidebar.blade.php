@@ -21,15 +21,23 @@
             </a>
         </li>
 
-
-     
-        {{-- Quizzes --}}
-        {{-- <li class = "{{request()->routeIs('teacher.quiz.*') ? 'mm-active' : ''}}">
-            <a href="{{route('teacher.quiz.index')}}" class=" waves-effect">
-                <i class="ri-calendar-2-line"></i>
-                <span>{{__('sidebar.quizzes')}}</span>
+         {{-- Subjects Subjects --}}
+         <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-account-circle-line"></i>
+                <span>{{__('sidebar.my_courses')}}</span>
             </a>
-        </li> --}}
+            <ul class="sub-menu" aria-expanded="false">
+                @php 
+                    $subjects = \App\Models\Subject::where('class_room_id' , auth()->guard('student')->user()->class_room_id   )->get();
+                @endphp
+                @foreach($subjects as $subject)
+                    <li><a href="{{route('student.subject.show' , $subject->id)}}">{{ $subject->name }}</a></li>
+                @endforeach
+            </ul>
+        </li>
+
+
 
       
     
