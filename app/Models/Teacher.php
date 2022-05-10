@@ -54,6 +54,11 @@ class Teacher extends Authenticatable
         return $this->hasMany('App\Models\Quiz');
     }
 
+    public function subject_attachments()
+    {
+        return $this->hasMany('App\Models\Attachment');
+    }
+
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);

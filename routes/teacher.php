@@ -22,6 +22,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::resource('student_attendance' , 'StudentAttendanceController');
         //Online Classes
         Route::resource('online_class' , 'OnlineClassController');
+        //Subjects
+        Route::get('subject/show/{id}' , 'SubjectController@show')->name('subject.show');
+        Route::post('subject/store_attachments/{subject_id}' , 'SubjectController@store_attachments')->name('subject.store_attachments');
+        Route::put('subject/update_attachment/{id}' , 'SubjectController@update_attachment')->name('subject.update_attachment');
+        Route::delete('subject/destroy_attachment/{id}' , 'SubjectController@destroy_attachment')->name('subject.destroy_attachment');
+        Route::get('subject/download_attachment/{id}' , 'SubjectController@download_attachment')->name('subject.download_attachment');
+
     }); 
     
 });

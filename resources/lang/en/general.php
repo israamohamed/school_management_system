@@ -106,6 +106,7 @@ return [
         'delete' => 'Delete Attachment', 
         'one' => 'attachment',
         'select' => 'select attachment',
+        'description' => 'Description',
     ],
 
     'absence_reasons' => [
@@ -133,5 +134,9 @@ return [
         'first_term' => 'First Term',
         'seccond_term' => 'Second Term',
         'attributes' => 'Subject Attributes',
+        'number_of_students'    => 'Number Of Students',
+        'number_of_attachments' => 'Number Of Attachments',
+        'number_of_quizzes' => 'Number Of Quizzes',
+        'attachments' => 'Subject Attachments',
     ],
 ];

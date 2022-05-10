@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
+use App\Traits\Attachments\HasAttachments;
 
 class Subject extends Model
 {
-    use HasFactory , HasTranslations;
+    use HasFactory , HasTranslations , HasAttachments;
 
     protected $fillable = ['name' , 'class_room_id' , 'upper_grade' , 'lower_grade' , 'main_subject' , 'success_required' , 'shared_between_terms' , 'term' , 'active'];
 
@@ -59,6 +60,11 @@ class Subject extends Model
     public function teachers()
     {
         return $this->belongsToMany('App\Models\Teacher');
+    }
+
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz');
     }
 
     public function getNameInDetailsAttribute()

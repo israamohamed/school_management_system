@@ -9,9 +9,11 @@ trait HasAttachments
         return $this->morphMany('App\Models\Attachment' , 'attachmentable');
     }
 
-    public function uploadAttachments($attachments , $folder_name = '')
+    public function uploadAttachments($attachments , $folder_name = '' , $description = '')
     {
         $folder_name = $folder_name ?? 'other' ;
+        $description = $description ?? null ;
+        $teacher_id  = auth()->guard('teacher')->check() ?  auth()->guard('teacher')->user()->id : null ;
 
         if($attachments && count($attachments) > 0 )
         {
@@ -19,7 +21,11 @@ trait HasAttachments
             {
                 $file = $attachment->storeAs($folder_name, $attachment->getClientOriginalName());
 
-                $this->attachments()->create(['path' => $file ]);
+                $this->attachments()->create([
+                    'path' => $file , 
+                    'description' => $description , 
+                    'teacher_id' => $teacher_id 
+                ]);
             }
         }
     }

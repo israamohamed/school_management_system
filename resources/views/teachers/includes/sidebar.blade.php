@@ -28,6 +28,19 @@
             </a>
         </li>
 
+        {{-- Teacher Subjects --}}
+        <li>
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                <i class="ri-account-circle-line"></i>
+                <span>{{__('sidebar.subjects')}}</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                @foreach(auth()->guard('teacher')->user()->subjects as $subject)
+                    <li><a href="{{route('teacher.subject.show' , $subject->id)}}">{{ $subject->name_in_details }}</a></li>
+                @endforeach
+            </ul>
+        </li>
+
 
     
     </ul>
