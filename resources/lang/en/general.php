@@ -53,6 +53,7 @@ return [
 
     'academic_year' => 'academic year',
     'notes' => 'Notes',
+    'more_info' => 'More Info',
 
     'educational_stages' => [
         'title' => 'Educational Stages',
@@ -132,7 +133,7 @@ return [
         'shared_between_terms' => 'Shared Between Terms',
         'term' => 'Term',
         'first_term' => 'First Term',
-        'seccond_term' => 'Second Term',
+        'second_term' => 'Second Term',
         'attributes' => 'Subject Attributes',
         'number_of_students'    => 'Number Of Students',
         'number_of_attachments' => 'Number Of Attachments',

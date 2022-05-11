@@ -14,7 +14,7 @@ class Student extends Authenticatable
 
     protected $guarded = ['id'];
     public $translatable = ['name' , 'birth_place'];
-    protected $appends = ['profile_picture' , 'balance'];
+    protected $appends = ['profile_picture' , 'balance' , 'date'];
 
     public function scopeSearch($query)
     {
@@ -147,6 +147,11 @@ class Student extends Authenticatable
     public function getBalanceAttribute()
     {
         return $this->student_transactions()->sum('debit') - $this->student_transactions()->sum('credit');
+    }
+
+    public function getDateAttribute()
+    {
+        return date("Y-m-d" , strtotime( $this->created_at));
     }
 
 }

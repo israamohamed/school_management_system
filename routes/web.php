@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Calendar;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['l
 
     });
 });
+
+Livewire::component('calendar', Calendar::class);
 
 Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['auth' , 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function() {
 
