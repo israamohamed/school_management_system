@@ -68,6 +68,14 @@
         #sidebar-menu ul li ul.sub-menu li a {
             font-size: 15px;
         }
+
+        .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > ul {
+            width: 300px;
+        }
+
+        .vertical-collpsed .vertical-menu #sidebar-menu > ul > li:hover > a {
+            width: 370px;
+        }
     </style>
 
        <!-- Icons Css -->

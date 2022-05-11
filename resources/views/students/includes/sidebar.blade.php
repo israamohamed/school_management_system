@@ -8,7 +8,7 @@
         {{-- Online Classes --}}
         <li class = "{{request()->routeIs('student.online_class.*') ? 'mm-active' : ''}}">
             <a href="{{route('student.online_class.index')}}" class=" waves-effect">
-                <i class="ri-calendar-2-line"></i>
+                <i class="fas fa-globe"></i>
                 <span>{{__('sidebar.online_classes')}}</span>
             </a>
         </li>
@@ -16,7 +16,7 @@
         {{-- Quizzes --}}
         <li class = "{{request()->routeIs('student.quiz.*') ? 'mm-active' : ''}}">
             <a href="{{route('student.quiz.index')}}" class=" waves-effect">
-                <i class="ri-calendar-2-line"></i>
+                <i class="far fa-question-circle"></i>
                 <span>{{__('sidebar.quizzes')}}</span>
             </a>
         </li>
@@ -24,7 +24,7 @@
          {{-- Subjects Subjects --}}
          <li>
             <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="ri-account-circle-line"></i>
+                <i class="fas fa-id-badge"></i>
                 <span>{{__('sidebar.my_courses')}}</span>
             </a>
             <ul class="sub-menu" aria-expanded="false">
