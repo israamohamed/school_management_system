@@ -37,12 +37,42 @@
         <link href="{{asset('dashboard/assets/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('dashboard/assets/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@600&display=swap');
+
+            h1 , h2 , h3 , h4 , h5 , h6 , p , input , textarea , select , span , th , td , button , a , label , option , div
+            {
+                font-family: 'Noto Kufi Arabic', sans-serif !important;
+            }
+        </style>
     @else 
         <!-- Bootstrap Css -->
         <link href="{{asset('dashboard/assets/css/bootstrap.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{asset('dashboard/assets/css/app.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@600&display=swap');
+
+            @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@500&display=swap');
+            h1 , h2 , h3 , h4 , h5 , h6 , p , input , textarea , select , span , th , td , button , a , label , option , div
+            {
+                /* font-family: 'Signika Negative', sans-serif; */
+                font-family: 'Merriweather Sans', sans-serif !important;
+            }
+        </style>
     @endif
+
+    <style>
+        #sidebar-menu ul li a {
+            font-size: 20px;
+        }
+
+        #sidebar-menu ul li ul.sub-menu li a {
+            font-size: 15px;
+        }
+    </style>
 
        <!-- Icons Css -->
        <link href="{{asset('dashboard/assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
@@ -66,7 +96,7 @@
    
 
    
-    <div class="vertical-menu">
+    <div class="vertical-menu" style = "width: 300px;">
 
         <div data-simplebar class="h-100">
 
@@ -131,6 +161,7 @@
 
 <script src="{{asset('dashboard/assets/js/pages/dashboard.init.js')}}"></script>
 
+@include('app')
 @jquery
 @toastr_js
 @toastr_render
@@ -141,6 +172,8 @@
 {{-- <script src="{{asset('dashboard/assets/libs/toastr/build/toastr.min.js')}}"></script> --}}
 {{-- select2 --}}
 <script src="{{asset('dashboard/assets/libs/select2/js/select2.min.js')}}"></script>
+
+
 
 <!-- App js -->
 {{-- <script src="{{asset('dashboard/assets/js/app.js')}}"></script> --}}

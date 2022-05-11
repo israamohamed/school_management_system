@@ -36,6 +36,7 @@ return [
     'copy_to_clipboard' => 'Copy To Clipboard',
     'minutes' => 'minutes',
     'result' => 'Results',
+    'menu' => 'Menu',
 
     'title' => 'Title',
     'title_en' => 'Title in English',

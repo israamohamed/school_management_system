@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
+            <div class="navbar-brand-box" style = "width: 300px;">
                 <a href="{{route('dashboard.home')}}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{asset('dashboard/assets/images/logo-sm-dark.png')}}" alt="logo-sm-dark" height="26">
@@ -65,7 +65,17 @@
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item waves-effect"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="{{asset('dashboard/assets/images/flags/us.jpg')}}" alt="Header Language" height="16">
+
+                    @php 
+                        $src = asset('dashboard/assets/images/flags/us.jpg');
+                        if( isset(LaravelLocalization::getSupportedLocales()[App::getLocale()]['flag']) ) 
+                        {
+                            $src = asset('dashboard/assets/images/flags/' . LaravelLocalization::getSupportedLocales()[App::getLocale()]['flag'] );
+                        }
+                    @endphp
+                    <img class="" src="{{$src}}" alt="Header Language" height="16">
+
+
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
 
