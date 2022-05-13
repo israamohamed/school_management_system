@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Traits\Attachments\HasAttachments;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
 
 class Student extends Authenticatable
 {
@@ -15,6 +16,16 @@ class Student extends Authenticatable
     protected $guarded = ['id'];
     public $translatable = ['name' , 'birth_place'];
     protected $appends = ['profile_picture' , 'balance' , 'date'];
+
+
+    protected static function booted()
+    {
+        static::addGlobalScope('enrolled_students', function (Builder $builder) {
+
+            $builder->where('status' , 'enrolled');
+           
+        });
+    }
 
     public function scopeSearch($query)
     {

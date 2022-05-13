@@ -38,7 +38,7 @@ class StudentAttendanceController extends Controller
                                                     return ['attendance' => $group->where('attendance_status' , 1)->sum('*')];
                                                 })
         ;*/
-        $educational_class_rooms = EducationalClassRoom::search()->with(['attendances' => function($query){
+        $educational_class_rooms = EducationalClassRoom::search()->withCount('students')->with(['attendances' => function($query){
 
             $query->where('attendance_date' , request()->attendance_date)
                     ->where('academic_year' , request()->academic_year);
@@ -80,7 +80,7 @@ class StudentAttendanceController extends Controller
                     ->where('academic_year' , request()->academic_year);
             });
 
-        }])->enrolled()->where(function($q){
+        }])->where(function($q){
 
             $q->where('class_room_id' , request()->class_room_id);
         

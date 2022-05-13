@@ -35,7 +35,7 @@ class StudentInvoice extends Model
 
     public function student()
     {
-        return $this->belongsTo('App\Models\Student');
+        return $this->belongsTo('App\Models\Student')->withoutGlobalScope('enrolled_students');
     }
 
     public function study_fee()

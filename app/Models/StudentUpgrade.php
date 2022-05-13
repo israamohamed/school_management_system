@@ -13,7 +13,7 @@ class StudentUpgrade extends Model
 
     public function student()
     {
-        return $this->belongsTo('App\Models\Student');
+        return $this->belongsTo('App\Models\Student')->withoutGlobalScope('enrolled_students');
     }
 
     public function previous_educational_stage()

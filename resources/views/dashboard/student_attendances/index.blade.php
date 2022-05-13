@@ -72,6 +72,7 @@
                                     <th>{{__('general.educational_stages.one')}}</th>
                                     <th>{{__('general.class_rooms.one')}}</th>
                                     <th>{{__('general.educational_class_rooms.one')}}</th>
+                                    <th>{{__('general.number_of_students')}}</th>
                                     <th>{{__('students.student_attendances.attendant_number')}}</th>
                                     <th>{{__('students.student_attendances.absence_number')}}</th>
                                  
@@ -85,7 +86,8 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$educational_class_room->class_room && $educational_class_room->class_room->educational_stage ? $educational_class_room->class_room->educational_stage->name : '--' }}</td>
                                     <td>{{$educational_class_room->class_room ? $educational_class_room->class_room->name : '--' }}</td>
-                                    <td>{{$educational_class_room->name}}</td> 
+                                    <td>{{$educational_class_room->name}}</td>
+                                    <td>{{$educational_class_room->students_count}}</td> 
                                     <td>{{$educational_class_room->attendants_number}}</td> 
                                     <td>{{$educational_class_room->absence_number}}</td> 
                                    
@@ -93,6 +95,11 @@
                                     <td class="text-bold-500">
                                        {{--show--}}
                                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$educational_class_room->id}}"><i class = " far fa-eye"></i> </button>
+                                       <a href="{{route('dashboard.student_attendance.create'  , [  'educational_stage_id' => $educational_class_room->class_room ? $educational_class_room->class_room->educational_stage_id : '' , 
+                                                                                                    'class_room_id' => $educational_class_room->class_room_id ,     
+                                                                                                    'educational_class_room_id' => $educational_class_room->id ,
+                                                                                                    'academic_year' => date("Y") ,
+                                                                                                    'attendance_date' => date("Y-m-d") ]  )}}" class = "btn btn-info btn-sm"><i class = "fas fa-clipboard-check"></i></a>
                                        @include('dashboard.student_attendances.show_modal')
 
                                     </td>

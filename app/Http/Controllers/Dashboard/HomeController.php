@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $data['students_count']                 = Student::where('status' , 'enrolled')->count();
-        $data['graduated_students_count']       = Student::where('status' , 'graduated')->count();
+        $data['graduated_students_count']       = Student::withoutGlobalScope('enrolled_students')->garduated()->count();
         $data['educational_class_rooms_count']  = EducationalClassRoom::count();
         $data['students_invoices_count']        = StudentInvoice::count();
         $data['teachers_count']                 = Teacher::count();

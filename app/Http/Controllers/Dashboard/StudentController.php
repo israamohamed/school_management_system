@@ -22,7 +22,7 @@ class StudentController extends Controller
   
     public function index()
     {
-        $students = Student::enrolled()->search()->paginate(20);
+        $students = Student::search()->paginate(20);
         $educational_stages = EducationalStage::get();
         $class_rooms = ClassRoom::where('educational_stage_id' , request()->educational_stage_id)->get();
         return view('dashboard.students.index' , compact('students' , 'educational_stages' ,'class_rooms'));
@@ -83,7 +83,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::with(['blood_type' , 'nationality' , 'relision' , 'student_parent' , 'class_room' , 'educational_class_room' , 'created_by' , 'attachments' , 'student_invoices' , 'student_transactions' , 'financial_bonds'])->findOrFail($id);
+        $student = Student::withoutGlobalScope('enrolled_students')->with(['blood_type' , 'nationality' , 'relision' , 'student_parent' , 'class_room' , 'educational_class_room' , 'created_by' , 'attachments' , 'student_invoices' , 'student_transactions' , 'financial_bonds'])->findOrFail($id);
 
         $study_fees = StudyFee::filterStudent($student->id)->get();
         return view('dashboard.students.show' , compact('student' , 'study_fees'));
@@ -97,7 +97,7 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::withoutGlobalScope('enrolled_students')->findOrFail($id);
 
         $blood_types        = BloodType::get();
         $nationalities      = Nationality::get();
@@ -117,7 +117,7 @@ class StudentController extends Controller
      */
     public function update(StudentRequest $request, $id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::withoutGlobalScope('enrolled_students')->findOrFail($id);
 
         $request->merge([
             'name' =>   [
@@ -153,7 +153,7 @@ class StudentController extends Controller
 
     public function destroy($id)
     {
-        $student = Student::findOrFail($id);
+        $student = Student::withoutGlobalScope('enrolled_students')->findOrFail($id);
         $student->deleteAttachments();
         $student->delete();
         toastr()->success(__('messages.deleted_successfully'));
@@ -166,7 +166,7 @@ class StudentController extends Controller
             'attachments' => 'required|array',
             'attachments.*' => 'file',
         ]);
-        $student = Student::findOrFail($id);
+        $student = Student::withoutGlobalScope('enrolled_students')->findOrFail($id);
         $student->uploadAttachments($request->attachments , 'students');
         //success message
         toastr()->success(__('messages.added_successfully'));
