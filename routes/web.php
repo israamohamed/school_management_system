@@ -92,6 +92,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //teacher
         Route::resource('teacher' , 'TeacherController');
+
+        //school data
+        Route::get('school_data/edit' , 'SchoolDataController@edit')->name('school_data.edit');
+        Route::put('school_data/update' , 'SchoolDataController@update')->name('school_data.update');
     
     
     

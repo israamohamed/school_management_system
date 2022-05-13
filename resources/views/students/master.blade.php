@@ -9,7 +9,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('dashboard/assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{school_data() ? school_data()->logo : asset('images/logo.png')}}">
 
     <!-- jquery.vectormap css -->
     <link href="{{asset('dashboard/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet')}}"

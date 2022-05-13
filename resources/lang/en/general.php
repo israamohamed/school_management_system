@@ -141,4 +141,17 @@ return [
         'number_of_quizzes' => 'Number Of Quizzes',
         'attachments' => 'Subject Attachments',
     ],
+
+    'school_data' => [
+        'title' => 'School Data',
+        'edit' => 'Edit School Data',
+        'logo' => 'School Logo',
+        'name_en' => 'School Name in English',
+        'name_ar' => 'School Name in Arabic',
+        'address_en' => 'School address in English',
+        'address_ar' => 'School address in Arabic',
+        'email' => 'School Email Address',
+        'phone_number1' => 'School Phone Number 1',
+        'phone_number2' => 'School Phone Number 2',
+    ],
 ];

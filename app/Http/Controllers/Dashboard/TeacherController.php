@@ -43,7 +43,7 @@ class TeacherController extends Controller
             //store teacher in db
             $teacher = Teacher::create($request->all());
             //uploads profile_picture
-            $teacher->uploadProfilePicture($request->profile_picture , 'teachers');
+            $teacher->uploadImage($request->profile_picture , 'teachers' , 'profile_picture');
             //add subjects to teacher
             if($request->filled('subjects') &&  count($request->subjects) > 0 )
             {
@@ -102,7 +102,7 @@ class TeacherController extends Controller
             //update teacher in db
             $teacher->update($updated_data);
             //update profile_picture
-            $teacher->updateProfilePicture($request->profile_picture , 'teachers');
+            $teacher->updateImage($request->profile_picture , 'teachers' , 'profile_picture');
             //update subjects to teacher
             $teacher->subjects()->sync($request->subjects);
              //update educational_class_room to teacher

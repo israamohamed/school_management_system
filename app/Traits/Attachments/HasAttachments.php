@@ -60,7 +60,7 @@ trait HasAttachments
         
     }
 
-    public function uploadProfilePicture( $file , $folder_name = '')
+    public function uploadImage( $file , $folder_name , $type )
     {
         $folder_name = $folder_name ?? 'other' ;
 
@@ -68,29 +68,23 @@ trait HasAttachments
         {
             $image = $file->store($folder_name);
 
-            $this->attachments()->create(['path' => $image , 'type' => 'profile_picture' ]);
-
-            /*$file = $file->storeAs($folder_name, $file->getClientOriginalName());
-
-            $this->attachments()->create(['path' => $file , 'type' => 'profile_picture' ]);*/
-            
+            $this->attachments()->create(['path' => $image , 'type' => $type ]);            
         }
     }
 
-    public function updateProfilePicture( $file , $folder_name = '')
+    public function updateImage( $file , $folder_name , $type)
     {
         $folder_name = $folder_name ?? 'other' ;
 
         if($file)
         {
             //Delete Old Image
-
-            $old_image = $this->attachments()->where('type' , 'profile_picture')->first();
+            $old_image = $this->attachments()->where('type' , $type)->first();
 
             if($old_image)
             {
                 Storage::delete($old_image->path);
-                $this->attachments()->where('type' , 'profile_picture')->delete();
+                $this->attachments()->where('type' , $type)->delete();
             }
 
 
@@ -98,7 +92,7 @@ trait HasAttachments
 
             $this->attachments()->create([
                 'path' => $image ,
-                'type' => 'profile_picture'
+                'type' => $type
             ]);
             
         }
@@ -109,6 +103,13 @@ trait HasAttachments
         $image = $this->attachments()->where('type' , 'profile_picture')->first();
 
         return $image ? asset('uploads/' . $image->path) : asset('images/default_user.png');
+    }
+
+    public function getLogoAttribute()
+    {
+        $image = $this->attachments()->where('type' , 'logo')->first();
+
+        return $image ? asset('uploads/' . $image->path) : asset('images/logo.png');
     }
 
     public function getMainAttachmentsAttribute()

@@ -24,6 +24,9 @@ return [
     'teachers' => 'Teachers',
     'add_teacher' => 'Add Teacher',
 
+    'school_data' => 'School Data',
+    'school_management' => 'School Management',
+
 
 
 

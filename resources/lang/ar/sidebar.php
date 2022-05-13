@@ -25,6 +25,10 @@ return [
     'add_teacher' => 'إضافة معلم',
 
 
+    'school_data' => 'بيانات المدرسة',
+    'school_management' => 'إدارة المدرسة',
+
+
 
 
     //Teachers Sidebar

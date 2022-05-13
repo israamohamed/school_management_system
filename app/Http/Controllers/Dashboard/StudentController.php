@@ -62,7 +62,7 @@ class StudentController extends Controller
             //upload attachments
             $student->uploadAttachments($request->attachments , 'students');
             //uploads profile_picture
-            $student->uploadProfilePicture($request->profile_picture , 'students');
+            $student->uploadImage($request->profile_picture , 'students' , 'profile_picture');
             //success message
             toastr()->success(__('messages.added_successfully'));
             return redirect()->route('dashboard.student.index');
@@ -71,7 +71,7 @@ class StudentController extends Controller
      
         catch(\Exception $e) {
             toastr()->error($e->getMessage());
-            return back()->with('error' , $e->getMessage());
+            return back()->withIput()->with('error' , $e->getMessage());
         }
     }
 
@@ -138,7 +138,7 @@ class StudentController extends Controller
             //update attachments
             $student->updateAttachments($request->attachments , 'students');
             //update profile_picture
-            $student->updateProfilePicture($request->profile_picture , 'students');
+            $student->updateImage($request->profile_picture , 'students' , 'profile_picture');
             //success message
             toastr()->success(__('messages.updated_successfully'));
             return redirect()->route('dashboard.student.index');

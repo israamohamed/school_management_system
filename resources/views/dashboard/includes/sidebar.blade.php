@@ -111,5 +111,16 @@
             </ul>
         </li>
 
+        {{-- School Management --}}
+        <li class = "{{request()->routeIs('dashboard.school_data.*')  ? 'mm-active' : ''}}">
+            <a href="javascript: void(0);" class="has-arrow waves-effect {{request()->routeIs('dashboard.school_data.*')  ? 'mm-show' : ''}}">
+                <i class=" fas fa-school"></i>
+                <span>{{__('sidebar.school_management')}}</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{route('dashboard.school_data.edit')}}">{{__('sidebar.school_data')}}</a></li>
+            </ul>
+        </li>
+
     </ul>
 </div>
