@@ -56,6 +56,11 @@ return [
     'notes' => 'Notes',
     'more_info' => 'More Info',
 
+    
+    'from' => 'From',
+    'to'   => 'To',
+
+
     'educational_stages' => [
         'title' => 'Educational Stages',
         'create' => 'Add educational stage',

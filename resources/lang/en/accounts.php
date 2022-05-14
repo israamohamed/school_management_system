@@ -38,6 +38,7 @@ return [
         'delete' => 'delete study fee',
         'one' => 'study fee',
         'select' => 'select study fee',
+        'all' => 'All study fees',
     ],
 
     'student_invoices' => [

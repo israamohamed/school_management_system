@@ -29,6 +29,7 @@
                     <h4 class = "float-start">{{__('accounts.student_invoices.create')}}</h4>
                     <div class="clearfix"></div>
                 </div>
+                
 
 
                     <form action="{{route('dashboard.student_invoice.store')}}" method = "post" enctype="multipart/form-data" class="repeater">
@@ -43,8 +44,8 @@
                             
                             <select name="student_id" class = "select2 form-control selected_student">
                                 <option value="">{{__('students.one')}}</option>
-                                @foreach($students as $student)
-                                    <option value="{{$student->id}}" {{old('student_id') == $student->id ? 'selected' : ''}} >{{$student->name}}</option>
+                                @foreach($students as $student_data)
+                                    <option value="{{$student_data->id}}" {{old('student_id') == $student_data->id ? 'selected' : ''}} >{{$student_data->name}}</option>
                                 @endforeach
                             </select>
                             <br>
@@ -160,6 +161,7 @@
                                 </div>
                             @endforeach
 
+
                             @else 
                                 <div class="row mb-3" data-repeater-item>
 
@@ -167,12 +169,20 @@
                                         {{-- study fee --}}
                                         <div class="form-group">
                                             <label for="study_fee_id">{{__('accounts.study_fees.one')}}</label>
-                                            <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
-                                                <option value="">{{__('accounts.study_fees.select')}}</option>
-                                                @foreach($study_fees as $study_fee)
-                                                    <option value="{{$study_fee->id}}" data-amount = "{{$study_fee->amount}}" {{old('study_fee_id') == $study_fee->id ? 'selected' : ''}} >{{$study_fee->title}}</option>
-                                                @endforeach       
-                                            </select>
+                                          
+                                            @if($student)
+                                                <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
+                                                    <option value="">{{__('accounts.study_fees.select')}}</option>
+                                                    @foreach($study_fees as $study_fee)
+                                                        <option value="{{$study_fee->id}}" data-amount = "{{$study_fee->amount}}" >{{$study_fee->title}}</option>
+                                                    @endforeach       
+                                                </select>
+                                            @elseif($students)
+                                                <select name="study_fee_id" class = "study_fee form-control select2 @error('study_fee_id') is-invalid @enderror" onchange="changing_amount(this)">
+                                                    <option value="">{{__('accounts.study_fees.select')}}</option>
+                                                                                     
+                                                </select>
+                                            @endif
                                             @error('study_fee_id')
                                             <div class="invalid-feedback d-block">
                                                 {{$message}}

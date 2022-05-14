@@ -10,13 +10,14 @@ use App\Models\StudyFee;
 use App\Http\Requests\StoreStudentInvoiceRequest;
 use App\Http\Requests\UpdateStudentInvoiceRequest;
 use Illuminate\Support\Facades\DB;
+use App\Models\StudyFeeItem;
 
 class StudentInvoiceController extends Controller
 {
   
     public function index()
     {
-        $student_invoices = StudentInvoice::search()->paginate(25);
+        $student_invoices = StudentInvoice::search()->latest()->paginate(10);
         $students = Student::select('id' , 'name')->get();
         $study_fees = StudyFee::get();
         return view('dashboard.student_invoices.index' , compact('student_invoices' , 'students' , 'study_fees'));
@@ -30,43 +31,19 @@ class StudentInvoiceController extends Controller
 
         if($request->filled('students'))
         {
-            $students = Student::enrolled()->get();
+            $students = Student::select('id' , 'name')->get();
         }
         else if($request->filled('student_id'))
         {
             $student = Student::findOrFail($request->student_id) ;
         }
      
+        $study_fees = StudyFee::get();
+        if($student)
+        {
+            $study_fees = StudyFee::filterStudent($student->id)->get();
+        }
 
-        $study_fees = StudyFee::where(function($query) use($request){
-            $main_student = Student::findOrFail($request->student_id);
-
-            if($main_student)
-            {
-                if($main_student->educational_stage())
-                {
-                    $query->where(function($q) use($main_student){
-
-                        $q->where('educational_stage_id' , $main_student->educational_stage()->id)
-                            ->orWhereNull('educational_stage_id');
-
-                    });
-                }
-
-                if($main_student->class_room)
-                {
-                    $query->where(function($q) use($main_student){
-
-                        $q->where('class_room_id' , $main_student->class_room_id)
-                            ->orWhereNull('class_room_id');
-
-                    });
-                    
-                }
-            }
-        })->get();
-    
-       
         return view('dashboard.student_invoices.create' , compact('student' , 'study_fees' , 'students'));
     }
 

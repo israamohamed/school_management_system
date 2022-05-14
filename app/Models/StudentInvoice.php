@@ -26,9 +26,26 @@ class StudentInvoice extends Model
                 $q->where('study_fee_id' , request()->study_fee_id);
             }
 
+            if(request()->filled('study_fee_item_id'))
+            {
+                $q->whereHas('study_fee' , function($q2){
+
+                    $q2->where('study_fees.study_fee_item_id' , request()->study_fee_item_id);
+
+                });
+                
+            }
+
             if(request()->filled('invoice_date'))
             {
                 $q->whereDate('invoice_date' , request()->invoice_date);
+            }
+
+            if(request()->filled('from') || request()->filled('to')   )
+            {
+                $from = date("Y-m-d" , strtotime( request()->from ) );
+                $to = date("Y-m-d" , strtotime(request()->to) );
+                $q->whereBetween('invoice_date' ,   [ $from , $to] );
             }
         });
     }
