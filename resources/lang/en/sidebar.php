@@ -26,6 +26,7 @@ return [
 
     'school_data' => 'School Data',
     'school_management' => 'School Management',
+    'system_setting' => 'System Settings',
 
 
 

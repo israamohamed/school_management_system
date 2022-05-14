@@ -78,6 +78,13 @@ class StudyFee extends Model
         });
     }
 
+    public function scopeMandatory($query)
+    {
+        return $query->whereHas('study_fee_item' , function($q){
+            $q->where('type' , 'mandatory');
+        });
+    }
+
 
     public function study_fee_item()
     {

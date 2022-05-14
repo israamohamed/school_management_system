@@ -63,6 +63,33 @@ class StudentController extends Controller
             $student->uploadAttachments($request->attachments , 'students');
             //uploads profile_picture
             $student->uploadImage($request->profile_picture , 'students' , 'profile_picture');
+            //check system settings for adding automatically student invoices
+            if(system_settings() && system_settings()->create_student_invoices_automatically  )
+            {
+                //add mandatory fees as invoices to student
+                $study_fees = StudyFee::filterStudent($student->id)->mandatory()->get();
+                foreach($study_fees as $study_fee)
+                {
+                    $student_invoice = $student->student_invoices()->create([
+                                        'study_fee_id' => $study_fee->id,
+                                        'invoice_date' => date("Y-m-d"),
+                                        'final_total'  => $study_fee->amount,
+                                        'total'        => $study_fee->amount,
+                                        'notes'        => 'system automatically add this invoice',
+                                    ]);
+
+                    //Add to student transactions
+                    $student_invoice->student_transactions()->create([
+                        'student_id'       => $student->id,
+                        'type'             => 'invoice',
+                        'debit'            => $student_invoice->final_total,
+                        'transaction_date' => $student_invoice->invoice_date,
+                        'notes'            => __('messages.new_invoice_added_to_student' , ['name' => $study_fee->title]) ,
+                    ]);
+                }
+                            
+            }
+                
             //success message
             toastr()->success(__('messages.added_successfully'));
             return redirect()->route('dashboard.student.index');

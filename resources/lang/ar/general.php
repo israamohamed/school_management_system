@@ -154,4 +154,9 @@ return [
         'phone_number1' => 'رقم هاتف 1 للمدرسة',
         'phone_number2' => 'رقم هاتف 2 للمدرسة',
     ],
+
+    'system_settings' => [
+        'edit' => 'ضبط إعدادات النظام',
+        'create_student_invoices_automatically' => 'إنشاء فواتير الطالب تلقائياً للرسوم الإجبارية',
+    ],
 ];

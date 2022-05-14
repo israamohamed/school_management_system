@@ -27,6 +27,7 @@ return [
 
     'school_data' => 'بيانات المدرسة',
     'school_management' => 'إدارة المدرسة',
+    'system_setting'  => 'إعدادات النظام',
 
 
 

@@ -154,4 +154,9 @@ return [
         'phone_number1' => 'School Phone Number 1',
         'phone_number2' => 'School Phone Number 2',
     ],
+
+    'system_settings' => [
+        'edit' => 'Change System Settings',
+        'create_student_invoices_automatically' => 'Create student invoices automatically for mandatory fees items',
+    ],
 ];

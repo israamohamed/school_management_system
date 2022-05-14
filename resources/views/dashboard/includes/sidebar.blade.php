@@ -119,6 +119,7 @@
             </a>
             <ul class="sub-menu" aria-expanded="false">
                 <li><a href="{{route('dashboard.school_data.edit')}}">{{__('sidebar.school_data')}}</a></li>
+                <li><a href="{{route('dashboard.system_setting.edit')}}">{{__('sidebar.system_setting')}}</a></li>
             </ul>
         </li>
 
