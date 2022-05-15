@@ -1,94 +1,126 @@
 @extends('dashboard.master')
 
+@push('styles')
+<style>
+    .more_info 
+    {
+        display: none;
+    }
+</style>
+@endpush
+
 @section('title' , 'Home')
 
 @section('content')
 <div class="card-body">
     
-    {{-- @livewire('calendar') --}}
-
-    {{--statistics --}}
+    {{-- @livewire('events-calendar') --}}
     <div class="row">
 
-        {{--students --}}   {{--#205c7e --}} {{--#2878a780--}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#205c7e">
-                <div class="card-body">
-                    <h4 class="card-title text-light">{{__('reports.students_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-user-friends text-light me-2"></i><b>{{ $students_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.student.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
+        <div class="col-lg-5">
+            {{--statistics --}}
+            <div class="row">
+
+                {{--students --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#205c7e">
+                        <a href="{{route('dashboard.student.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title text-light">{{__('reports.students_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-user-friends text-light me-2"></i><b>{{ $students_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.student.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
+                            </div>
+                        </a>
+
+                    </div>
                 </div>
+
+
+                {{-- graudated students --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#2878a780">
+                        <a href="{{route('dashboard.graduated_student.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title" style = "color:#205c7e;">{{__('reports.graduated_students_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-user-graduate me-2" style = "color:#205c7e;"></i><b>{{ $graduated_students_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.graduated_student.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                {{--educational_class_rooms_count --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#205c7e">
+                        <a href="{{route('dashboard.educational_class_room.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title text-light">{{__('reports.educational_class_rooms_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-layer-group text-light me-2"></i><b>{{ $educational_class_rooms_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.educational_class_room.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                {{-- students_invoices_count --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#2878a780">
+                        <a href="{{route('dashboard.student_invoice.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title" style = "color:#205c7e;">{{__('reports.students_invoices_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-file-invoice-dollar me-2" style = "color:#205c7e;"></i><b>{{ $students_invoices_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.student_invoice.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+
+                {{--teachers_count --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#205c7e">
+                        <a href="{{route('dashboard.teacher.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title text-light">{{__('reports.teachers_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-chalkboard-teacher text-light me-2"></i><b>{{ $teachers_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.teacher.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                {{-- students_parents_count --}}   {{--#205c7e --}} {{--#2878a780--}}
+                <div class="col-sm-6 col-lg-6">
+                    <div class="card text-center shadow-lg" style = "background:#2878a780">
+                        <a href="{{route('dashboard.student_parent.index')}}">
+                            <div class="card-body">
+                                <h4 class="card-title" style = "color:#205c7e;">{{__('reports.students_parents_count')}}</h4>
+                                <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-user-tie me-2" style = "color:#205c7e;"></i><b>{{ $students_parents_count }}</b>
+                                </h2>
+                                <p class=" mb-0 mt-3 more_info" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.student_parent.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+
             </div>
         </div>
-
-
-         {{-- graudated students --}}   {{--#205c7e --}} {{--#2878a780--}}
-         <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#2878a780">
-                <div class="card-body">
-                    <h4 class="card-title" style = "color:#205c7e;">{{__('reports.graduated_students_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-user-graduate me-2" style = "color:#205c7e;"></i><b>{{ $graduated_students_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.graduated_student.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
-                </div>
-            </div>
+        <div class="col-lg-7">
+            @livewire('calendar')
         </div>
-
-
-        {{--educational_class_rooms_count --}}   {{--#205c7e --}} {{--#2878a780--}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#205c7e">
-                <div class="card-body">
-                    <h4 class="card-title text-light">{{__('reports.educational_class_rooms_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-layer-group text-light me-2"></i><b>{{ $educational_class_rooms_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.educational_class_room.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
-                </div>
-            </div>
-        </div>
-
-
-         {{-- students_invoices_count --}}   {{--#205c7e --}} {{--#2878a780--}}
-         <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#2878a780">
-                <div class="card-body">
-                    <h4 class="card-title" style = "color:#205c7e;">{{__('reports.students_invoices_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-file-invoice-dollar me-2" style = "color:#205c7e;"></i><b>{{ $students_invoices_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.student_invoice.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
-                </div>
-            </div>
-        </div>
-
-
-        {{--teachers_count --}}   {{--#205c7e --}} {{--#2878a780--}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#205c7e">
-                <div class="card-body">
-                    <h4 class="card-title text-light">{{__('reports.teachers_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#fff"><i class="fas fa-chalkboard-teacher text-light me-2"></i><b>{{ $teachers_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#2878a780"><a style = "color:#fff;" href="{{route('dashboard.teacher.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right text-light"></i>  </a></p>
-                </div>
-            </div>
-        </div>
-        
-        
-        {{-- students_parents_count --}}   {{--#205c7e --}} {{--#2878a780--}}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card text-center shadow-lg" style = "background:#2878a780">
-                <div class="card-body">
-                    <h4 class="card-title" style = "color:#205c7e;">{{__('reports.students_parents_count')}}</h4>
-                    <h2 class="mt-3 mb-2" style = "font-size: 3em;color:#205c7e"><i class="fas fa-user-tie me-2" style = "color:#205c7e;"></i><b>{{ $students_parents_count }}</b>
-                    </h2>
-                    <p class=" mb-0 mt-3" style = "background:#205c7e"><a style = "color:#fff;" href="{{route('dashboard.student_parent.index')}}">{{__('general.more_info')}}  <i class = " fas fa-angle-double-right" style = "color:#205c7e;"></i>  </a></p>
-                </div>
-            </div>
-        </div>
-        
-
     </div>
+    
+
+ 
     
     {{-- recents students --}}
 

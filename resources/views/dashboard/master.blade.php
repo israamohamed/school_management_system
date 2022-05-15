@@ -173,6 +173,7 @@
 {{-- <!-- App js -->
 <script src="{{asset('dashboard/assets/js/app.js')}}"></script> --}}
 @include('app')
+@include('partials.javascript')
 
 @jquery
 @toastr_js

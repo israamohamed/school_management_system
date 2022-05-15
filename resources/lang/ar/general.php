@@ -38,6 +38,11 @@ return [
     'result' => 'النتيجة',
     'menu' => 'القائمة',
 
+    'today' => 'اليوم',
+    'enter_event_title' => 'أدخل إسم الحدث',
+    'event_name_is_required' => 'يجب إدخال إسم الحدث',
+    'event_is_created_successfully' => 'تم إنشاء الحدث بنجاح',
+
     'title' => 'العنوان',
     'title_en' => 'العنوان باللغة الإنجليزية',
     'title_ar' => 'العنوان باللغة العربية',
@@ -115,7 +120,7 @@ return [
     ],
 
     'absence_reasons' => [
-        'title' => 'أسباب الغيات',
+        'title' => 'أسباب الغياب',
         'create' => 'إضافة سبب الغياب',
         'edit' => 'تعديل سبب الغياب',
         'delete' => 'حذف سبب الغياب', 

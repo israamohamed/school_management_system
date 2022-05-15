@@ -11,9 +11,9 @@ class Calendar extends Component
 
     public function getevent()
     {       
-        $events = Event::select('id','title','start')->get();
+        $this->events = Event::select('id','title','start')->get();
 
-        return  json_encode($events);
+        return  json_encode($this->events);
     }
 
     /**
@@ -24,8 +24,9 @@ class Calendar extends Component
     public function addevent($event)
     {
         $input['title'] = $event['title'];
-        $input['start'] = $event['start'];
-        Event::create($input);
+        $input['start'] = date("Y-m-d" , strtotime($event['start']));
+        $new_event = Event::create($input);
+        //$this->events =  Event::select('id','title','start')->get();
     }
 
     /**
@@ -35,9 +36,20 @@ class Calendar extends Component
     */
     public function eventDrop($event, $oldEvent)
     {
-      $eventdata = Event::find($event['id']);
-      $eventdata->start = $event['start'];
-      $eventdata->save();
+      if(isset($event['id']))
+      {
+        $eventdata = Event::find($event['id']);
+      }
+      else 
+      {
+          $eventdata = Event::where('title' , $oldEvent['title'])->whereDate('start' , $oldEvent['start'] )->latest()->first();
+      }
+      if($eventdata)
+      {
+        $eventdata->start = $event['start'];
+        $eventdata->save();
+      }
+     
     }
 
     /**

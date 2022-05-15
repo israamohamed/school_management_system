@@ -38,6 +38,11 @@ return [
     'result' => 'Results',
     'menu' => 'Menu',
 
+    'today' => 'today',
+    'enter_event_title' => 'Enter Event Title',
+    'event_name_is_required' => 'Event name is required',
+    'event_is_created_successfully' => 'Event is created successfully',
+
     'title' => 'Title',
     'title_en' => 'Title in English',
     'title_ar' => 'Title in Arabic',
