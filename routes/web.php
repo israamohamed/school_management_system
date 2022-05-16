@@ -99,8 +99,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         //system settings
         Route::get('system_setting/edit' , 'SystemSettingController@edit')->name('system_setting.edit');
         Route::put('system_setting/update' , 'SystemSettingController@update')->name('system_setting.update');
-    
-    
+
+        //Roles
+        Route::resource('role' , 'RoleController');
     
     
     });

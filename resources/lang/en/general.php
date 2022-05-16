@@ -169,4 +169,17 @@ return [
         'edit' => 'Change System Settings',
         'create_student_invoices_automatically' => 'Create student invoices automatically for mandatory fees items',
     ],
+
+    'roles' => [
+        'title' => 'Roles',
+        'create' => 'Add Role',
+        'edit' => 'Edit Role',
+        'delete' => 'Delete Role', 
+        'one' => 'Role',
+        'select' => 'select role',
+        'display_name' => 'Display Name',
+        'display_name_en' => 'Display Name in English',
+        'display_name_ar' => 'Display Name in Arabic',
+        'permissions' => 'Permissions',
+    ],
 ];

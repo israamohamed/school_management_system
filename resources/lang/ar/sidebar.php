@@ -29,6 +29,9 @@ return [
     'school_management' => 'إدارة المدرسة',
     'system_setting'  => 'إعدادات النظام',
 
+    'user_management' => 'شئون العاملين',
+    'roles'           => 'الوظائف',
+
 
 
 
@@ -38,5 +41,6 @@ return [
 
     //students side bar
     'my_courses' => 'دوراتي',
+
     
 ]; 

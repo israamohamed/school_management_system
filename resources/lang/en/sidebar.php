@@ -28,6 +28,11 @@ return [
     'school_management' => 'School Management',
     'system_setting' => 'System Settings',
 
+    'user_management' => 'User Management',
+    'roles'           => 'Roles',
+
+    
+
 
 
 

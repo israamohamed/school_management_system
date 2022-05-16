@@ -123,5 +123,17 @@
             </ul>
         </li>
 
+        {{-- User Management --}}
+        <li class = "{{request()->routeIs('dashboard.role.*')  ? 'mm-active' : ''}}">
+            <a href="javascript: void(0);" class="has-arrow waves-effect {{request()->routeIs('dashboard.role.*')  ? 'mm-show' : ''}}">
+                <i class="fas fa-user-cog"></i>
+                <span>{{__('sidebar.user_management')}}</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="false">
+                <li><a href="{{route('dashboard.role.index')}}">{{__('sidebar.roles')}}</a></li>
+                {{-- <li><a href="{{route('dashboard.system_setting.edit')}}">{{__('sidebar.system_setting')}}</a></li> --}}
+            </ul>
+        </li>
+
     </ul>
 </div>
