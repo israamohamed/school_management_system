@@ -57,7 +57,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('students.title')}} <span class="badge rounded-pill bg-dark">{{$students->total()}}</span> </h4>
-                    <a href = "{{route('dashboard.student.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('students.create')}}</a>
+                    <a href = "{{route('dashboard.student.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.student') ? '' : 'disabled'}}">{{__('students.create')}}</a>
                 
                     <div class="clearfix"></div>
                 </div>
@@ -105,15 +105,21 @@
                                                 {{--show--}}
                                                 <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#show_modal_{{$student->id}}"><i class = " far fa-eye  text-warning"></i> {{__('general.show')}}</button>
                                                 {{--edit--}}
-                                                <a class="dropdown-item" href="{{route('dashboard.student.edit' , $student->id)}}"><i class = "fas fa-edit text-primary"></i> {{__('general.edit')}}</a>
+                                                @can('edit.student')
+                                                    <a class="dropdown-item" href="{{route('dashboard.student.edit' , $student->id)}}"><i class = "fas fa-edit text-primary"></i> {{__('general.edit')}}</a>
+                                                @endcan
                                                 {{--add invoice--}}
-                                                <a class="dropdown-item" href="{{route('dashboard.student_invoice.create' , ['student_id' => $student->id])}}"><i class = "fas fa-file-invoice-dollar text-success"></i> {{__('general.add_invoice')}}</a>
-
+                                                @can('create.student_invoice')
+                                                    <a class="dropdown-item" href="{{route('dashboard.student_invoice.create' , ['student_id' => $student->id])}}"><i class = "fas fa-file-invoice-dollar text-success"></i> {{__('general.add_invoice')}}</a>
+                                                @endcan
                                                 {{--add financial bond--}}
-                                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#financial_modal_{{$student->id}}"><i class = "fas fa-money-bill-alt  text-dark"></i> {{__('general.add_financial_bond')}}</button>
-
+                                                @can('create.financial_bond')
+                                                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#financial_modal_{{$student->id}}"><i class = "fas fa-money-bill-alt  text-dark"></i> {{__('general.add_financial_bond')}}</button>
+                                                @endcan
                                                 {{--delete--}}
-                                                <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash text-danger"></i> {{__('general.delete')}}</button>
+                                                @can('delete.student')
+                                                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student->id}}"><i class = "fas fa-trash text-danger"></i> {{__('general.delete')}}</button>
+                                                @endcan
                                                 
                                                 
                                             </div>

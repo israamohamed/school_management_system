@@ -37,7 +37,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('student_parents.title')}}</h4>
-                    <a href = "{{route('dashboard.student_parent.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('student_parents.create')}}</a>
+                    <a href = "{{route('dashboard.student_parent.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.student_parent') ? '' : 'disabled'}}" >{{__('student_parents.create')}}</a>
                    
                     <div class="clearfix"></div> 
                 </div>
@@ -69,9 +69,9 @@
                                     <td>{{$student_parent->email}}</td>
                                    
                                     <td class="text-bold-500">
-                                        <a href = "{{route('dashboard.student_parent.edit' , $student_parent->id)}}" class = "btn btn-info">{{__('general.edit')}}</a>
+                                        <a href = "{{route('dashboard.student_parent.edit' , $student_parent->id)}}" class = "btn btn-info  {{ auth()->user()->can('edit.student_parent') ? '' : 'disabled'}}">{{__('general.edit')}}</a>
 
-                                        <button class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student_parent->id}}">{{__('general.delete')}}</button>
+                                        <button class = "btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$student_parent->id}}"  {{ auth()->user()->can('delete.student_parent') ? '' : 'disabled'}}>{{__('general.delete')}}</button>
                         
                                         @include('dashboard.student_parents.delete')
                                       

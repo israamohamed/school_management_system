@@ -36,7 +36,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('general.roles.title')}} <span class="badge rounded-pill bg-dark">{{$roles->total()}}</span> </h4>
-                    <a href = "{{route('dashboard.role.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('general.roles.create')}}</a>
+                    <a href = "{{route('dashboard.role.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.role') ? '' : 'disabled'}}">{{__('general.roles.create')}}</a>
                 
                     <div class="clearfix"></div>
                 </div>
@@ -66,12 +66,16 @@
                                     </td>
                                  
                                     <td>
+                                        @if($role->name != 'super admin')
+                                        
                                         <button class = "btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#show_modal_{{$role->id}}"><i class = "fas fa-eye"></i></button>
                                         @include('dashboard.roles.show')
 
-                                        <a href = "{{route('dashboard.role.edit' , $role->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$role->id}}"><i class = "fas fa-trash"></i></button>
+                                        <a href = "{{route('dashboard.role.edit' , $role->id)}}" class = "btn btn-info btn-sm {{ auth()->user()->can('edit.role') ? '' : 'disabled'}}"><i class = "fas fa-edit"></i></a>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$role->id}}" {{ auth()->user()->can('delete.role') ? '' : 'disabled'}}><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.roles.delete')
+
+                                        @endif
                                     </td>
                                 </tr>               
                                 @endforeach            

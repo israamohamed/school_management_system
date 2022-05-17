@@ -62,7 +62,7 @@ class RoleController extends Controller
   
     public function edit($id)
     {
-        $role = Role::findOrFail($id);
+        $role = Role::where('name' , '!=' , 'super admin')->findOrFail($id);
         $permissions = Permission::get()->groupBy('group');
         return view('dashboard.roles.edit' , compact('role' , 'permissions'));
     }
@@ -70,7 +70,7 @@ class RoleController extends Controller
    
     public function update(RoleRequest $request, $id)
     {
-        $role = Role::findOrFail($id);
+        $role = Role::where('name' , '!=' , 'super admin')->findOrFail($id);
 
         $request->merge([
             'display_name' => ['en' => $request->display_name_en , 'ar' => $request->display_name_ar],
@@ -87,7 +87,7 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        $role = Role::findOrFail($id);
+        $role = Role::where('name' , '!=' , 'super admin')->findOrFail($id);
         //check if role has users
         if($role->users &&  $role->users()->count() > 0)
         {

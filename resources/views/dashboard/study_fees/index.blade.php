@@ -66,7 +66,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('accounts.study_fees.title')}} <span class="badge rounded-pill bg-dark">{{$study_fees->total()}}</span> </h4>
-                    <a href = "{{route('dashboard.study_fee.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('accounts.study_fees.create')}}</a>
+                    <a href = "{{route('dashboard.study_fee.create')}}" class="btn btn-primary waves-effect waves-light float-end  {{ auth()->user()->can('create.study_fee') ? '' : 'disabled'}}">{{__('accounts.study_fees.create')}}</a>
                 
                     <div class="clearfix"></div>
                 </div>
@@ -103,8 +103,8 @@
                                     <td>{{$study_fee->amount}}</td>
 
                                     <td>
-                                        <a href = "{{route('dashboard.study_fee.edit' , $study_fee->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$study_fee->id}}"><i class = "fas fa-trash"></i></button>
+                                        <a href = "{{route('dashboard.study_fee.edit' , $study_fee->id)}}" class = "btn btn-info btn-sm {{ auth()->user()->can('edit.study_fee') ? '' : 'disabled'}}"><i class = "fas fa-edit"></i></a>
+                                        <button class = "btn btn-danger btn-sm {{ auth()->user()->can('delete.study_fee') ? '' : 'disabled'}}" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$study_fee->id}}"><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.study_fees.delete')
                                     </td>
                                 </tr>               

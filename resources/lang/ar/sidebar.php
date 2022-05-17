@@ -31,6 +31,7 @@ return [
 
     'user_management' => 'شئون العاملين',
     'roles'           => 'الوظائف',
+    'users'           => 'الموظفين',
 
 
 

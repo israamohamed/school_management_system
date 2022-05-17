@@ -56,7 +56,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('students.student_attendances.title')}}</h4>
-                    <a href = "{{route('dashboard.student_attendance.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('general.add')}}</a>
+                    <a href = "{{route('dashboard.student_attendance.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.student_attendance') ? '' : 'disabled'}}">{{__('general.add')}}</a>
                     
                     <div class="clearfix"></div>
                 </div>
@@ -99,7 +99,7 @@
                                                                                                     'class_room_id' => $educational_class_room->class_room_id ,     
                                                                                                     'educational_class_room_id' => $educational_class_room->id ,
                                                                                                     'academic_year' => date("Y") ,
-                                                                                                    'attendance_date' => date("Y-m-d") ]  )}}" class = "btn btn-info btn-sm"><i class = "fas fa-clipboard-check"></i></a>
+                                                                                                    'attendance_date' => date("Y-m-d") ]  )}}" class = "btn btn-info btn-sm  {{ auth()->user()->can('create.student_attendance') ? '' : 'disabled'}}"><i class = "fas fa-clipboard-check"></i></a>
                                        @include('dashboard.student_attendances.show_modal')
 
                                     </td>

@@ -62,7 +62,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('accounts.student_invoices.title')}}</h4>
-                    <a class = "btn btn-primary waves-effect waves-light float-end" href="{{route('dashboard.student_invoice.create' , ['students' => 'students_data'])}}">{{__('general.add')}}</a>
+                    <a class = "btn btn-primary waves-effect waves-light float-end  {{ auth()->user()->can('create.student_invoice') ? '' : 'disabled'}}" href="{{route('dashboard.student_invoice.create' , ['students' => 'students_data'])}}">{{__('general.add')}}</a>
                    
                     <div class="clearfix"></div>
                 </div>
@@ -111,10 +111,10 @@
                                     <td>{{Str::limit($student_invoice->notes , 30)}}</td>
                                     
                                     <td>
-                                        <button class = "btn btn-info btn-sm" onclick="change_study_fees_of_student({{$student_invoice->id}} , {{$student_invoice->student_id}} , {{$student_invoice->study_fee_id}}  )" data-bs-toggle="modal" data-bs-target="#edit_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-edit"></i></button>
+                                        <button class = "btn btn-info btn-sm  {{ auth()->user()->can('edit.student_invoice') ? '' : 'disabled'}}" onclick="change_study_fees_of_student({{$student_invoice->id}} , {{$student_invoice->student_id}} , {{$student_invoice->study_fee_id}}  )" data-bs-toggle="modal" data-bs-target="#edit_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-edit"></i></button>
                                         @include('dashboard.student_invoices.edit')
             
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-trash"></i></button>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_student_invoice_modal_{{$student_invoice->id}}" {{ auth()->user()->can('delete.student_invoice') ? '' : 'disabled'}}><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.student_invoices.delete')
                                        
                                     </td>

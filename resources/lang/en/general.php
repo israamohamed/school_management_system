@@ -65,6 +65,9 @@ return [
     'from' => 'From',
     'to'   => 'To',
 
+    'email' => 'Email',
+    'password' => 'Password',
+
 
     'educational_stages' => [
         'title' => 'Educational Stages',
@@ -181,5 +184,16 @@ return [
         'display_name_en' => 'Display Name in English',
         'display_name_ar' => 'Display Name in Arabic',
         'permissions' => 'Permissions',
+        'all' => 'All Roles',
+    ],
+
+    'users' => [
+        'title' => 'Users',
+        'create' => 'Add User',
+        'edit' => 'Edit User',
+        'delete' => 'Delete User', 
+        'one' => 'User',
+        'select' => 'select user',
+        'roles' => 'roles',
     ],
 ];

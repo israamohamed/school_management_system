@@ -2,7 +2,7 @@
     <p class="mb-0">
 
       <div class = "my-3">
-        <button type="button" class="btn btn-success waves-effect waves-light float-end" data-bs-toggle="modal" data-bs-target="#create_attachment_modal">{{__('general.attachments.create')}}</button>
+        <button type="button" class="btn btn-success waves-effect waves-light float-end" data-bs-toggle="modal" data-bs-target="#create_attachment_modal" {{ auth()->user()->can('store.student_attachment') ? '' : 'disabled'}}>{{__('general.attachments.create')}}</button>
         @include('dashboard.students.attachments.create')
         <div class="clearfix"></div>
       </div>
@@ -25,9 +25,9 @@
                 <img src="{{$attachment->url}}" style = "height: 80px;" alt=""></td>
               </a>
             <td>
-              <a class ="btn btn-primary btn-sm" href="{{route('dashboard.student.download_attachment' , $attachment->id)}}"><i class = " fas fa-download"></i></a>
+              <a class ="btn btn-primary btn-sm {{ auth()->user()->can('download.student_attachment') ? '' : 'disabled'}}" href="{{route('dashboard.student.download_attachment' , $attachment->id)}}"><i class = " fas fa-download"></i></a>
 
-              <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_attachment_modal_{{$attachment->id}}"><i class = "fas fa-trash"></i></button>
+              <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_attachment_modal_{{$attachment->id}}" {{ auth()->user()->can('delete.student_attachment') ? '' : 'disabled'}}><i class = "fas fa-trash"></i></button>
               @include('dashboard.students.attachments.delete')
 
             </td>

@@ -65,7 +65,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('general.subjects.title')}} <span class="badge rounded-pill bg-dark">{{$subjects->total()}}</span> </h4>
-                    <a href = "{{route('dashboard.subject.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('general.subjects.create')}}</a>
+                    <a href = "{{route('dashboard.subject.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.subject') ? '' : 'disabled'}}">{{__('general.subjects.create')}}</a>
                 
                     <div class="clearfix"></div>
                 </div>
@@ -104,8 +104,8 @@
                                     <td>{{$subject->lower_grade}}</td>
 
                                     <td>
-                                        <a href = "{{route('dashboard.subject.edit' , $subject->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$subject->id}}"><i class = "fas fa-trash"></i></button>
+                                        <a href = "{{route('dashboard.subject.edit' , $subject->id)}}" class = "btn btn-info btn-sm {{ auth()->user()->can('edit.subject') ? '' : 'disabled'}}"><i class = "fas fa-edit"></i></a>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$subject->id}}" {{ auth()->user()->can('delete.subject') ? '' : 'disabled'}}><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.subjects.delete')
                                     </td>
                                 </tr>               

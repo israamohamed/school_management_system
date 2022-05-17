@@ -33,7 +33,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['l
 
 Livewire::component('calendar', Calendar::class);
 
-Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['auth' , 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function() {
+Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['auth' , 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' , 'auto-check-permission']], function() {
 
     Route::name('dashboard.')->prefix('dashboard')->namespace('Dashboard')->group(function(){
 
@@ -102,6 +102,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
 
         //Roles
         Route::resource('role' , 'RoleController');
+        //users
+        Route::resource('user' , 'UserController');
     
     
     });

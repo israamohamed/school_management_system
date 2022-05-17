@@ -48,7 +48,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('teachers.title')}} <span class="badge rounded-pill bg-dark">{{$teachers->total()}}</span> </h4>
-                    <a href = "{{route('dashboard.teacher.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('teachers.create')}}</a>
+                    <a href = "{{route('dashboard.teacher.create')}}" class="btn btn-primary waves-effect waves-light float-end {{ auth()->user()->can('create.teacher') ? '' : 'disabled'}}">{{__('teachers.create')}}</a>
                 
                     <div class="clearfix"></div>
                 </div>
@@ -85,8 +85,8 @@
                                     <td>{!! $teacher->active ? '<button class = "btn btn-success  btn-sm"><i class="fas fa-check"></i></button>' : '<button class = "btn btn-danger  btn-sm"><i class="far fa-window-close"></i></button>' !!}</td>
                                  
                                     <td>
-                                        <a href = "{{route('dashboard.teacher.edit' , $teacher->id)}}" class = "btn btn-info btn-sm"><i class = "fas fa-edit"></i></a>
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$teacher->id}}"><i class = "fas fa-trash"></i></button>
+                                        <a href = "{{route('dashboard.teacher.edit' , $teacher->id)}}" class = "btn btn-info btn-sm {{ auth()->user()->can('create.teacher') ? '' : 'disabled'}}"><i class = "fas fa-edit"></i></a>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_modal_{{$teacher->id}}" {{ auth()->user()->can('create.teacher') ? '' : 'disabled'}}><i class = "fas fa-trash"></i></button>
                                         @include('dashboard.teachers.delete')
                                     </td>
                                 </tr>               

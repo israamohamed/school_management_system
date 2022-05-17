@@ -30,6 +30,7 @@ return [
 
     'user_management' => 'User Management',
     'roles'           => 'Roles',
+    'users'           => 'Users',
 
     
 
