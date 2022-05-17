@@ -39,10 +39,10 @@
                         
                         <td>
             
-                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-edit"></i></button>
+                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_student_invoice_modal_{{$student_invoice->id}}" {{auth()->user()->can('edit.student_invoice') ? '' : 'disabled' }} ><i class = "fas fa-edit"></i></button>
                             @include('dashboard.student_invoices.edit')
 
-                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_student_invoice_modal_{{$student_invoice->id}}"><i class = "fas fa-trash"></i></button>
+                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_student_invoice_modal_{{$student_invoice->id}}"  {{auth()->user()->can('delete.student_invoice') ? '' : 'disabled' }}><i class = "fas fa-trash"></i></button>
                             @include('dashboard.student_invoices.delete')
             
                         </td>

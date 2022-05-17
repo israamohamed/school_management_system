@@ -63,22 +63,27 @@
                     </li>       
 
                     {{-- student_accounts --}}
+                    @canany(['show.student_invoices' , 'show.financial_bonds'])
                     <li class="nav-item waves-effect waves-light shadow-lg p-3 mb-5 rounded">
                         <a class="nav-link" data-bs-toggle="tab" href="#student_accounts" role="tab">
                             <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                             <span class="d-none d-sm-block">{{__('accounts.student_accounts')}}</span>   
                         </a> 
                     </li> 
+                    @endcan
 
                 </ul>
 
 
                   <!-- Tab panes -->
                   <div class="tab-content p-3 text-muted">
-                      @include('dashboard.students.tabs.student_tab')
-                      @include('dashboard.students.tabs.student_parent_tab')
-                      @include('dashboard.students.tabs.attachments_tab')
-                      @include('dashboard.students.tabs.student_accounts_tab')
+                    @include('dashboard.students.tabs.student_tab')
+                    @include('dashboard.students.tabs.student_parent_tab')
+                    @include('dashboard.students.tabs.attachments_tab')
+
+                    @canany(['show.student_invoices' , 'show.financial_bonds'])
+                        @include('dashboard.students.tabs.student_accounts_tab')
+                    @endcan
 
 
                   </div>

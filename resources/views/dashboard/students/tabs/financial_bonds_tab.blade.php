@@ -35,10 +35,10 @@
                         
                         <td>
             
-                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_financial_bond_modal_{{$financial_bond->id}}"><i class = "fas fa-edit"></i></button>
+                            <button class = "btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#edit_financial_bond_modal_{{$financial_bond->id}}" {{auth()->user()->can('edit.financial_bond') ? '' : 'disabled' }}><i class = "fas fa-edit"></i></button>
                             @include('dashboard.financial_bonds.edit')
 
-                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_financial_bond_modal_{{$financial_bond->id}}"><i class = "fas fa-trash"></i></button>
+                            <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_financial_bond_modal_{{$financial_bond->id}}" {{auth()->user()->can('delete.financial_bond') ? '' : 'disabled' }}><i class = "fas fa-trash"></i></button>
                             @include('dashboard.financial_bonds.delete')
             
                         </td>

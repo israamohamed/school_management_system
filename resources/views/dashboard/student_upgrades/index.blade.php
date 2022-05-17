@@ -37,7 +37,7 @@
             <div class="card-body">
                 <div class="card-title mb-3">
                     <h4 class = "float-start">{{__('students.student_upgrades.title')}}</h4>
-                    <a href = "{{route('dashboard.student_upgrade.create')}}" class="btn btn-primary waves-effect waves-light float-end">{{__('general.add')}}</a>
+                    <a href = "{{route('dashboard.student_upgrade.create')}}" class="btn btn-primary waves-effect waves-light float-end  {{auth()->user()->can('create.student_upgrade') ? '' : 'disabled' }}" >{{__('general.add')}}</a>
                     
                     <div class="clearfix"></div>
                 </div>
@@ -100,7 +100,7 @@
 
                                     <td class="text-bold-500">
                                        
-                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#return_modal_{{$student_upgrade->id}}" title = "{{__('general.return_upgrade')}}"><i class = "fas fa-sign-in-alt"></i></button>
+                                        <button class = "btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#return_modal_{{$student_upgrade->id}}" title = "{{__('general.return_upgrade')}}"  {{auth()->user()->can('delete.student_upgrade') ? '' : 'disabled' }}><i class = "fas fa-sign-in-alt"></i></button>
                                         @include('dashboard.student_upgrades.return_modal')
 
                                     </td>
@@ -117,7 +117,7 @@
                         @csrf
                         <input type="hidden" name = "selected_rows">
 
-                        <button type = "button" class = "btn btn-danger btn-sm" id = "return_multiple_students_selected">{{__('general.return_upgrade_selected')}}</button>
+                        <button type = "button" class = "btn btn-danger btn-sm" id = "return_multiple_students_selected" {{auth()->user()->can('delete.student_upgrade') ? '' : 'disabled' }}>{{__('general.return_upgrade_selected')}}</button>
 
                     </form>   
                 {{$student_upgrades->links()}}
