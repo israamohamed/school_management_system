@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Models\Student;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class StudyFee extends Model
 {
-    use HasFactory , HasTranslations;
+    use HasFactory , HasTranslations , LogsActivity;
 
     protected $fillable = ['title' , 'description' , 'study_fee_item_id' , 'educational_stage_id' , 'class_room_id' , 'academic_year' , 'amount'];
     protected $translatable = ['title' , 'description'];
+
+    protected static $logAttributes = ['title' , 'study_fee_item.name' , 'amount'];
+    
+    protected static $logName = 'study_fee';
+
 
     public function scopeSearch($query)
     {

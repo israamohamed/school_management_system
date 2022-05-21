@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Attachments\HasAttachments;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class StudentInvoice extends Model
 {
-    use HasFactory , HasAttachments;
+    use HasFactory , HasAttachments , LogsActivity;
 
     protected $guarded = ['id' , 'status'];
+
+    protected static $logAttributes = ['student.name' , 'study_fee.title' , 'invoice_date' , 'total' , 'discount' , 'final_total'];
+    
+    protected static $logName = 'student_invoice';
 
     public function scopeSearch($query)
     {

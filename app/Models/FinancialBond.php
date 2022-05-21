@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Attachments\HasAttachments;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class FinancialBond extends Model
 {
-    use HasFactory , HasAttachments;
+    use HasFactory , HasAttachments , LogsActivity;
 
     protected $guarded = ['id'];
+
+    protected static $logAttributes = ['student.name' , 'date' , 'type' , 'amount' , 'notes'];
+    protected static $logName = 'financial_bond';
 
     public function scopeSearh($query)
     {

@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Traits\Attachments\HasAttachments;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class StudentParent extends Model
 {
-    use HasFactory , HasTranslations , HasAttachments;
+    use HasFactory , HasTranslations , HasAttachments , LogsActivity;
 
     protected $fillable = ['email' , 'password' , 'father_name' , 'father_national_id' , 
                             'father_passport_number' , 'father_phone_number' , 'father_job' , 
@@ -20,6 +21,11 @@ class StudentParent extends Model
                             'mother_address'];
 
     public $translatable = ['father_name' , 'mother_name'];
+
+    protected static $logAttributes = ['father_name' , 'mother_name' , 'email'];
+    
+    protected static $logName = 'student_parent';
+
 
     public function father_blood_type()
     {

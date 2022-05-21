@@ -7,16 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
 use App\Traits\Attachments\HasAttachments;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Subject extends Model
 {
-    use HasFactory , HasTranslations , HasAttachments;
+    use HasFactory , HasTranslations , HasAttachments , LogsActivity;
 
     protected $fillable = ['name' , 'class_room_id' , 'upper_grade' , 'lower_grade' , 'main_subject' , 'success_required' , 'shared_between_terms' , 'term' , 'active'];
 
     protected $translatable = ['name'];
 
     protected $appends = ['name_in_details'];
+
+    protected static $logAttributes = ['name' , 'lower_grade' , 'upper_grade', 'class_room.name'];
+    
+    protected static $logName = 'subject';
 
     protected static function booted()
     {

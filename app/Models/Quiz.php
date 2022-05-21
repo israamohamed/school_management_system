@@ -4,14 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Quiz extends Model
 {
-    use HasFactory;
+    use HasFactory , LogsActivity;
 
     protected $fillable = ['name' , 'teacher_id' , 'educational_class_room_id' , 'subject_id' , 'time_in_minutes' , 'active' , 'status'];
 
     protected $appends = ['status_color' , 'score'];
+
+    protected static $logAttributes = ['name' , 'teacher.name' , 'educational_class_room.name' , 'subject.name' , 'status'];
+    protected static $logName = 'quiz';
 
     public function scopeActive($query)
     {

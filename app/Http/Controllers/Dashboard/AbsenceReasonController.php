@@ -61,8 +61,21 @@ class AbsenceReasonController extends Controller
         ]);
 
         $absence_reason = AbsenceReason::findOrFail($id);
+        $old_object = $absence_reason;
 
         $absence_reason->update($request->all());
+
+        /*activity()
+            ->performedOn($absence_reason)
+            ->causedBy(auth()->user())
+            ->withProperties(['old_name_en' => $old_object->getTranslation('name' , 'en') , 'new_name_en' => $absence_reason->getTranslation('name' , 'en')])
+            ->log('Absence Reason changed');*/
+        activity()
+            ->on($absence_reason)
+            ->by(auth()->user())
+            ->withProperties(['old_name_en' => $old_object->getTranslation('name' , 'en') , 'new_name_en' => $absence_reason->getTranslation('name' , 'en')])
+            ->log('Absence Reason changed');
+
         toastr()->success(__('messages.updated_successfully'));
         return redirect()->route('dashboard.absence_reason.index');
     }

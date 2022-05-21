@@ -198,10 +198,28 @@
                     <a href="{{route('dashboard.user.index')}}">{{__('sidebar.users')}}</a>
                 </li>
                 @endcan
-                
             </ul>
         </li>
         @endcan
+
+         {{-- Reports --}}
+         @canany(['show.activity_logs'])
+         <li class = "{{request()->routeIs('dashboard.activity_log.*')  ? 'mm-active' : ''}}">
+             <a href="javascript: void(0);" class="has-arrow waves-effect {{request()->routeIs('dashboard.activity_log.*')  ? 'mm-show' : ''}}">
+                 <i class="fas fa-history"></i>
+                 <span>{{__('sidebar.reports')}}</span>
+             </a>
+             <ul class="sub-menu" aria-expanded="false">
+                 @can('show.activity_logs')
+                 {{-- activity log --}}
+                 <li class = "{{request()->routeIs('dashboard.activity_log.*') ? 'mm-active' : ''}}">
+                     <a href="{{route('dashboard.activity_log.index')}}">{{__('sidebar.activity_logs')}}</a>
+                 </li>
+                 @endcan
+ 
+             </ul>
+         </li>
+         @endcan
 
     </ul>
 </div>

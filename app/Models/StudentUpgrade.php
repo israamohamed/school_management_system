@@ -4,12 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class StudentUpgrade extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $guarded = ['id'];
+
+    protected static $logAttributes = ['student.name' , 'previous_class_room.name' , 'previous_educational_class_room.name' , 'previous_academic_year' , 'next_class_room.name' , 'next_educational_class_room.name' , 'next_academic_year'];
+    
+    protected static $logName = 'student_upgrade';
 
     public function student()
     {

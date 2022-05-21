@@ -8,14 +8,19 @@ use Spatie\Translatable\HasTranslations;
 use App\Traits\Attachments\HasAttachments;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Student extends Authenticatable
 {
-    use HasFactory , HasTranslations, HasAttachments;
+    use HasFactory , HasTranslations, HasAttachments, LogsActivity;
 
     protected $guarded = ['id'];
     public $translatable = ['name' , 'birth_place'];
     protected $appends = ['profile_picture' , 'balance' , 'date'];
+
+    protected static $logAttributes = ['name' , 'email' , 'class_room.name' , 'educational_class_room.name' , 'code' , 'phone_number1' , 'joining_date'];
+    
+    protected static $logName = 'student';
 
 
     protected static function booted()

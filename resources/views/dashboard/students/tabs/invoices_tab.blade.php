@@ -35,7 +35,7 @@
                             @else 
                             @endif
                         </td>
-                        <td>{{Str::limit($student_invoice->notes , 50)}}</td>
+                        <td class = "col-md-3">{{Str::limit($student_invoice->notes , 50)}}</td>
                         
                         <td>
             

@@ -36,7 +36,7 @@ return [
 
     'mother_name'            => 'إسم الأم',
     'mother_name_en'         => 'إسم الأم باللغة الإنجليزية',
-    'mother_name_ar'         => 'إسم الأم باللغة الإنجليزية',
+    'mother_name_ar'         => 'إسم الأم باللغة العربية',
     'mother_national_id'     => 'الرقم القومي للأم',
     'mother_passport_number' => 'رقم جواز السفر للأم',
     'mother_phone_number'    => 'رقم الهاتف للأم',

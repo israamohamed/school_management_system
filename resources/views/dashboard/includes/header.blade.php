@@ -17,7 +17,7 @@
                         <img src="{{school_data() ? school_data()->logo : asset('images/logo.png')}}" alt="logo-sm-light"  style = "height: 30px;">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{school_data() ? school_data()->logo : asset('images/logo.png')}}" alt="logo-light" style = "height: 90px;">
+                        <img src="{{school_data() ? school_data()->logo : asset('images/logo.png')}}" alt="logo-light" style = "height: 84px;">
                     </span>
                 </a>
             </div>

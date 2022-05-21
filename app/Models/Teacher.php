@@ -7,16 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use App\Traits\Attachments\HasAttachments;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Teacher extends Authenticatable
 {
-    use HasFactory , HasTranslations , HasAttachments;
+    use HasFactory , HasTranslations , HasAttachments , LogsActivity;
 
     protected $fillable = ['name' , 'email' , 'password' , 'gender' , 'hiring_date' , 'birth_date' , 'phone_number1' , 'phone_number2' , 'active'];
 
     protected $translatable = ['name'];
 
     protected $appends = ['profile_picture'];
+
+    protected static $logAttributes = ['name' , 'email' , 'phone_number1'];
+    
+    protected static $logName = 'teacher';
 
     public function scopeSearch($query)
     {

@@ -1,8 +1,8 @@
 <?php 
 return [
     'educational_stages'      => 'المراحل التعليمية',
-    'class_rooms'             => 'الصفوف الدراسة',
-    'educational_class_rooms' => 'الفصول الدراسة',
+    'class_rooms'             => 'الصفوف الدراسية',
+    'educational_class_rooms' => 'الفصول الدراسية',
     'parents'                 => 'أولياء الأمور',
     'parents_list'            => 'قائمة أولياء الأمور',
     'add_parent'              => 'إضافة ولي أمر',
@@ -32,6 +32,9 @@ return [
     'user_management' => 'شئون العاملين',
     'roles'           => 'الوظائف',
     'users'           => 'الموظفين',
+ 
+    'reports' => 'التقارير',
+    'activity_logs' => 'سجل النشاطات',
 
 
 

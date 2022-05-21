@@ -104,6 +104,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale() , 'middleware' => ['a
         Route::resource('role' , 'RoleController');
         //users
         Route::resource('user' , 'UserController');
+
+        //History
+        Route::get('index' , 'ActivityLogController@index')->name('activity_log.index');
     
     
     });

@@ -8,10 +8,37 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles , LogsActivity;
+
+    //The attributes that need to be logged
+    protected static $logAttributes = ['name' , 'email'];
+
+    //If you want to log changes to all the $fillable attributes : 
+    //protected static $logFillable = true;   //you can use wildcar also ['*']
+
+    //If you have a lot of attributes and use $guarded instead of $fillable
+    //protected static $logUnguarded = true;
+
+    //Customizing the events being logged
+    //only the `deleted` event will get logged automatically
+    //protected static $recordEvents = ['deleted'];
+
+    //Customizing the log name
+    protected static $logName = 'user';
+
+    //Ignoring changes to certain attributes
+    //Changing password will not trigger an activity being logged.
+    protected static $ignoreChangedAttributes = ['password' , 'updated_at'];
+
+    //Logging only the changed attributes
+    //protected static $logOnlyDirty = true;
+
+    //prevents the package from storing empty logs.
+    //protected static $submitEmptyLogs = false;
 
     /**
      * The attributes that are mass assignable.
@@ -43,6 +70,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+   
+
+
     public function scopeSearch($query)
     {
         return $query->where(function($q){
@@ -65,4 +95,6 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+
 }

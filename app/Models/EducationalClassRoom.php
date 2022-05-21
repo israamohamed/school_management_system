@@ -6,16 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\Builder;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class EducationalClassRoom extends Model
 {
-    use HasFactory , HasTranslations;
+    use HasFactory , HasTranslations , LogsActivity;
 
     protected $table = 'educational_class_rooms';
 
     protected $fillable = ['name' , 'number_of_students' , 'active' , 'class_room_id'];
 
     protected $translatable = ['name'];
+
+    protected static $logAttributes = ['name' , 'number_of_students' , 'class_room.name'];
+    protected static $logName = 'educational_class_room';
 
     protected static function booted()
     {

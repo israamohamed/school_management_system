@@ -68,6 +68,8 @@ return [
     'email' => 'Email',
     'password' => 'Password',
 
+    'created_by' => 'By',
+
 
     'educational_stages' => [
         'title' => 'Educational Stages',
@@ -196,4 +198,5 @@ return [
         'select' => 'select user',
         'roles' => 'roles',
     ],
+
 ];

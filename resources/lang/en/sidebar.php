@@ -32,6 +32,9 @@ return [
     'roles'           => 'Roles',
     'users'           => 'Users',
 
+    'reports' => 'Reports',
+    'activity_logs' => 'Activity Logs',
+
     
 
 
